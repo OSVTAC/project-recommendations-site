@@ -1,49 +1,21 @@
-# Open Source Voting System Project Recommendations
+# project-recommendations-site
 
-This repository contains the source files for the approved recommendations of
-San Francisco's [Open Source Voting System Technical Advisory
-Committee][osvtac] (OSVTAC, or TAC) for the City and County of San
-Francisco's open source voting system project.
+This repository contains the "built" versions of the Markdown files for
+OSVTAC's open source voting system project recommendations. (OSVTAC stands
+for San Francisco's [Open Source Voting System Technical Advisory
+Committee][osvtac].)
 
-You can view the most recent rendered version of the recommendations
-[here][recommendations-rendered], and you can see a history of all changes
-[here][recommendations-history].
+The "source" Markdown files for the recommendations are located in the
+following repository: <https://github.com/OSVTAC/project-recommendations>. If
+you would like to contribute suggestions on the recommendations themselves,
+you should consult the `README` file of that repository.
 
-To provide comments to the committee, you can email your feedback. Contact
-information for the committee can be found on the committee's [About
-page][osvtac-about].
-
-Alternatively, if you have a GitHub account, you can open an issue on the
-repository's [issue tracker][recommendations-issues]. If you are familiar
-with Git and [Markdown][markdown], you can also suggest specific wording by
-opening a pull request [here][recommendations-pulls]. Information on
-preparing a pull request can be found in the repository's
-[`CONTRIBUTE`](CONTRIBUTE.md) file.
-
-At its November 2017 meeting, the committee voted that its recommendations
-document be licensed under a [Creative Commons Attribution-ShareAlike 4.0
-International License](http://creativecommons.org/licenses/by-sa/4.0/)
-(CC BY-SA 4.0). Thus, individuals suggesting specific wording must agree
-to their contributions being licensed under CC BY-SA 4.0 before the
-committee can include it.
-
-The committee may discuss and/or vote on your suggestions at a future
-meeting. **To be considered for the next meeting, please submit suggestions
-at least 10 days before the date of the next meeting.** This time is needed
-to prepare the agenda.
-
-Because of San Francisco's [Sunshine Ordinance] and other
-open government laws, the committee is limited in how it can collaborate
-outside of meetings on committee matters. Committee members are able to see
-and read your comments and suggestions, but they cannot necessarily respond
-publicly as individuals.
+The repository for OSVTAC's website includes the repository you are currently
+viewing as a submodule: <https://github.com/OSVTAC/OSVTAC.github.io>. The
+Markdown gets converted to HTML on the server side by [GitHub
+Pages][gitHub-pages] when the website repository is published to the web.
 
 
-[markdown]: https://guides.github.com/features/mastering-markdown/
-[osvtac]: https://osvtac.github.io
-[osvtac-about]: https://osvtac.github.io/about
-[recommendations-history]: https://github.com/OSVTAC/project-recommendations/commits/master
-[recommendations-issues]: https://github.com/OSVTAC/project-recommendations/issues
-[recommendations-pulls]: https://github.com/OSVTAC/project-recommendations/pulls
-[recommendations-rendered]: https://osvtac.github.io/recommendations/index
-[Sunshine Ordinance]: https://www.sfcityattorney.org/good-government/sunshine/
+[gitHub-pages]: https://pages.github.com/
+[osvtac]: https://osvtac.github.io/
+[recommendations-repo]: https://github.com/OSVTAC/project-recommendations
