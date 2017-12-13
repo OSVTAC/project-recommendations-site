@@ -50,6 +50,9 @@ import re
 _log = logging.getLogger(__name__)
 
 
+# TODO: make this a single level.
+SOURCE_DIRECTORY = '_source/_source'
+
 HEADER_PATTERN = re.compile(r'#+ ')
 
 # See make_anchor() for the purpose of this dict.
@@ -82,7 +85,7 @@ def get_source_path(name):
     """
     Return the path to a Markdown file in the _source directory.
     """
-    return os.path.join('_source', f'{name}.md')
+    return os.path.join(SOURCE_DIRECTORY, f'{name}.md')
 
 
 def read_file(path):
