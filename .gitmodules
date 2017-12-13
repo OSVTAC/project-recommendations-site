@@ -1,3 +1,6 @@
 [submodule "files"]
 	path = files
 	url = https://github.com/OSVTAC/project-recommendations-files.git
+[submodule "_source"]
+	path = _source
+	url = https://github.com/OSVTAC/project-recommendations.git
