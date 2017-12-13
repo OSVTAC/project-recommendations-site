@@ -15,6 +15,13 @@ viewing as a submodule: <https://github.com/OSVTAC/OSVTAC.github.io>. The
 Markdown gets converted to HTML on the server side by [GitHub
 Pages][gitHub-pages] when the website repository is published to the web.
 
+The remainder of this README includes instructions for rebuilding the
+Markdown files (i.e. updating the contents of this repository) prior to
+committing, as well as previewing these files in a browser to check that
+things are working before pushing.
+
+[TODO]
+
 
 [gitHub-pages]: https://pages.github.com/
 [osvtac]: https://osvtac.github.io/
