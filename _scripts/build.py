@@ -41,18 +41,20 @@ f-strings, for example).
 #   Christopher Jerdonek <chris.jerdonek@gmail.com>
 #
 
+from datetime import datetime
+import json
 import logging
 import os
 import re
+import subprocess
+import sys
+from textwrap import dedent
 
 
 _log = logging.getLogger(__name__)
 
 
-# TODO: make this a single level.
-SOURCE_DIRECTORY = '_source/_source'
-
-HEADER_PATTERN = re.compile(r'#+ ')
+SOURCE_DIRECTORY = '_source'
 
 # See make_anchor() for the purpose of this dict.
 # TODO: add more characters as needed.
@@ -61,17 +63,6 @@ ANCHOR_TRANS = {
     '.': None,
     '&': None,
 }
-
-# These names correspond to files in the _source directory, in the
-# order they should appear in the final document.
-SECTION_NAMES = [
-    'goals',
-    'background',
-    'facts-assumptions',
-    'recommendations',
-    'faq',
-    'glossary',
-]
 
 TOC_LINK = """\
 * [Introduction & Table of Contents](index) (for multi-page version)"""
@@ -234,70 +225,6 @@ class HeaderInfo:
         return line
 
 
-def recursive_replace(target, old, new):
-    while old in target:
-        target = target.replace(old, new)
-
-    return target
-
-
-def increment_coords(coords):
-    last = coords.pop()
-    last += 1
-    coords.append(last)
-
-
-def parse_header_line(line):
-    """
-    Return (level, header_text).
-
-    Args:
-      line: a line of the form "### 1.1. Scope".
-    """
-    prefix, text = line.split(maxsplit=1)
-    level = len(prefix) - 1
-
-    return level, text
-
-
-def transform_lines(lines, header_infos, first_section, page_name):
-    """
-    This function appends to the header_infos list.
-    """
-    level = 1
-    coords = [first_section - 1]
-    for line in lines:
-        match = HEADER_PATTERN.match(line)
-        if match is None:
-            yield line
-            continue
-
-        # Otherwise, we have a header line.
-        new_level, header_text = parse_header_line(line)
-
-        # Strip the dotted number portion from the beginning.
-        title = header_text.lstrip(' 0123456789.\\')
-
-        if new_level > level:
-            coords.append(1)
-        else:
-            if new_level < level:
-                coords = coords[:new_level]
-            increment_coords(coords)
-        level = new_level
-
-        # Apply tuple() to freeze the data since we are mutating coords
-        # in this function.
-        header_info = HeaderInfo(tuple(coords), title, page_name)
-        header_infos.append(header_info)
-
-        header_line = header_info.make_header_line()
-
-        # Precede a header line with two empty lines.
-        yield ''
-        yield header_line
-
-
 def make_contents(header_infos, page_name=None):
     """
     Args:
@@ -317,34 +244,6 @@ def make_contents(header_infos, page_name=None):
     contents = lines_to_text(lines)
 
     return contents
-
-
-def process_section_file(page_name, header_infos, first_section):
-    """
-    Parse and fix the section numbers in a source Markdown file.
-
-    Args:
-      page_name: the name of the page (e.g. "background" for "background.md").
-      header_infos: a list of HeaderInfo objects to which this function
-        will add the headers it finds in the source file.
-      first_section: an integer representing the first section appearing
-        in the file.
-    """
-    path = get_source_path(page_name)
-    text = read_file(path)
-
-    # TODO: eliminate trailing whitespace.
-
-    # Normalize to at most one empty line in a row.
-    body = recursive_replace(text, '\n\n\n', '\n\n')
-
-    lines = body.splitlines()
-    lines = list(transform_lines(lines, header_infos, first_section, page_name=page_name))
-    body = lines_to_text(lines)
-
-    write_file(body, path)
-
-    return body
 
 
 class Renderer:
@@ -405,10 +304,49 @@ class Renderer:
         write_sections(sections, name='copyright')
 
 
+def run_prep():
+    """
+    Run the prep.py script in the recommendations submodule.
+    """
+    prep_path = os.path.join('_scripts', 'prep.py')
+    _log.info(f'running: {prep_path}')
+    args = [sys.executable, prep_path]
+    # TODO: eliminate the need to pass cwd.
+    proc = subprocess.run(args, stdout=subprocess.PIPE, cwd=SOURCE_DIRECTORY)
+    stdout = proc.stdout
+    data = json.loads(stdout)
+
+    meta = data['_meta']
+    last_approved = meta['last_approved']
+    sections = meta['sections']
+
+    headers = data['headers']
+    header_infos = [HeaderInfo(**kwargs) for kwargs in headers]
+
+    return sections, header_infos, last_approved
+
+
+def make_page_intro(last_approved):
+    today = datetime.today()
+    last_updated = today.strftime(f'%B {today.day}, {today.year}')
+
+    intro = dedent(f"""\
+    # Open Source Voting System Project Recommendations
+
+    (Approved by OSVTAC on {last_approved}.)
+
+    Last update: {last_updated}
+    """)
+
+    return intro
+
+
 def main():
     logging.basicConfig(level=logging.INFO)
 
-    page_intro = read_source_file('snippets/page-intro')
+    section_names, header_infos, last_approved = run_prep()
+
+    page_intro = make_page_intro(last_approved)
     reference_links = read_source_file('reference-links')
     # The html in the following file was copied from the instructions on
     # https://creativecommons.org for using CC BY-SA 4.0 for your own
@@ -417,15 +355,12 @@ def main():
 
     renderer = Renderer(page_intro, reference_links, license_info=license_info)
 
-    # A list of HeaderInfo objects.
-    header_infos = []
+    _log.info('building sections...')
     sections = []
-
-    for section_number, name in enumerate(SECTION_NAMES, start=1):
-        section = process_section_file(name, header_infos, first_section=section_number)
+    for section_name in section_names:
+        section = read_source_file(section_name)
         sections.append(section)
-
-        renderer.render_section_page(name, section)
+        renderer.render_section_page(section_name, section)
 
     renderer.render_index_page(header_infos)
     renderer.render_single_page_version(sections, header_infos)
