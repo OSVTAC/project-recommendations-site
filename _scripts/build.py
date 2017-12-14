@@ -1,24 +1,23 @@
 """
-Script to normalize and prepare the Markdown files for publication.
+Script to build the Markdown files for publishing to the web.
 
 Some of the things this script does are--
 
-1. generate the correct section numbers for each section,
-2. generate the table of contents with hyperlinks to each section, and
-3. generate both "single-page" and "multi-page" versions of the
+1. generate the table of contents with hyperlinks to each section, and
+2. generate both "single-page" and "multi-page" versions of the
    document.
 
 Usage:
 
 From the repository root, run:
 
-    $ python _scripts/prep.py
+    $ python _scripts/build.py
 
 The script should be run with Python 3.6 or newer (because it uses
 f-strings, for example).
 """
 
-# prep.py script to prepare Markdown files for publishing with Jekyll.
+# build.py script to build Markdown files for publishing with Jekyll.
 #
 # Copyright (C) 2017  Christopher Jerdonek
 #
