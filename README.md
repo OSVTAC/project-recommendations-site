@@ -1,19 +1,39 @@
 # project-recommendations-site
 
-This repository contains the "built" versions of the Markdown files for
+This repository contains the "built" version of the Markdown files for
 OSVTAC's open source voting system project recommendations. (OSVTAC stands
 for San Francisco's [Open Source Voting System Technical Advisory
 Committee][osvtac].)
 
-The "source" Markdown files for the recommendations are located in the
-following repository: <https://github.com/OSVTAC/project-recommendations>. If
-you would like to contribute suggestions on the recommendations themselves,
-you should consult the `README` file of that repository.
+The "source" Markdown files are located in the
+["project-recommendations"][recommendations-repo] repository. If you would
+like to contribute suggestions to the recommendations, you should consult the
+[`README`][recommendations-repo] file of that repository.
 
-The repository for OSVTAC's website includes the repository you are currently
-viewing as a submodule: <https://github.com/OSVTAC/OSVTAC.github.io>. The
-Markdown gets converted to HTML on the server side by [GitHub
-Pages][github-pages] when the website repository is published to the web.
+The current "site" repository serves two purposes:
+
+1. It is used for displaying the committee's recommendations on OSVTAC's
+website, which you can see [here][osvtac-recommendations]. The
+[repository][osvtac-site-repo] for OSVTAC's website includes the current
+repository as a submodule at the relative path `recommendations`. On the
+server side, [GitHub Pages][github-pages] converts the Markdown files in this
+repository to HTML when changes to the OSVTAC website repository are pushed
+to master.
+
+2. This repository can also be used to locally preview how the
+recommendations look before pushing changes. Instructions for doing this are
+below. **Note that the Markdown files checked into this repository are not
+necessarily viewable within GitHub's UI.** For example, internal hyperlinks
+will not work. Rather, previewing the HTML requires using Jekyll, as
+described below.
+
+The reason this repository is being kept separate from the
+["project-recommendations"][recommendations-repo] repository containing the
+source files is to keep the repository containing the source files cleaner
+and simpler. By keeping build artifacts out of the source repository, the
+commit history is also cleaner, which makes it easier to track contributions
+to the text. This pattern also allows the _display_ of the recommendations to
+be decoupled from the _content_.
 
 The remainder of this README includes instructions for rebuilding the
 Markdown files (i.e. updating the contents of this repository) prior to
@@ -32,9 +52,10 @@ Then, clone your fork to your local machine:
     $ cd project-recommendations-site
     $ git submodule update --init --recursive
 
-The `git submodule` command is present because the repository uses a Git
-[submodule][git-submodules] to store binary files referenced by the
-recommendations (e.g. PDF's).
+The `git submodule update` command is needed because the repository contains
+two Git [submodules][git-submodules]: one at the path `_source` for the
+repository containing the source Markdown files, and one at the path `files`
+to store binary files referenced by the recommendations (e.g. PDF's).
 
 
 ## System Setup
@@ -127,5 +148,7 @@ Then browse to: [http://127.0.0.1:4000](http://127.0.0.1:4000).
 [jekyll-github]: https://jekyllrb.com/docs/github-pages/
 [markdown]: https://guides.github.com/features/mastering-markdown/
 [osvtac]: https://osvtac.github.io/
+[osvtac-recommendations]: https://osvtac.github.io/recommendations/
+[osvtac-site-repo]: https://github.com/OSVTAC/OSVTAC.github.io
 [recommendations-repo]: https://github.com/OSVTAC/project-recommendations
 [ruby]: https://www.ruby-lang.org
