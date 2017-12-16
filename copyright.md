@@ -2,7 +2,7 @@
 
 (Approved by OSVTAC on November 16, 2017.)
 
-Last update: December 11, 2017
+Last posted: December 11, 2017
 
 
 This page contains the copyright and attribution information for

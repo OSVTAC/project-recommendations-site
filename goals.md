@@ -2,7 +2,7 @@
 
 (Approved by OSVTAC on November 16, 2017.)
 
-Last update: December 11, 2017
+Last posted: December 11, 2017
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
