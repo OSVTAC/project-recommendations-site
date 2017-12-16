@@ -2,7 +2,7 @@
 
 (Approved by OSVTAC on November 16, 2017.)
 
-Last posted: December 11, 2017
+Last posted: December 16, 2017
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -15,13 +15,13 @@ Last posted: December 11, 2017
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).
 
 
-## 2. Background
+## 3. Background
 
 
-### 2.1. History of Open Source Voting in San Francisco
+### 3.1. History of Open Source Voting in San Francisco
 
 To provide context to the recommendations in this document, this section
 describes some of the history of the open source voting topic in San
@@ -191,10 +191,10 @@ voting system is developed and certified. The RFP for the interim system may
 be issued as early as the fall of 2017.
 
 
-### 2.2. Voting System
+### 3.2. Voting System
 
 
-#### 2.2.1. Definition
+#### 3.2.1. Definition
 
 The [Help America Vote Act][hava] (HAVA) of 2002 defines a voting system as
 follows (from 52 USC §21081: Voting systems standards):
@@ -222,7 +222,7 @@ follows (from 52 USC §21081: Voting systems standards):
 [hava]: https://www.eac.gov/about/help-america-vote-act/
 
 
-#### 2.2.2. Components
+#### 3.2.2. Components
 
 This section provides one possible way of listing the components of a
 “generic” optical-scan paper-ballot voting system. This list is not rigorous
@@ -258,7 +258,7 @@ than one hardware component. Differences can also result from where the
 assigns to different components).
 
 
-##### 2.2.2.1. Hardware Components
+##### 3.2.2.1. Hardware Components
 
 Each of the hardware components below also needs software to function. In
 most cases, we list this software in the “Software Components” section.
@@ -292,7 +292,7 @@ layout, adjudicating digital pictures of ballots, aggregating and totaling
 votes, and generating results reports.
 
 
-##### 2.2.2.2. Software Components
+##### 3.2.2.2. Software Components
 
 **1\. Voting System Database / Management**
 
@@ -374,7 +374,7 @@ Generates human-readable results reports from the results data from the vote
 totaler (e.g. printable results and results posted on the Department website).
 
 
-### 2.3. Other Voting System Projects
+### 3.3. Other Voting System Projects
 
 This section includes information about some of the other voting system
 projects that are either (1) open source and have been or plan to be used in
@@ -386,12 +386,12 @@ projects are open source because that determines whether and to what extent
 the source code will be available for use in San Francisco's project.
 
 
-#### 2.3.1. New Hampshire - Prime III
+#### 3.3.1. New Hampshire - Prime III
 
 [TODO]
 
 
-#### 2.3.2. Los Angeles County - VSAP
+#### 3.3.2. Los Angeles County - VSAP
 
 Los Angeles County has been planning or working on its [Voting Systems
 Assessment Project][la-vsap] (VSAP) at least since 2009, when
@@ -471,7 +471,7 @@ possible that none of the code will be open source but instead simply be
 clearer guarantee if this interpretation isn't correct.
 
 
-#### 2.3.3. Travis County, Texas - STAR-Vote™
+#### 3.3.3. Travis County, Texas - STAR-Vote™
 
 In 2012, Travis County, Texas started researching and designing a new voting
 system it called STAR-Vote™. The County spent over $330,000 in its research
@@ -515,13 +515,13 @@ start-up, through development and the legally-required certification process
 and then into use.
 
 
-### 2.4. Resources
+### 3.4. Resources
 
 This section contains links to other resources and documents that may be
 useful for the project.
 
 
-#### 2.4.1. San Francisco
+#### 3.4.1. San Francisco
 
    * The San Francisco Department of Elections' [planning phase
      RFP][rfp-business-case-pdf] (REG RFP #2017‑01, "Preparing a Business
@@ -530,13 +530,13 @@ useful for the project.
    * [San Francisco Digital Services Team][sf-digital-services]
 
 
-#### 2.4.2. Procurement
+#### 3.4.2. Procurement
 
    * U.S. Digital Services' [TechFAR Handbook][techfar-handbook]
    * 18F's [Modular Contracting][18f-modular-contracting] page
 
 
-#### 2.4.3. Related Software Projects for US Government Elections
+#### 3.4.3. Related Software Projects for US Government Elections
 
    * [ColoradoRLA][colorado-rla-home], (Risk Limiting Audit) Project. Colorado Secretary of State.
      Software to upload electronic CVRs (cast-vote-records), randomly
@@ -571,7 +571,7 @@ useful for the project.
      [Demo/prototype implementation by Free & Fair][prime-iii-faf-repo].
 
 
-#### 2.4.4. Open Source Voting Organizations
+#### 3.4.4. Open Source Voting Organizations
 
    * [OSET Foundation][oset-foundation] 501c umbrella nonprofit to support [Trust the Vote][trust-the-vote],
      site with actual software. \[Currently, mostly Ruby-On-Rails in ruby
@@ -592,7 +592,7 @@ useful for the project.
      Has links and information on voting equipment and usage across the US.
 
 
-#### 2.4.5. Election Data Standards & Organizations
+#### 3.4.5. Election Data Standards & Organizations
 
    * Election Markup Language (EML), Original XML-based election data interchange format.
      [Wikipedia Overview][eml-wikipedia], [Specifications][eml-specs]. \[2011\] (Obsolete)
@@ -626,7 +626,7 @@ useful for the project.
      only used for poll lookup. [git][vip-repo]
 
 
-#### 2.4.6. Additional Links
+#### 3.4.6. Additional Links
 
    * [GitHub][github]
    * [Open Source Initiative][osi] (OSI)
@@ -721,4 +721,4 @@ useful for the project.
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).

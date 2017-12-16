@@ -2,7 +2,7 @@
 
 (Approved by OSVTAC on November 16, 2017.)
 
-Last posted: December 11, 2017
+Last posted: December 16, 2017
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -15,16 +15,16 @@ Last posted: December 11, 2017
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).
 
 
-## 3. Facts & Assumptions
+## 4. Facts & Assumptions
 
 This section lists certain facts and assumptions the committee has made while
 drafting this document.
 
 
-### 3.1. Facts
+### 4.1. Facts
 
 1. The Director of Elections' [March 2017 Director's
    Report][directors-report-march-2017-original] began outlining characteristics of
@@ -48,7 +48,7 @@ drafting this document.
      source code and documentation, as they are developed;
 
 
-### 3.2. Assumptions
+### 4.2. Assumptions
 
 1. The Department of Elections does not currently have the expertise to
    conduct the day-to-day management of the development and certification of
@@ -146,4 +146,4 @@ drafting this document.
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).

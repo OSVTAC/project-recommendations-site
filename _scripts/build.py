@@ -320,15 +320,6 @@ class Renderer:
 
         self.write_rendered_file('single-page', [TOC_LINK], main_sections)
 
-    def render_copyright_page(self):
-        copyright_text = read_source_file('copyright')
-
-        sections = [
-            self.page_intro,
-            copyright_text,
-        ]
-        write_sections(sections, name='copyright')
-
 
 def run_prep():
     """
@@ -342,14 +333,13 @@ def run_prep():
     data = json.loads(stdout)
 
     meta = data['_meta']
-    files_sha = meta['files_sha']
     last_approved = meta['last_approved']
     sections = meta['sections']
 
     headers = data['headers']
     header_infos = [HeaderInfo(**kwargs) for kwargs in headers]
 
-    return files_sha, header_infos, last_approved, sections
+    return header_infos, last_approved, sections
 
 
 def make_page_intro(last_approved, posted_date=None):
@@ -393,8 +383,8 @@ def main():
     logging.basicConfig(level=logging.INFO)
 
     posted_date = parse_args()
-    # TODO: check that the source repo isn't dirty (in non-dev mode).
-    files_sha, header_infos, last_approved, section_names = run_prep()
+    # TODO: check that the source repo isn't dirty (in non-dev mode)?
+    header_infos, last_approved, section_names = run_prep()
 
     page_intro = make_page_intro(last_approved, posted_date=posted_date)
     reference_links = read_source_file('reference-links')
@@ -416,7 +406,6 @@ def main():
 
     renderer.render_index_page(header_infos)
     renderer.render_single_page_version(sections, header_infos)
-    renderer.render_copyright_page()
 
     files_sha = get_submodule_sha(os.curdir, submodule=FILES_DIRECTORY)
     source_files_sha = get_submodule_sha(SOURCE_DIRECTORY, submodule=FILES_DIRECTORY)

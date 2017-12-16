@@ -2,7 +2,7 @@
 
 (Approved by OSVTAC on November 16, 2017.)
 
-Last posted: December 11, 2017
+Last posted: December 16, 2017
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -15,10 +15,10 @@ Last posted: December 11, 2017
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).
 
 
-## 6. Glossary
+## 7. Glossary
 
 * **adjudicate**. [TODO]
 
@@ -178,4 +178,4 @@ For copyright and attribution information for this work, see
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).

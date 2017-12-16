@@ -2,7 +2,7 @@
 
 (Approved by OSVTAC on November 16, 2017.)
 
-Last posted: December 11, 2017
+Last posted: December 16, 2017
 
 
 **Note: these recommendations are a work in progress and not yet complete.**
@@ -31,44 +31,47 @@ page][osvtac-about-recs] of the committee's website.
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).
 
 
 ## Contents
 
-* [1. Goals](goals#1-goals)
-  * [1.1. Scope](goals#11-scope)
-  * [1.2. Priorities](goals#12-priorities)
-  * [1.3. Non-goals](goals#13-non-goals)
-* [2. Background](background#2-background)
-  * [2.1. History of Open Source Voting in San Francisco](background#21-history-of-open-source-voting-in-san-francisco)
-  * [2.2. Voting System](background#22-voting-system)
-  * [2.3. Other Voting System Projects](background#23-other-voting-system-projects)
-  * [2.4. Resources](background#24-resources)
-* [3. Facts & Assumptions](facts-assumptions#3-facts--assumptions)
-  * [3.1. Facts](facts-assumptions#31-facts)
-  * [3.2. Assumptions](facts-assumptions#32-assumptions)
-* [4. Recommendations](recommendations#4-recommendations)
-  * [4.1. Interim Voting System](recommendations#41-interim-voting-system)
-  * [4.2. Incremental Approach](recommendations#42-incremental-approach)
-  * [4.3. Requirements-gathering](recommendations#43-requirements-gathering)
-  * [4.4. Requirements](recommendations#44-requirements)
-  * [4.5. Project Management](recommendations#45-project-management)
-  * [4.6. Open Source](recommendations#46-open-source)
-  * [4.7. Procurement](recommendations#47-procurement)
-  * [4.8. Software architecture and design](recommendations#48-software-architecture-and-design)
-  * [4.9. Software development](recommendations#49-software-development)
-  * [4.10. Hardware design](recommendations#410-hardware-design)
-  * [4.11. Documentation](recommendations#411-documentation)
-  * [4.12. Security](recommendations#412-security)
-  * [4.13. Testing](recommendations#413-testing)
-  * [4.14. Certification](recommendations#414-certification)
-  * [4.15. Hardware manufacturing or assembly](recommendations#415-hardware-manufacturing-or-assembly)
-  * [4.16. Deployment](recommendations#416-deployment)
-  * [4.17. Software maintenance](recommendations#417-software-maintenance)
-  * [4.18. Hardware maintenance](recommendations#418-hardware-maintenance)
-* [5. FAQ](faq#5-faq)
-* [6. Glossary](glossary#6-glossary)
+* [1. Copyright and Attribution](copyright#1-copyright-and-attribution)
+  * [1.1. Copyright](copyright#11-copyright)
+  * [1.2. Contributors](copyright#12-contributors)
+* [2. Goals](goals#2-goals)
+  * [2.1. Scope](goals#21-scope)
+  * [2.2. Priorities](goals#22-priorities)
+  * [2.3. Non-goals](goals#23-non-goals)
+* [3. Background](background#3-background)
+  * [3.1. History of Open Source Voting in San Francisco](background#31-history-of-open-source-voting-in-san-francisco)
+  * [3.2. Voting System](background#32-voting-system)
+  * [3.3. Other Voting System Projects](background#33-other-voting-system-projects)
+  * [3.4. Resources](background#34-resources)
+* [4. Facts & Assumptions](facts-assumptions#4-facts--assumptions)
+  * [4.1. Facts](facts-assumptions#41-facts)
+  * [4.2. Assumptions](facts-assumptions#42-assumptions)
+* [5. Recommendations](recommendations#5-recommendations)
+  * [5.1. Interim Voting System](recommendations#51-interim-voting-system)
+  * [5.2. Incremental Approach](recommendations#52-incremental-approach)
+  * [5.3. Requirements-gathering](recommendations#53-requirements-gathering)
+  * [5.4. Requirements](recommendations#54-requirements)
+  * [5.5. Project Management](recommendations#55-project-management)
+  * [5.6. Open Source](recommendations#56-open-source)
+  * [5.7. Procurement](recommendations#57-procurement)
+  * [5.8. Software architecture and design](recommendations#58-software-architecture-and-design)
+  * [5.9. Software development](recommendations#59-software-development)
+  * [5.10. Hardware design](recommendations#510-hardware-design)
+  * [5.11. Documentation](recommendations#511-documentation)
+  * [5.12. Security](recommendations#512-security)
+  * [5.13. Testing](recommendations#513-testing)
+  * [5.14. Certification](recommendations#514-certification)
+  * [5.15. Hardware manufacturing or assembly](recommendations#515-hardware-manufacturing-or-assembly)
+  * [5.16. Deployment](recommendations#516-deployment)
+  * [5.17. Software maintenance](recommendations#517-software-maintenance)
+  * [5.18. Hardware maintenance](recommendations#518-hardware-maintenance)
+* [6. FAQ](faq#6-faq)
+* [7. Glossary](glossary#7-glossary)
 
 
 [18f-modular-contracting]: https://modularcontracting.18f.gov/
@@ -159,4 +162,4 @@ For copyright and attribution information for this work, see
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).

@@ -2,7 +2,7 @@
 
 (Approved by OSVTAC on November 16, 2017.)
 
-Last posted: December 11, 2017
+Last posted: December 16, 2017
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -13,47 +13,79 @@ Last posted: December 11, 2017
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).
 
 
 ## Contents
 
-* [1. Goals](#1-goals)
-  * [1.1. Scope](#11-scope)
-  * [1.2. Priorities](#12-priorities)
-  * [1.3. Non-goals](#13-non-goals)
-* [2. Background](#2-background)
-  * [2.1. History of Open Source Voting in San Francisco](#21-history-of-open-source-voting-in-san-francisco)
-  * [2.2. Voting System](#22-voting-system)
-  * [2.3. Other Voting System Projects](#23-other-voting-system-projects)
-  * [2.4. Resources](#24-resources)
-* [3. Facts & Assumptions](#3-facts--assumptions)
-  * [3.1. Facts](#31-facts)
-  * [3.2. Assumptions](#32-assumptions)
-* [4. Recommendations](#4-recommendations)
-  * [4.1. Interim Voting System](#41-interim-voting-system)
-  * [4.2. Incremental Approach](#42-incremental-approach)
-  * [4.3. Requirements-gathering](#43-requirements-gathering)
-  * [4.4. Requirements](#44-requirements)
-  * [4.5. Project Management](#45-project-management)
-  * [4.6. Open Source](#46-open-source)
-  * [4.7. Procurement](#47-procurement)
-  * [4.8. Software architecture and design](#48-software-architecture-and-design)
-  * [4.9. Software development](#49-software-development)
-  * [4.10. Hardware design](#410-hardware-design)
-  * [4.11. Documentation](#411-documentation)
-  * [4.12. Security](#412-security)
-  * [4.13. Testing](#413-testing)
-  * [4.14. Certification](#414-certification)
-  * [4.15. Hardware manufacturing or assembly](#415-hardware-manufacturing-or-assembly)
-  * [4.16. Deployment](#416-deployment)
-  * [4.17. Software maintenance](#417-software-maintenance)
-  * [4.18. Hardware maintenance](#418-hardware-maintenance)
-* [5. FAQ](#5-faq)
-* [6. Glossary](#6-glossary)
+* [1. Copyright and Attribution](#1-copyright-and-attribution)
+  * [1.1. Copyright](#11-copyright)
+  * [1.2. Contributors](#12-contributors)
+* [2. Goals](#2-goals)
+  * [2.1. Scope](#21-scope)
+  * [2.2. Priorities](#22-priorities)
+  * [2.3. Non-goals](#23-non-goals)
+* [3. Background](#3-background)
+  * [3.1. History of Open Source Voting in San Francisco](#31-history-of-open-source-voting-in-san-francisco)
+  * [3.2. Voting System](#32-voting-system)
+  * [3.3. Other Voting System Projects](#33-other-voting-system-projects)
+  * [3.4. Resources](#34-resources)
+* [4. Facts & Assumptions](#4-facts--assumptions)
+  * [4.1. Facts](#41-facts)
+  * [4.2. Assumptions](#42-assumptions)
+* [5. Recommendations](#5-recommendations)
+  * [5.1. Interim Voting System](#51-interim-voting-system)
+  * [5.2. Incremental Approach](#52-incremental-approach)
+  * [5.3. Requirements-gathering](#53-requirements-gathering)
+  * [5.4. Requirements](#54-requirements)
+  * [5.5. Project Management](#55-project-management)
+  * [5.6. Open Source](#56-open-source)
+  * [5.7. Procurement](#57-procurement)
+  * [5.8. Software architecture and design](#58-software-architecture-and-design)
+  * [5.9. Software development](#59-software-development)
+  * [5.10. Hardware design](#510-hardware-design)
+  * [5.11. Documentation](#511-documentation)
+  * [5.12. Security](#512-security)
+  * [5.13. Testing](#513-testing)
+  * [5.14. Certification](#514-certification)
+  * [5.15. Hardware manufacturing or assembly](#515-hardware-manufacturing-or-assembly)
+  * [5.16. Deployment](#516-deployment)
+  * [5.17. Software maintenance](#517-software-maintenance)
+  * [5.18. Hardware maintenance](#518-hardware-maintenance)
+* [6. FAQ](#6-faq)
+* [7. Glossary](#7-glossary)
 
 
-## 1. Goals
+## 1. Copyright and Attribution
+
+This section contains the copyright and attribution information for
+the Open Source Voting System Technical Advisory Committee's (OSVTAC)
+[Open Source Voting System Project Recommendations](index).
+
+
+### 1.1. Copyright
+
+Copyright (C) 2017 Larry Bafundo
+
+Copyright (C) 2017 Carl Hage
+
+Copyright (C) 2017 Christopher Jerdonek
+
+Copyright (C) 2017 Roan Kattouw
+
+Copyright (C) 2017 Tony Wasserman
+
+
+### 1.2. Contributors
+
+* Larry Bafundo
+* Carl Hage
+* Christopher Jerdonek
+* Roan Kattouw
+* Tony Wasserman
+
+
+## 2. Goals
 
 This section discusses the goals, scope, and priorities of this document and
 the Committee.
@@ -73,7 +105,7 @@ documentation, security, testing, certification, manufacturing, deployment,
 system maintenance, strategies for procurement, and project management.
 
 
-### 1.1. Scope
+### 2.1. Scope
 
 1. This document will limit itself to current laws that San Francisco must
   satisfy, or to changes in law that San Francisco anticipates (e.g. possibly
@@ -96,7 +128,7 @@ system maintenance, strategies for procurement, and project management.
   are pre-printed, the voting system need not be capable of printing ballots.
 
 
-### 1.2. Priorities
+### 2.2. Priorities
 
 1. This document should prioritize high-level recommendations over low-level
   recommendations.
@@ -105,7 +137,7 @@ system maintenance, strategies for procurement, and project management.
   rather than later.
 
 
-### 1.3. Non-goals
+### 2.3. Non-goals
 
 1. The Committee will not be designing or developing a voting system.
 
@@ -133,10 +165,10 @@ system maintenance, strategies for procurement, and project management.
   other jurisdictions.
 
 
-## 2. Background
+## 3. Background
 
 
-### 2.1. History of Open Source Voting in San Francisco
+### 3.1. History of Open Source Voting in San Francisco
 
 To provide context to the recommendations in this document, this section
 describes some of the history of the open source voting topic in San
@@ -306,10 +338,10 @@ voting system is developed and certified. The RFP for the interim system may
 be issued as early as the fall of 2017.
 
 
-### 2.2. Voting System
+### 3.2. Voting System
 
 
-#### 2.2.1. Definition
+#### 3.2.1. Definition
 
 The [Help America Vote Act][hava] (HAVA) of 2002 defines a voting system as
 follows (from 52 USC §21081: Voting systems standards):
@@ -337,7 +369,7 @@ follows (from 52 USC §21081: Voting systems standards):
 [hava]: https://www.eac.gov/about/help-america-vote-act/
 
 
-#### 2.2.2. Components
+#### 3.2.2. Components
 
 This section provides one possible way of listing the components of a
 “generic” optical-scan paper-ballot voting system. This list is not rigorous
@@ -373,7 +405,7 @@ than one hardware component. Differences can also result from where the
 assigns to different components).
 
 
-##### 2.2.2.1. Hardware Components
+##### 3.2.2.1. Hardware Components
 
 Each of the hardware components below also needs software to function. In
 most cases, we list this software in the “Software Components” section.
@@ -407,7 +439,7 @@ layout, adjudicating digital pictures of ballots, aggregating and totaling
 votes, and generating results reports.
 
 
-##### 2.2.2.2. Software Components
+##### 3.2.2.2. Software Components
 
 **1\. Voting System Database / Management**
 
@@ -489,7 +521,7 @@ Generates human-readable results reports from the results data from the vote
 totaler (e.g. printable results and results posted on the Department website).
 
 
-### 2.3. Other Voting System Projects
+### 3.3. Other Voting System Projects
 
 This section includes information about some of the other voting system
 projects that are either (1) open source and have been or plan to be used in
@@ -501,12 +533,12 @@ projects are open source because that determines whether and to what extent
 the source code will be available for use in San Francisco's project.
 
 
-#### 2.3.1. New Hampshire - Prime III
+#### 3.3.1. New Hampshire - Prime III
 
 [TODO]
 
 
-#### 2.3.2. Los Angeles County - VSAP
+#### 3.3.2. Los Angeles County - VSAP
 
 Los Angeles County has been planning or working on its [Voting Systems
 Assessment Project][la-vsap] (VSAP) at least since 2009, when
@@ -586,7 +618,7 @@ possible that none of the code will be open source but instead simply be
 clearer guarantee if this interpretation isn't correct.
 
 
-#### 2.3.3. Travis County, Texas - STAR-Vote™
+#### 3.3.3. Travis County, Texas - STAR-Vote™
 
 In 2012, Travis County, Texas started researching and designing a new voting
 system it called STAR-Vote™. The County spent over $330,000 in its research
@@ -630,13 +662,13 @@ start-up, through development and the legally-required certification process
 and then into use.
 
 
-### 2.4. Resources
+### 3.4. Resources
 
 This section contains links to other resources and documents that may be
 useful for the project.
 
 
-#### 2.4.1. San Francisco
+#### 3.4.1. San Francisco
 
    * The San Francisco Department of Elections' [planning phase
      RFP][rfp-business-case-pdf] (REG RFP #2017‑01, "Preparing a Business
@@ -645,13 +677,13 @@ useful for the project.
    * [San Francisco Digital Services Team][sf-digital-services]
 
 
-#### 2.4.2. Procurement
+#### 3.4.2. Procurement
 
    * U.S. Digital Services' [TechFAR Handbook][techfar-handbook]
    * 18F's [Modular Contracting][18f-modular-contracting] page
 
 
-#### 2.4.3. Related Software Projects for US Government Elections
+#### 3.4.3. Related Software Projects for US Government Elections
 
    * [ColoradoRLA][colorado-rla-home], (Risk Limiting Audit) Project. Colorado Secretary of State.
      Software to upload electronic CVRs (cast-vote-records), randomly
@@ -686,7 +718,7 @@ useful for the project.
      [Demo/prototype implementation by Free & Fair][prime-iii-faf-repo].
 
 
-#### 2.4.4. Open Source Voting Organizations
+#### 3.4.4. Open Source Voting Organizations
 
    * [OSET Foundation][oset-foundation] 501c umbrella nonprofit to support [Trust the Vote][trust-the-vote],
      site with actual software. \[Currently, mostly Ruby-On-Rails in ruby
@@ -707,7 +739,7 @@ useful for the project.
      Has links and information on voting equipment and usage across the US.
 
 
-#### 2.4.5. Election Data Standards & Organizations
+#### 3.4.5. Election Data Standards & Organizations
 
    * Election Markup Language (EML), Original XML-based election data interchange format.
      [Wikipedia Overview][eml-wikipedia], [Specifications][eml-specs]. \[2011\] (Obsolete)
@@ -741,20 +773,20 @@ useful for the project.
      only used for poll lookup. [git][vip-repo]
 
 
-#### 2.4.6. Additional Links
+#### 3.4.6. Additional Links
 
    * [GitHub][github]
    * [Open Source Initiative][osi] (OSI)
    * [OpenCount][open-count]
 
 
-## 3. Facts & Assumptions
+## 4. Facts & Assumptions
 
 This section lists certain facts and assumptions the committee has made while
 drafting this document.
 
 
-### 3.1. Facts
+### 4.1. Facts
 
 1. The Director of Elections' [March 2017 Director's
    Report][directors-report-march-2017-original] began outlining characteristics of
@@ -778,7 +810,7 @@ drafting this document.
      source code and documentation, as they are developed;
 
 
-### 3.2. Assumptions
+### 4.2. Assumptions
 
 1. The Department of Elections does not currently have the expertise to
    conduct the day-to-day management of the development and certification of
@@ -788,10 +820,10 @@ drafting this document.
    hand (not including hand-counting for audit or recount purposes).
 
 
-## 4. Recommendations
+## 5. Recommendations
 
 
-### 4.1. Interim Voting System
+### 5.1. Interim Voting System
 
 * The contract for the interim system (i.e. the system to be used after 2018)
   should permit all possible combinations of phasing in an open-source system
@@ -822,7 +854,7 @@ drafting this document.
   so they don’t need to be reverse-engineered.
 
 
-### 4.2. Incremental Approach
+### 5.2. Incremental Approach
 
 To reduce project risk, complexity, and initial costs, it is important to
 have a strategy to break the open source voting system project up into
@@ -852,7 +884,7 @@ suggestions for how the Department can proceed incrementally in developing
 and deploying an open source voting system.
 
 
-#### 4.2.1. Possible First Components
+#### 5.2.1. Possible First Components
 
 The Committee suggests the following as components to start work on and
 deliver first (see the “Voting System” section for brief descriptions of
@@ -885,7 +917,7 @@ Los Angeles County's Tally System in relation to other components like their
 Ballot Marking Device.
 
 
-#### 4.2.2. Rationale
+#### 5.2.2. Rationale
 
 Below are some reasons for selecting the components above:
 
@@ -1011,7 +1043,7 @@ the hardware, it is a strictly simpler component than the precinct-based
 scanner.
 
 
-#### 4.2.3. Component Details
+#### 5.2.3. Component Details
 
 This section lists more details about each of the four components we
 suggested above. For each of these deliverables, we provide—
@@ -1033,7 +1065,7 @@ needed in advance), and
 * Other outcomes / deliverables associated with delivering the component.
 
 
-##### 4.2.3.1. Results Reporter (Software)
+##### 5.2.3.1. Results Reporter (Software)
 
 **Complexity:** Low
 
@@ -1068,7 +1100,7 @@ spelled out.
 proto-typing and testing.
 
 
-##### 4.2.3.2. Vote Totaler (Software)
+##### 5.2.3.2. Vote Totaler (Software)
 
 **Complexity:** Low
 
@@ -1094,7 +1126,7 @@ spelled out.
 proto-typing and testing.
 
 
-##### 4.2.3.3. Ballot Picture Interpreter (Software)
+##### 5.2.3.3. Ballot Picture Interpreter (Software)
 
 **Complexity:** Medium
 
@@ -1141,7 +1173,7 @@ spelled out.
 proto-typing and testing.
 
 
-##### 4.2.3.4. Central Ballot Scanner (Hardware & Software)
+##### 5.2.3.4. Central Ballot Scanner (Hardware & Software)
 
 **Complexity:** High
 
@@ -1179,7 +1211,7 @@ proto-typing and testing. Samples of ballots from past elections and/or the
 interim voting system.
 
 
-#### 4.2.4. Deployment Strategies
+#### 5.2.4. Deployment Strategies
 
 The components listed above can be deployed and used in conjunction with a
 non-open-source interim system even before a full open-source voting system
@@ -1196,7 +1228,7 @@ taking in the non-aggregated numeric results from the interim system, and
 then feeding the aggregate results into the results reporter.
 
 
-##### 4.2.4.1. Central Ballot Scanner Phases
+##### 5.2.4.1. Central Ballot Scanner Phases
 
 For the central ballot scanner, there are a number of options for
 incrementally phasing in an open-source version.
@@ -1232,20 +1264,20 @@ same way that the open-source scanners were used as a check in bullet point
 (2) above).
 
 
-### 4.3. Requirements-gathering
+### 5.3. Requirements-gathering
 
 This section contains recommendations related to gathering requirements. For
 committee recommendations of specific requirements, see the Requirements
 section below.
 
 
-#### 4.3.1. Key Decisions
+#### 5.3.1. Key Decisions
 
 The following are some key decisions about requirements that need to be made
 at some point when designing and developing the voting system.
 
 
-##### 4.3.1.1. Vote Centers
+##### 5.3.1.1. Vote Centers
 
 California [SB 450][bill-sb-450-2015] ("Elections: vote by mail voting and
 mail ballot elections") authorizes counties to conduct elections using vote
@@ -1256,7 +1288,7 @@ decrease costs since the design and development wouldn’t have to cover
 multiple scenarios.
 
 
-##### 4.3.1.2. Pre-printed versus on-demand ballots, including how selections are marked
+##### 5.3.1.2. Pre-printed versus on-demand ballots, including how selections are marked
 
 For in-person voting, the question of pre-printed ballots versus on-demand
 ballots, combined with how ballots are marked (for both accessible voting and
@@ -1346,7 +1378,7 @@ into the device. Conversely, if the accessible device prints the ballot with
 selections, fewer physical cards would be required.
 
 
-##### 4.3.1.3. Printing unique identifiers on ballots at scan-time
+##### 5.3.1.3. Printing unique identifiers on ballots at scan-time
 
 One key decision is whether a unique identifier should be printed on every
 ballot while it is being scanned.
@@ -1368,7 +1400,7 @@ Cons:
   another “moving part” that can break.
 
 
-##### 4.3.1.4. End-to-end verifiability
+##### 5.3.1.4. End-to-end verifiability
 
 It should be determined how much additional work would need to be done to
 make the voting process end-to-end verifiable, and whether and which designs
@@ -1378,12 +1410,12 @@ be incorporated later on in the process, or does it need to be incorporated
 from the beginning?
 
 
-### 4.4. Requirements
+### 5.4. Requirements
 
 This section lists some of the requirements the system should satisfy.
 
 
-#### 4.4.1. Accessibility
+#### 5.4.1. Accessibility
 
 * In addition to an audio component and touchscreen, the voting system should
   support accessible features including, but not limited to: sip and puff
@@ -1394,7 +1426,7 @@ This section lists some of the requirements the system should satisfy.
   provide more detail.
 
 
-#### 4.4.2. Other
+#### 5.4.2. Other
 
 * [TODO: should we recommend (1) supporting manually marked ballots in the
   polling place, or (2) requiring the use of a computer ballot-marking and/or
@@ -1406,7 +1438,7 @@ This section lists some of the requirements the system should satisfy.
 * [TODO: should we recommend for or against end-to-end verifiability?]
 
 
-### 4.5. Project Management
+### 5.5. Project Management
 
 * The Department should hire a staff person to be in charge of managing the
   project. The person should have experience and expertise in managing
@@ -1444,7 +1476,7 @@ This section lists some of the requirements the system should satisfy.
 * [TODO: provide specific recommendations around agile.]
 
 
-### 4.6. Open Source
+### 5.6. Open Source
 
 This section covers topics related to open source.
 
@@ -1499,12 +1531,12 @@ This section covers topics related to open source.
   [contributor license agreements][cla] (CLA’s) should be required.]
 
 
-### 4.7. Procurement
+### 5.7. Procurement
 
 [TODO]
 
 
-### 4.8. Software architecture and design
+### 5.8. Software architecture and design
 
 * When defining software components to develop, favor designs that promote
   reusing components. For example, a software library that can read a digital ballot
@@ -1515,29 +1547,29 @@ This section covers topics related to open source.
   in turn can reduce required time and costs.
 
 
-### 4.9. Software development
+### 5.9. Software development
 
 * The project should not depend on volunteers for the successful completion
   or security of the project. However, useful volunteer contributions should
   be encouraged and not turned away.
 
 
-### 4.10. Hardware design
+### 5.10. Hardware design
 
 [TODO]
 
 
-### 4.11. Documentation
+### 5.11. Documentation
 
 [TODO]
 
 
-### 4.12. Security
+### 5.12. Security
 
 [TODO]
 
 
-### 4.13. Testing
+### 5.13. Testing
 
 * Datasets of real election data (e.g. a couple past elections in San
   Francisco of different types) should be compiled in a structured format for
@@ -1546,27 +1578,27 @@ This section covers topics related to open source.
   requirements and designing the system.
 
 
-### 4.14. Certification
+### 5.14. Certification
 
 [TODO]
 
 
-### 4.15. Hardware manufacturing or assembly
+### 5.15. Hardware manufacturing or assembly
 
 [TODO]
 
 
-### 4.16. Deployment
+### 5.16. Deployment
 
 [TODO]
 
 
-### 4.17. Software maintenance
+### 5.17. Software maintenance
 
 [TODO]
 
 
-### 4.18. Hardware maintenance
+### 5.18. Hardware maintenance
 
 * The City should prefer professional, commercial support for
   maintaining the aggregate system (including the operating system, stack,
@@ -1576,7 +1608,7 @@ This section covers topics related to open source.
   of such a provider is [Red Hat](https://www.redhat.com).
 
 
-## 5. FAQ
+## 6. FAQ
 
 **1. Is open-source software more or less secure than proprietary
 software?**
@@ -1615,7 +1647,7 @@ be considered open source?**
 [TODO]
 
 
-## 6. Glossary
+## 7. Glossary
 
 * **adjudicate**. [TODO]
 
@@ -1775,4 +1807,4 @@ be considered open source?**
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).

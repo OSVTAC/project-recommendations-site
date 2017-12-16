@@ -2,7 +2,7 @@
 
 (Approved by OSVTAC on November 16, 2017.)
 
-Last posted: December 11, 2017
+Last posted: December 16, 2017
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -15,10 +15,10 @@ Last posted: December 11, 2017
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).
 
 
-## 5. FAQ
+## 6. FAQ
 
 **1. Is open-source software more or less secure than proprietary
 software?**
@@ -145,4 +145,4 @@ be considered open source?**
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
 Commons Attribution-ShareAlike 4.0 International License</a>.
 For copyright and attribution information for this work, see
-[this page](copyright).
+[this section](copyright).
