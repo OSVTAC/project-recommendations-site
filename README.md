@@ -30,7 +30,7 @@ Then, clone your fork to your local machine:
 
     $ git clone https://github.com/<your-username>/project-recommendations-site.git
     $ cd project-recommendations-site
-    $ git submodule update --init
+    $ git submodule update --init --recursive
 
 The `git submodule` command is present because the repository uses a Git
 [submodule][git-submodules] to store binary files referenced by the
