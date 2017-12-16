@@ -41,10 +41,12 @@ f-strings, for example).
 #   Christopher Jerdonek <chris.jerdonek@gmail.com>
 #
 
-from datetime import datetime
+import argparse
+from datetime import date, datetime
 import json
 import logging
 import os
+import functools
 import re
 import subprocess
 import sys
@@ -55,6 +57,9 @@ _log = logging.getLogger(__name__)
 
 
 SOURCE_DIRECTORY = '_source'
+
+# The path to the files submodule.
+FILES_DIRECTORY = 'files'
 
 # See make_anchor() for the purpose of this dict.
 # TODO: add more characters as needed.
@@ -69,6 +74,27 @@ TOC_LINK = """\
 
 SINGLE_PAGE_LINK = """\
 * [Single-page version](single-page) (long, can be used for printing)"""
+
+
+def get_submodule_sha(repo_dir, submodule):
+    """
+    Args:
+      repo_dir: the path to the repository containing the submodule.
+      submodule_path: the path to the submodule, relative to the repository
+        root.
+    """
+    cmd = 'git submodule status'
+    args = cmd.split()
+    args.append(submodule)
+    proc = subprocess.run(args, stdout=subprocess.PIPE, cwd=repo_dir)
+    stdout = proc.stdout.decode('utf-8')
+    # The output can look like this, for example:
+    # "-72bfdd96151561bbbb6dc834ef38a5cf5cf6031d files"
+    parts = stdout.split()
+    part = parts[0]
+    sha = part[1:]
+
+    return sha
 
 
 def get_source_path(name):
@@ -311,42 +337,66 @@ def run_prep():
     prep_path = os.path.join('_scripts', 'prep.py')
     _log.info(f'running: {prep_path}')
     args = [sys.executable, prep_path]
-    # TODO: eliminate the need to pass cwd.
     proc = subprocess.run(args, stdout=subprocess.PIPE, cwd=SOURCE_DIRECTORY)
     stdout = proc.stdout
     data = json.loads(stdout)
 
     meta = data['_meta']
+    files_sha = meta['files_sha']
     last_approved = meta['last_approved']
     sections = meta['sections']
 
     headers = data['headers']
     header_infos = [HeaderInfo(**kwargs) for kwargs in headers]
 
-    return sections, header_infos, last_approved
+    return files_sha, header_infos, last_approved, sections
 
 
-def make_page_intro(last_approved):
-    today = datetime.today()
-    last_updated = today.strftime(f'%B {today.day}, {today.year}')
+def make_page_intro(last_approved, posted_date=None):
+    if posted_date is None:
+        posted_date = date.today()
+
+    posted_date = posted_date.strftime(f'%B {posted_date.day}, {posted_date.year}')
 
     intro = dedent(f"""\
     # Open Source Voting System Project Recommendations
 
     (Approved by OSVTAC on {last_approved}.)
 
-    Last update: {last_updated}
+    Last posted: {posted_date}
     """)
 
     return intro
 
 
+def to_date(given):
+    """
+    Return a datetime.date object.
+    """
+    dt = datetime.strptime(given, '%Y-%m-%d')
+    return dt.date()
+
+
+def parse_args():
+    desc = 'Build the site Markdown files.'
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument('--posted-date', metavar='DATE', type=to_date, default=date.today(),
+        help="a date in the form YYYY-MM-DD. Defaults to today's date.")
+
+    args = parser.parse_args()
+    posted_date = args.posted_date
+
+    return posted_date
+
+
 def main():
     logging.basicConfig(level=logging.INFO)
 
-    section_names, header_infos, last_approved = run_prep()
+    posted_date = parse_args()
+    # TODO: check that the source repo isn't dirty (in non-dev mode).
+    files_sha, header_infos, last_approved, section_names = run_prep()
 
-    page_intro = make_page_intro(last_approved)
+    page_intro = make_page_intro(last_approved, posted_date=posted_date)
     reference_links = read_source_file('reference-links')
     # The html in the following file was copied from the instructions on
     # https://creativecommons.org for using CC BY-SA 4.0 for your own
@@ -358,13 +408,25 @@ def main():
     _log.info('building sections...')
     sections = []
     for section_name in section_names:
-        section = read_source_file(section_name)
+        # TODO: eliminate the need to hard-code this directory name.
+        section_path = os.path.join('pages', section_name)
+        section = read_source_file(section_path)
         sections.append(section)
         renderer.render_section_page(section_name, section)
 
     renderer.render_index_page(header_infos)
     renderer.render_single_page_version(sections, header_infos)
     renderer.render_copyright_page()
+
+    files_sha = get_submodule_sha(os.curdir, submodule=FILES_DIRECTORY)
+    source_files_sha = get_submodule_sha(SOURCE_DIRECTORY, submodule=FILES_DIRECTORY)
+    if source_files_sha != files_sha:
+        msg = dedent(f"""\
+        the "files" submodule shas in the source and site repositories do not match:
+          source: {source_files_sha}
+            site: {files_sha}
+        You should update the source repository before committing.""")
+        _log.warn(msg)
 
 
 if __name__ == '__main__':
