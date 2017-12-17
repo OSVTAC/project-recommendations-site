@@ -3,11 +3,11 @@
 This repository contains the "built" version of the Markdown files for
 OSVTAC's open source voting system project recommendations. (OSVTAC stands
 for San Francisco's [Open Source Voting System Technical Advisory
-Committee][osvtac].)
+Committee][osvtac-site].)
 
-The "source" Markdown files are located in the
-["project-recommendations"][recommendations-repo] repository. If you would
-like to contribute suggestions to the recommendations, you should consult the
+The "source" Markdown files are located in the `project-recommendations`
+repository: <https://github.com/OSVTAC/project-recommendations>. If you would
+like to contribute suggestions to the document text, you should consult the
 [`README`][recommendations-repo] file of that repository.
 
 The current "site" repository serves two purposes:
@@ -40,6 +40,36 @@ Markdown files (i.e. updating the contents of this repository) prior to
 committing, as well as previewing these files in a browser to check that
 things are working before pushing. You must be familiar with Git,
 [Markdown][markdown], and using the command-line.
+
+TODO: also describe the recommended workflow.
+
+
+## Build and rendering process overview
+
+The [OSVTAC website][osvtac-site] displays OSVTAC's recommendations by
+including the repository you are currently viewing as a
+[submodule][git-submodules] of the repository for the OSVTAC website:
+<https://github.com/OSVTAC/OSVTAC.github.io>. The repository you are viewing
+contains the Markdown files for displaying the recommendations. These
+Markdown files are auto-generated (aka "built") from the Markdown files in
+the project-recommendations repository, which are the "source" files.
+
+The repository you are viewing also contains a script for building the
+Markdown files from the source Markdown files, which is described below. In
+addition, for convenience, this repository also contains the
+project-recommendations repository as a submodule, at the path `_source`.
+
+When making non-trivial changes to the project recommendations, it is
+recommended that you clone the current repository and work on your changes to
+the document text in the submodule. This lets you preview the changes locally
+while working.
+
+To preview your changes to the recommendations locally, you can view the
+project-recommendations-site repository in your browser using
+[Jekyll][jekyll-github]. Make your changes to the project-recommendations
+submodule, and then run the build script to update the html files served
+locally by Jekyll. The sections below contain more detailed instructions on
+how to do this.
 
 
 ## Fork the repository
@@ -151,7 +181,7 @@ Then browse to: [http://127.0.0.1:4000](http://127.0.0.1:4000).
 [github-pages]: https://pages.github.com/
 [jekyll-github]: https://jekyllrb.com/docs/github-pages/
 [markdown]: https://guides.github.com/features/mastering-markdown/
-[osvtac]: https://osvtac.github.io/
+[osvtac-site]: https://osvtac.github.io/
 [osvtac-recommendations]: https://osvtac.github.io/recommendations/
 [osvtac-site-repo]: https://github.com/OSVTAC/OSVTAC.github.io
 [recommendations-repo]: https://github.com/OSVTAC/project-recommendations
