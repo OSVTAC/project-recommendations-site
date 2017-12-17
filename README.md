@@ -121,6 +121,10 @@ of the repository.
 directory with new section numbers, so you should commit your changes
 locally before running the script.**
 
+You can also run the following for more advanced options:
+
+    $ python _scripts/build.py --help
+
 
 ## Previewing Locally
 

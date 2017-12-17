@@ -57,6 +57,7 @@ _log = logging.getLogger(__name__)
 
 
 SOURCE_DIRECTORY = '_source'
+LAST_POSTED_PATH = 'last-posted.txt'
 
 # The path to the files submodule.
 FILES_DIRECTORY = 'files'
@@ -325,10 +326,10 @@ def run_prep():
     """
     Run the prep.py script in the recommendations submodule.
     """
-    prep_path = os.path.join('_scripts', 'prep.py')
+    prep_path = os.path.join('scripts', 'prep.py')
     _log.info(f'running: {prep_path}')
     args = [sys.executable, prep_path]
-    proc = subprocess.run(args, stdout=subprocess.PIPE, cwd=SOURCE_DIRECTORY)
+    proc = subprocess.run(args, stdout=subprocess.PIPE, cwd=SOURCE_DIRECTORY, check=True)
     stdout = proc.stdout
     data = json.loads(stdout)
 
@@ -342,12 +343,7 @@ def run_prep():
     return header_infos, last_approved, sections
 
 
-def make_page_intro(last_approved, posted_date=None):
-    if posted_date is None:
-        posted_date = date.today()
-
-    posted_date = posted_date.strftime(f'%B {posted_date.day}, {posted_date.year}')
-
+def make_page_intro(last_approved, posted_date):
     intro = dedent(f"""\
     # Open Source Voting System Project Recommendations
 
@@ -361,8 +357,11 @@ def make_page_intro(last_approved, posted_date=None):
 
 def to_date(given):
     """
-    Return a datetime.date object.
+    Return a datetime.date object, or None.
     """
+    if not given:
+        return None
+
     dt = datetime.strptime(given, '%Y-%m-%d')
     return dt.date()
 
@@ -371,7 +370,8 @@ def parse_args():
     desc = 'Build the site Markdown files.'
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument('--posted-date', metavar='DATE', type=to_date, default=date.today(),
-        help="a date in the form YYYY-MM-DD. Defaults to today's date.")
+        help='a date in the form YYYY-MM-DD, or the empty string not to '
+             "update the posted date. Defaults to today's date.")
 
     args = parser.parse_args()
     posted_date = args.posted_date
@@ -383,9 +383,14 @@ def main():
     logging.basicConfig(level=logging.INFO)
 
     posted_date = parse_args()
+    if posted_date is not None:
+        formatted_date = posted_date.strftime(f'%B {posted_date.day}, {posted_date.year}')
+        write_file(formatted_date, LAST_POSTED_PATH)
+
     # TODO: check that the source repo isn't dirty (in non-dev mode)?
     header_infos, last_approved, section_names = run_prep()
 
+    posted_date = read_file(LAST_POSTED_PATH)
     page_intro = make_page_intro(last_approved, posted_date=posted_date)
     reference_links = read_source_file('reference-links')
     # The html in the following file was copied from the instructions on
