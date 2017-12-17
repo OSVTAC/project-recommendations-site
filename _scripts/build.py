@@ -46,8 +46,6 @@ from datetime import date, datetime
 import json
 import logging
 import os
-import functools
-import re
 import subprocess
 import sys
 from textwrap import dedent
