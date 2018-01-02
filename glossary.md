@@ -1,8 +1,8 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on November 16, 2017.)
+(Approved by OSVTAC on December 14, 2017.)
 
-Last posted: December 16, 2017
+Last posted: January 2, 2018
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -62,7 +62,7 @@ GitHub [here](https://github.com/OSVTAC/project-recommendations).
 
 * **firmware**. [TODO]
 
-* **free and open-source software (FOSS)**. [TODO]
+* **free and open source software (FOSS)**. [TODO]
 
 * **free software**. [TODO]
 
@@ -72,7 +72,9 @@ GitHub [here](https://github.com/OSVTAC/project-recommendations).
 
 * **open hardware**. [TODO]
 
-* **open-source software**. [TODO]
+* **open source software**. [TODO]
+
+* **operating system**. [TODO]
 
 * **outstack**. [TODO]
 
@@ -89,6 +91,12 @@ GitHub [here](https://github.com/OSVTAC/project-recommendations).
 * **software application**. [TODO]
 
 * **software library**. [TODO]
+
+* **software service**. [TODO]
+
+* **software stack**. [TODO]
+
+* **stack**. See ”software stack.”
 
 
 [18f-modular-contracting]: https://modularcontracting.18f.gov/
@@ -155,6 +163,9 @@ GitHub [here](https://github.com/OSVTAC/project-recommendations).
 [proposed-budget-2016]: files/SF_Mayor_Proposed_Budget_2016-18.pdf
 [rfp-business-case-pdf]: files/SF_Business_Case_RFP_FINAL.pdf
 [sf-digital-services]: https://digitalservices.sfgov.org/
+[sf-digital-services-strategy]: files/SF_DigitalServiceStrategy.pdf
+[sf-dst]: https://digitalservices.sfgov.org/
+[sf-moci]: http://www.innovation.sfgov.org/
 [slalom-contract-appendix-a]: files/slalom/contract/Business_Case_Appendix_A.pdf
 [slalom-contract-appendix-b]: files/slalom/contract/Business_Case_Appendix_B.pdf
 [slalom-contract]: files/slalom/contract/Business_Case_Contract.pdf

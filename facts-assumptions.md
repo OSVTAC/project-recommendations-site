@@ -1,8 +1,8 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on November 16, 2017.)
+(Approved by OSVTAC on December 14, 2017.)
 
-Last posted: December 16, 2017
+Last posted: January 2, 2018
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -29,7 +29,7 @@ drafting this document.
 
 1. The Director of Elections' [March 2017 Director's
    Report][directors-report-march-2017-original] began outlining characteristics of
-   the development plan for the open-source voting system. These included—
+   the development plan for the open source voting system. These included—
 
    * For the system to be "Developed under version 3 of the GNU General
      Public License where possible, otherwise preferring similar licenses
@@ -123,6 +123,9 @@ drafting this document.
 [proposed-budget-2016]: files/SF_Mayor_Proposed_Budget_2016-18.pdf
 [rfp-business-case-pdf]: files/SF_Business_Case_RFP_FINAL.pdf
 [sf-digital-services]: https://digitalservices.sfgov.org/
+[sf-digital-services-strategy]: files/SF_DigitalServiceStrategy.pdf
+[sf-dst]: https://digitalservices.sfgov.org/
+[sf-moci]: http://www.innovation.sfgov.org/
 [slalom-contract-appendix-a]: files/slalom/contract/Business_Case_Appendix_A.pdf
 [slalom-contract-appendix-b]: files/slalom/contract/Business_Case_Appendix_B.pdf
 [slalom-contract]: files/slalom/contract/Business_Case_Contract.pdf
