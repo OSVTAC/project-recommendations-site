@@ -91,7 +91,8 @@ def get_submodule_sha(repo_dir, submodule):
     # "-72bfdd96151561bbbb6dc834ef38a5cf5cf6031d files"
     parts = stdout.split()
     part = parts[0]
-    sha = part[1:]
+    # TODO: check what other symbols can appear at the beginning.
+    sha = part.lstrip('+-')
 
     return sha
 
