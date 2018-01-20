@@ -1,21 +1,3 @@
-"""
-Script to build the Markdown files for publishing to the web.
-
-Some of the things this script does are--
-
-1. generate the table of contents with hyperlinks to each section, and
-2. generate both "single-page" and "multi-page" versions of the
-   document.
-
-Usage:
-
-From the repository root, run:
-
-    $ python _scripts/build.py
-
-The script should be run with Python 3.5 or higher.
-"""
-
 # build.py script to build Markdown files for publishing with Jekyll.
 #
 # Copyright (C) 2017  Christopher Jerdonek
@@ -39,6 +21,25 @@ The script should be run with Python 3.5 or higher.
 #
 #   Christopher Jerdonek <chris.jerdonek@gmail.com>
 #
+
+"""
+Script to build the Markdown files for publishing to the web.
+
+Some of the things this script does are--
+
+1. generate the table of contents with hyperlinks to each section, and
+2. generate both "single-page" and "multi-page" versions of the
+   document.
+
+Usage:
+
+From the repository root, run:
+
+    $ python _scripts/build.py
+
+The script should be run with Python 3.5 or higher.
+"""
+
 
 import argparse
 from datetime import date, datetime
