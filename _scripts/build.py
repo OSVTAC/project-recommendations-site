@@ -56,7 +56,7 @@ import sys
 from textwrap import dedent
 
 
-_log = logging.getLogger(__name__)
+_log = logging.getLogger(__file__)
 
 
 SOURCE_DIRECTORY = Path('_source')
