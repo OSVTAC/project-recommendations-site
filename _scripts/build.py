@@ -37,7 +37,11 @@ From the repository root, run:
 
     $ python _scripts/build.py
 
-The script should be run with Python 3.5 or higher.
+For command help, including command-line options:
+
+    $ python _scripts/build.py -h
+
+The script requires Python 3.5 or higher.
 """
 
 
