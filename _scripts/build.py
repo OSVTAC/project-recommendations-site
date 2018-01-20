@@ -13,8 +13,7 @@ From the repository root, run:
 
     $ python _scripts/build.py
 
-The script should be run with Python 3.6 or newer (because it uses
-f-strings, for example).
+The script should be run with Python 3.5 or higher.
 """
 
 # build.py script to build Markdown files for publishing with Jekyll.
@@ -46,6 +45,7 @@ from datetime import date, datetime
 import json
 import logging
 import os
+from pathlib import Path
 import subprocess
 import sys
 from textwrap import dedent
@@ -54,8 +54,8 @@ from textwrap import dedent
 _log = logging.getLogger(__name__)
 
 
-SOURCE_DIRECTORY = '_source'
-LAST_POSTED_PATH = 'last-posted.txt'
+SOURCE_DIRECTORY = Path('_source')
+LAST_POSTED_PATH = Path('last-posted.txt')
 
 # The path to the files submodule.
 FILES_DIRECTORY = 'files'
@@ -78,14 +78,15 @@ SINGLE_PAGE_LINK = """\
 def get_submodule_sha(repo_dir, submodule):
     """
     Args:
-      repo_dir: the path to the repository containing the submodule.
-      submodule_path: the path to the submodule, relative to the repository
-        root.
+      repo_dir: the path to the repository containing the submodule,
+        as a path-like object.
+      submodule_path: the path to the submodule (as a path-like object),
+        relative to the repository root.
     """
     cmd = 'git submodule status'
     args = cmd.split()
-    args.append(submodule)
-    proc = subprocess.run(args, stdout=subprocess.PIPE, cwd=repo_dir)
+    args.append(str(submodule))
+    proc = subprocess.run(args, stdout=subprocess.PIPE, cwd=str(repo_dir))
     stdout = proc.stdout.decode('utf-8')
     # The output can look like this, for example:
     # "-72bfdd96151561bbbb6dc834ef38a5cf5cf6031d files"
@@ -101,20 +102,13 @@ def get_source_path(name):
     """
     Return the path to a Markdown file in the _source directory.
     """
-    return os.path.join(SOURCE_DIRECTORY, f'{name}.md')
-
-
-def read_file(path):
-    with open(path, encoding='utf-8') as f:
-        text = f.read()
-
-    return text
+    return SOURCE_DIRECTORY / '{}.md'.format(name)
 
 
 def write_file(text, path):
-    _log.info(f'writing file: {path}')
-    with open(path, 'w', encoding='utf-8') as f:
-        f.write(text)
+    path = Path(path)
+    _log.info('writing file: {}'.format(path))
+    path.write_text(text)
 
 
 def write_sections(sections, name):
@@ -124,7 +118,7 @@ def write_sections(sections, name):
         index.md.
     """
     text = '\n\n'.join(sections)
-    write_file(text, f'{name}.md')
+    write_file(text, '{}.md'.format(name))
 
 
 def read_source_file(name):
@@ -132,7 +126,7 @@ def read_source_file(name):
     Read a Markdown file in the _source directory.
     """
     path = get_source_path(name)
-    text = read_file(path)
+    text = path.read_text()
 
     return text
 
@@ -188,7 +182,8 @@ class HeaderInfo:
         self.title = title
 
     def __repr__(self):
-        return f'<HeaderInfo object coords={self.coords!r} title={self.title}, page={self.page}>'
+        return ('<HeaderInfo object coords={!r} title={}, page={}>'
+                .format(self.coords, self.title, self.page))
 
     def __str__(self):
         return self.make_header_text()
@@ -203,7 +198,7 @@ class HeaderInfo:
         line prefix which has the form "###".
         """
         section = '.'.join(str(number) for number in self.coords)
-        line = f'{section}. {self.title}'
+        line = '{section}. {title}'.format(section=section, title=self.title)
 
         return line
 
@@ -215,7 +210,7 @@ class HeaderInfo:
         # the overall page header.  Thus, we need to add 1.
         prefix = (level + 1) * '#'
 
-        line = f'{prefix} {header_text}'
+        line = '{prefix} {header}'.format(prefix=prefix, header=header_text)
 
         return line
 
@@ -246,7 +241,8 @@ class HeaderInfo:
         header_text = self.make_header_text()
         anchor = make_anchor(header_text)
 
-        line = f'{indent}* [{header_text}]({page_name}#{anchor})'
+        line = ('{indent}* [{header}]({page}#{anchor})'
+                .format(indent=indent, header=header_text, page=page_name, anchor=anchor))
 
         return line
 
@@ -326,10 +322,11 @@ def run_prep():
     Run the prep.py script in the recommendations submodule.
     """
     prep_path = os.path.join('scripts', 'prep.py')
-    _log.info(f'running: {prep_path}')
+    _log.info('running: {}'.format(prep_path))
     args = [sys.executable, prep_path]
-    proc = subprocess.run(args, stdout=subprocess.PIPE, cwd=SOURCE_DIRECTORY, check=True)
-    stdout = proc.stdout
+    proc = subprocess.run(args, stdout=subprocess.PIPE, cwd=str(SOURCE_DIRECTORY), check=True)
+    # We need to decode with Python 3.5.
+    stdout = proc.stdout.decode('utf-8')
     data = json.loads(stdout)
 
     meta = data['_meta']
@@ -343,13 +340,13 @@ def run_prep():
 
 
 def make_page_intro(last_approved, posted_date):
-    intro = dedent(f"""\
+    intro = dedent("""\
     # Open Source Voting System Project Recommendations
 
-    (Approved by OSVTAC on {last_approved}.)
+    (Approved by OSVTAC on {}.)
 
-    Last posted: {posted_date}
-    """)
+    Last posted: {}
+    """).format(last_approved, posted_date)
 
     return intro
 
@@ -383,13 +380,14 @@ def main():
 
     posted_date = parse_args()
     if posted_date is not None:
-        formatted_date = posted_date.strftime(f'%B {posted_date.day}, {posted_date.year}')
+        formatted_date = posted_date.strftime('%B {day}, {year}'
+                            .format(day=posted_date.day, year=posted_date.year))
         write_file(formatted_date, LAST_POSTED_PATH)
 
     # TODO: check that the source repo isn't dirty (in non-dev mode)?
     header_infos, last_approved, section_names = run_prep()
 
-    posted_date = read_file(LAST_POSTED_PATH)
+    posted_date = LAST_POSTED_PATH.read_text()
     page_intro = make_page_intro(last_approved, posted_date=posted_date)
     reference_links = read_source_file('reference-links')
     # The html in the following file was copied from the instructions on
@@ -414,11 +412,14 @@ def main():
     files_sha = get_submodule_sha(os.curdir, submodule=FILES_DIRECTORY)
     source_files_sha = get_submodule_sha(SOURCE_DIRECTORY, submodule=FILES_DIRECTORY)
     if source_files_sha != files_sha:
-        msg = dedent(f"""\
+        msg = dedent("""\
         the "files" submodule shas in the source and site repositories do not match:
-          source: {source_files_sha}
-            site: {files_sha}
-        You should update the source repository before committing.""")
+          source: {source}
+            site: {site}
+        You should update the source repository before committing.""").format(
+            source=source_files_sha,
+            site=files_sha,
+        )
         _log.warn(msg)
 
 

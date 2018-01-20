@@ -100,7 +100,7 @@ We explain how to install these two things below.
 
 ### Python
 
-You must have Python 3.6 or greater installed to run the build script.
+You must have Python 3.5 or greater installed to run the build script.
 Instructions for installing Python can be found
 [here](https://www.python.org/downloads/).
 
