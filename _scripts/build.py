@@ -328,15 +328,18 @@ def run_prep():
     """
     prep_path = os.path.join('scripts', 'prep.py')
     _log.info('running: {}'.format(prep_path))
-    args = [sys.executable, prep_path]
+    args = [sys.executable, prep_path, '--dry-run']
     proc = subprocess.run(args, stdout=subprocess.PIPE, cwd=str(SOURCE_DIRECTORY), check=True)
     # We need to decode with Python 3.5.
     stdout = proc.stdout.decode('utf-8')
     data = json.loads(stdout)
 
     meta = data['_meta']
+    has_changes = meta['has_changes']
     last_approved = meta['last_approved']
     section_names = meta['section_names']
+
+    _log.info('found source changes: {}'.format(has_changes))
 
     headers = data['headers']
     header_infos = [HeaderInfo(**kwargs) for kwargs in headers]
