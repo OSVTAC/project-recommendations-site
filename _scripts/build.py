@@ -336,7 +336,7 @@ def run_prep():
 
     meta = data['_meta']
     last_approved = meta['last_approved']
-    sections = meta['sections']
+    sections = meta['section_names']
 
     headers = data['headers']
     header_infos = [HeaderInfo(**kwargs) for kwargs in headers]
