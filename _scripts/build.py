@@ -328,7 +328,7 @@ def run_prep():
     """
     prep_path = os.path.join('scripts', 'prep.py')
     _log.info('running: {}'.format(prep_path))
-    args = [sys.executable, prep_path, '--dry-run']
+    args = [sys.executable, prep_path, '--dry-run', '--output-json']
     proc = subprocess.run(args, stdout=subprocess.PIPE, cwd=str(SOURCE_DIRECTORY), check=True)
     # We need to decode with Python 3.5.
     stdout = proc.stdout.decode('utf-8')
