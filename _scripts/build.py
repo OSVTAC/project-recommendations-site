@@ -336,12 +336,13 @@ def run_prep():
 
     meta = data['_meta']
     last_approved = meta['last_approved']
-    sections = meta['section_names']
+    section_names = meta['section_names']
 
     headers = data['headers']
     header_infos = [HeaderInfo(**kwargs) for kwargs in headers]
+    sections = data['sections']
 
-    return header_infos, last_approved, sections
+    return header_infos, last_approved, section_names, sections
 
 
 def make_page_intro(last_approved, posted_date):
@@ -390,7 +391,8 @@ def main():
         write_file(formatted_date, LAST_POSTED_PATH)
 
     # TODO: check that the source repo isn't dirty (in non-dev mode)?
-    header_infos, last_approved, section_names = run_prep()
+    result = run_prep()
+    header_infos, last_approved, section_names, sections = result
 
     posted_date = LAST_POSTED_PATH.read_text()
     page_intro = make_page_intro(last_approved, posted_date=posted_date)
@@ -403,16 +405,15 @@ def main():
     renderer = Renderer(page_intro, reference_links, license_info=license_info)
 
     _log.info('building sections...')
-    sections = []
+
+    section_texts = []
     for section_name in section_names:
-        # TODO: eliminate the need to hard-code this directory name.
-        section_path = os.path.join('pages', section_name)
-        section = read_source_file(section_path)
-        sections.append(section)
+        section = sections[section_name]
+        section_texts.append(section)
         renderer.render_section_page(section_name, section)
 
     renderer.render_index_page(header_infos)
-    renderer.render_single_page_version(sections, header_infos)
+    renderer.render_single_page_version(section_texts, header_infos)
 
     files_sha = get_submodule_sha(os.curdir, submodule=FILES_DIRECTORY)
     source_files_sha = get_submodule_sha(SOURCE_DIRECTORY, submodule=FILES_DIRECTORY)
