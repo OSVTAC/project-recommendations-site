@@ -84,6 +84,13 @@ _log = logging.getLogger(__file__)
 SOURCE_DIRECTORY = Path('_source')
 LAST_POSTED_PATH = Path('last-posted.txt')
 
+HELP_STRING = """\
+Build the site Markdown files.
+
+The content of the file "{last_posted_file}" in the repository is used
+as the "last posted" date in the built files.
+""".format(last_posted_file=LAST_POSTED_PATH)
+
 # The path to the files submodule.
 FILES_DIRECTORY = 'files'
 
@@ -398,11 +405,16 @@ def to_date(given):
 
 
 def parse_args():
-    desc = 'Build the site Markdown files.'
-    parser = argparse.ArgumentParser(description=desc)
+    """
+    Parse the command arguments, and return a datetime.date object or None.
+    """
+    parser = argparse.ArgumentParser(description=HELP_STRING,
+                formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--posted-date', metavar='DATE', type=to_date, default=date.today(),
-        help='a date in the form YYYY-MM-DD, or the empty string not to '
-             "update the posted date. Defaults to today's date.")
+        help=('the date to write to the file {} prior to building. '
+              'The input value should be in the form YYYY-MM-DD, or the '
+              "empty string not to change the file's contents. "
+              "Defaults to today's date.".format(LAST_POSTED_PATH)))
 
     args = parser.parse_args()
     posted_date = args.posted_date
