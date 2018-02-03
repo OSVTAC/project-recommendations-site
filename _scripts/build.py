@@ -1,6 +1,7 @@
 # build.py script to build Markdown files for publishing with Jekyll.
 #
 # Copyright (C) 2017  Christopher Jerdonek
+# Copyright (C) 2018  Carl Hage
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,9 +18,11 @@
 #
 # Contact info:
 #
-# The author(s) can be reached at--
+# The authors can be reached at (listed in chronological order of
+# contributing)--
 #
 #   Christopher Jerdonek <chris.jerdonek@gmail.com>
+#   Carl Hage <ch@carlhage.com>
 #
 
 """
