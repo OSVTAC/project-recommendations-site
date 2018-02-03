@@ -1,6 +1,6 @@
 # build.py script to build Markdown files for publishing with Jekyll.
 #
-# Copyright (C) 2017  Christopher Jerdonek
+# Copyright (C) 2017, 2018  Christopher Jerdonek
 # Copyright (C) 2018  Carl Hage
 #
 # This program is free software: you can redistribute it and/or modify
@@ -51,9 +51,9 @@ Detailed Description:
 1. The file "last-posted.txt" is written with the --posted-date or todays
    date in a human-friendly format, e.g. April 1, 2018.
 
-2. The _source/scripts/prep.py is run to update sequence numbers in the
-   source pages (sections), and return a json-formatted list of headers plus the
-   list of section names and last approved date.
+2. The script _source/scripts/prep.py is run to update sequence numbers in
+   the source pages (sections), and return a json-formatted list of headers
+   plus the list of section names and last approved date.
 
 3. Creates a standard page header with title, approval, and last posted date.
    Creates a standard page footer with _source/snippets/license-info.
@@ -101,8 +101,8 @@ TOC_LINK = """\
 SINGLE_PAGE_LINK = """\
 * [Single-page version](single-page) (long, can be used for printing)"""
 
-# All files use UTF-8, no matter what locale settings are (e.g. LC_ALL=C)
-# Some python libraries default to ASCII even with LANG=en_US.UTF-8
+# All files use UTF-8, no matter what locale settings are (e.g. LC_ALL=C).
+# Some python libraries default to ASCII even with LANG=en_US.UTF-8.
 ENCODING = 'utf-8'
 
 
@@ -139,7 +139,7 @@ def get_source_path(name):
 def write_file(text, path):
     path = Path(path)
     _log.info('writing file: {}'.format(path))
-    path.write_text(text,encoding=ENCODING)
+    path.write_text(text, encoding=ENCODING)
 
 
 def write_sections(sections, name):
