@@ -1,8 +1,8 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on December 14, 2017.)
+(Approved by OSVTAC on January 18, 2018.)
 
-Last posted: January 2, 2018
+Last posted: February 19, 2018
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -94,6 +94,8 @@ most of these components):
 3. Ballot Picture Interpreter (Software)
 4. Central Ballot Scanner (Hardware & Software)
 5. Ballot Layout Analyzer (Software)
+6. Ballot Batch Management (Software)
+7. Ballot Tabulation Audit Support (Software)
 
 Choosing the above as first components seems to mirror the approach that Los
 Angeles County is taking in its VSAP project. In particular, Los Angeles
@@ -196,7 +198,11 @@ different components, so it is natural to start working on it first.
 
 * Even in the absence of deployed open source hardware components, it could
 be used by members of the public to “check” the scanning done by the interim
-system, provided the digital ballot pictures are made public.
+system, provided the digital ballot pictures are made public. The visually impaired
+could use a ballot picture interpreter on their device with a speech synthesis
+application to validate/check a home printed or marked ballot.
+
+  _[Paragraph edited: Jan. 18, 2018 meeting.]_
 
 * The open source software OpenCount might go a long way towards implementing
 this component.
@@ -287,6 +293,11 @@ elections.
 
 * tables for the Election Certification letter (e.g. in PDF format),
 
+* computer-readable equivalent to the Statement of Vote (e.g. in spreadsheet (xls),
+delimited text (tsv), and NIST-SP1500-100 (xml) formats),
+
+  _[Paragraph added: Jan. 18, 2018 meeting.]_
+
 * HTML pages for the Department website, and
 
 * Possibly also reports to facilitate the public observation and carrying out
@@ -306,7 +317,11 @@ prototyping and testing.
 
 **Description.** This is a software-only component responsible for aggregating
 vote data and generating election results in a machine-readable format. This
-includes running the RCV algorithm to generate round-by-round results.
+includes running the RCV algorithm to generate round-by-round results. Normally
+votes have subtotals reported by consolidated precinct, and may separate
+election-day precinct voting and vote-by-mail ballot subtotals.
+
+_[Paragraph edited: Jan. 18, 2018 meeting.]_
 
 **Interfaces / data formats.** Needs to accept as input:
 
@@ -334,8 +349,18 @@ prototyping and testing.
 digital ballot pictures, namely by generating a cast vote record (CVR) given a digital
 picture of a ballot. The component must support ballots from “third-parties”
 (e.g. the interim voting system) to support incremental roll-outs like pilot
-and hybrid rollouts. The open source software OpenCount developed at UC
+and hybrid rollouts, and possibly to support home-printed
+"remote accessible vote by mail"
+ballots. The open source software OpenCount developed at UC
 Berkeley could be a foundation for this.
+
+The picture interpreter should be able to identify and remove the base
+printing and watermarks so any remaining extraneous marks can be identified.
+The presence of a significant amount of extraneous marks might require
+that ballot be identified for adjudication. Likewise, marks clearly not
+present or not fully marked must be identified for adjudication.
+
+_[Paragraph added: Jan. 18, 2018 meeting.]_
 
 **Applicability.** This component can possibly be used in the following
 components:
@@ -356,9 +381,19 @@ card for each ballot type, etc.).
 
 * the digital ballot pictures themselves.
 
+* batch header/footer pages and/or box label codes
+
+  _[Item added: Jan. 18, 2018 meeting.]_
+
 Needs to output for each ballot:
 
 * a cast vote record (CVR) of the markings on the ballot.
+
+* a report of extraneous or ambiguous marks requiring adjudication,
+  with a data file referencing the CVR, ballot picture, and contest
+  selections.
+
+  _[Item added: Jan. 18, 2018 meeting.]_
 
 **Sub-components.** This component can possibly have the following sub-component:
 
@@ -429,7 +464,7 @@ not be completely automated, but rather will be semi-automated.
 
 * the “election definition” data (e.g. contests, candidates, districts, etc.).
 
-* the digital ballot pictures.
+* the digital ballot pictures (scanned images or PDF)
 
 Needs to output for each ballot type:
 
@@ -445,6 +480,140 @@ prototyping and testing. Samples of ballots from past elections and/or the
 interim voting system.
 
 _[Section added: Dec. 14, 2017 meeting.]_
+
+
+##### 5.2.3.6. Ballot Batch Management (Software)
+
+**Complexity:** Low
+
+**Description.** This is a software component that allows boxes of ballots
+to be organized into batches for scanning and auditing. Labels may be
+printed to be attached to ballot boxes collected, transported, and stored.
+Batches of ballots might include a scannable header page, marking the
+beginning of a batch of ballots, and a scannable footer page, marking the
+end of the batch. The header/footer pages mark the consolidated precinct
+and other information identifying the ballot batch, and might also include
+signatures from poll workers, and digital audit information, e.g.
+IDs, temporary digital signatures and keys, starting and ending hash chain
+codes from a precinct scanner. An additional header/footer page might be
+created to wrap and identify outstacked ballots.
+
+The batch management system would be used to:
+
+* create box labels and header/footer pages,
+
+* provide a database of batch IDs with associated precinct and grouping
+  IDs,
+
+* provide a means to scan box labels and log departure/arrival of ballot boxes
+  transported or stored/retrieved,
+
+* provide the input to the ballot picture interpreter identifying the
+  batch being processed, and associated information (e.g. precinct ID),
+
+* organize scan batches to associate CVR (Cast Vote Record) data
+  with ballot box storage ID and location, and
+
+* track progress of scanning, adjudication, and auditing of ballot batches.
+
+**Interfaces / data formats.** Needs to accept as input:
+
+* a definition of precincts, precinct consolidation, and ballot type
+  by precinct, used to organize batch collections.
+
+* bar code scans of box labels used for tracking
+
+* scans of batch header/footer pages
+
+Needs to output:
+
+* data files with batch IDs and associated precinct/group information
+
+* printable labels and header/footer pages
+
+* data with batch scan/audit status and transport logs
+
+**Other outcomes / deliverables.** The required input and output data and
+formats should be spelled out.
+
+**Possible dependencies / pre-requisites.** Batch management procedures
+need to be defined so batch IDs can be included with the Ballot Picture
+Interpreter output CVRs and used with the Vote Totaler.
+
+_[Subsection added: Jan. 18, 2018 meeting.]_
+
+
+##### 5.2.3.7. Ballot Tabulation Audit Support (Software)
+
+**Complexity:** Medium
+
+**Description.** This is a software component that manages an audit
+process that includes a manual count. A precinct-based audit might
+be performed, where all ballots in randomly selected precincts are
+hand-counted, or a RLA (Risk Limiting Audit) might be performed,
+where a randomly selected set of ballots among all precincts are
+selected for a hand-count. The number of ballot selected in an
+RLA is based on a statistical formula depending on the closeness of
+votes between top contenders.
+
+More general election auditing (like chain of custody) is outside
+the scope of this component.
+
+Audit support software could include the following:
+
+* Save manually generated random input (e.g. dice roll) for precinct selections
+  or RLA random number seed.
+
+* For an RLA, a public high-quality random number generator is used to randomly
+  select ballots to be pulled.
+
+* For ballots selected by order within a batch (does not have a printed
+  and sorted ID), a scanner might be used to sheet feed ballots, stopping
+  where a ballot needs to be pulled.
+
+* If the order in a stored ballot batch does not match the order on stored
+  CVRs (cast vote records) and no ballot IDs are available, a new central scan
+  and picture image analysis might be required.
+
+* Retrieve the CVRs for selected ballots and pass them to the vote totaler.
+
+* Enter hand-count results and compare totals with the official precinct
+  totals or the totaled CVR selection.
+
+**Interfaces / data formats.** Needs to accept as input:
+
+* the “election definition” data (e.g. contests, candidates, districts, etc.).
+
+* a definition of batches with precincts, precinct consolidation, and ballot type.
+
+* results of the vote totaler.
+
+* random number seed
+
+* Cast Vote Records (for an RLA)
+
+* Hand-count results
+
+Needs to output:
+
+* for an RLA, the randomly selected ballots with either ID or sequence in
+  a batch.
+
+* comparison of hand counts and machine counts
+
+* scanner controls if used to pull RLA selected ballots
+
+**Other outcomes / deliverables.** The required input and output data and
+formats should be spelled out.
+
+**Possible dependencies / pre-requisites.** If an RLA audit is performed
+and stored ballots might not match ordered CVRs, then the central ballot
+scan and picture interpreter would be required to perform an electronic
+recount of all ballots and generate matching CVRs. If the picture interpreter
+can run at the speed of the scanner, regenerating CVRs (for an electronic
+recount) adds no extra cost.
+
+_[Subsection added: Jan. 18, 2018 meeting.]_
 
 
 #### 5.2.4. Deployment Strategies
@@ -686,6 +855,26 @@ This section lists some of the requirements the system should satisfy.
 
   _[Item added: Dec. 14, 2017 meeting.]_
 
+* Developing user stories is an essential part of an agile development
+  process. We recommend that the development team create user stories for
+  each of the situations representing voter, Department staff, and other
+  activities. These user stories include, among others:
+
+  1. a registered voter voting at an assigned precinct on election day;
+
+  2. a registered voter voting at a vote center or early voting station;
+
+  3. a registered voter voting remotely and mailing in a marked ballot, and;
+
+  4. a registered voter with a disability in need of special accommodation
+     (several types).
+
+  In following an agile development process, the implementation team would
+  typically break down each user story into smaller stories as needed, and
+  handle one of those within a sprint.
+
+  _[Item added: Jan. 18, 2018 meeting.]_
+
 * The Department should hire a staff person to be in charge of managing the
   project. The person should have experience and expertise in managing
   technical projects of a similar size and complexity.
@@ -901,6 +1090,7 @@ contest as the input and the round-by-round vote totals as the output.
 [bos-ordinance-vstf]: files/BOS_Ordinance_268-08_VSTF.pdf
 [cavo]: http://www.cavo-us.org/index.html
 [cc-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/
+[cec-19271]:https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=ELEC&sectionNum=19271.
 [cla]: https://en.wikipedia.org/wiki/Contributor_License_Agreement
 [coit]: http://sfcoit.org/
 [colorado-rla-home]: http://bcn.boulder.co.us/~neal/elections/corla/
@@ -928,12 +1118,14 @@ contest as the input and the round-by-round vote totals as the output.
 [github]: https://github.com/
 [ict-plan-2008]: files/SF_ICT_Plan_2018-22.pdf
 [ieee-1622]: http://grouper.ieee.org/groups/1622/
+[jets-0202]: https://pdfs.semanticscholar.org/30c0/9a87a67516ce91a339d7059ff6a211872e41.pdf
 [la-vsap-application-tally]: files/la-vsap/LA_Application_VSAP_Tally_1.0_2017-09-19.pdf
 [la-vsap-rfi]: files/la-vsap/LA_RFI_20170524.pdf
 [la-vsap-rfp-phase-1]: files/la-vsap/LA_RFP_20170918.pdf
 [la-vsap]: http://vsap.lavote.net/
 [lafco-report]: files/LAFCo_Report_Open_Source_Voting.pdf
 [lafco]: http://sfgov.org/lafco/
+[levi]: https://dspace.mit.edu/handle/1721.1/96560
 [mayor-budget-press-release]: http://sfmayor.org/article/mayor-lee-signs-citys-balanced-budget-fiscal-years-2016-17-2017-18
 [nist-itl]: https://www.nist.gov/itl/voting
 [nist-voting]: http://collaborate.nist.gov/voting/bin/view/Voting/WebHome
@@ -942,6 +1134,7 @@ contest as the input and the round-by-round vote totals as the output.
 [open-count]: https://github.com/FreeAndFair/OpenCount
 [open-rla-repo]: https://github.com/FreeAndFair/OpenRLA
 [open-voting-consortium]: http://www.openvotingconsortium.org
+[open-voting-consortium-usenix-paper]: http://gnosis.cx/publish/voting/electronic-voting-machine.pdf
 [oset-arch-html]: https://trustthevote.org/our-work/framework/
 [oset-arch-pdf]: http://www.dubberly.com/wp-content/uploads/2014/09/TTV_Framework_Book.pdf
 [oset-foundation]: http://www.osetfoundation.org/
@@ -954,6 +1147,7 @@ contest as the input and the round-by-round vote totals as the output.
 [prime-iii-repo]: https://github.com/HXRL/Prime-III
 [prime-iii]: http://www.primevotingsystem.com/
 [proposed-budget-2016]: files/SF_Mayor_Proposed_Budget_2016-18.pdf
+[pvote]: http://pvote.org/
 [rfp-business-case-pdf]: files/SF_Business_Case_RFP_FINAL.pdf
 [sf-digital-services]: https://digitalservices.sfgov.org/
 [sf-digital-services-strategy]: files/SF_DigitalServiceStrategy.pdf
@@ -962,6 +1156,8 @@ contest as the input and the round-by-round vote totals as the output.
 [slalom-contract-appendix-a]: files/slalom/contract/Business_Case_Appendix_A.pdf
 [slalom-contract-appendix-b]: files/slalom/contract/Business_Case_Appendix_B.pdf
 [slalom-contract]: files/slalom/contract/Business_Case_Contract.pdf
+[sos-advisories]: http://www.sos.ca.gov/elections/advisories-county-elections-officials/
+[sos-digest]: http://www.sos.ca.gov/elections/publications-and-resources/elections-officers-digest-2018/
 [slalom-rfp-response]: files/slalom/REG_RFP_2017-01_Slalom_Response.pdf
 [star-vote-entity]: files/star-vote/STAR-Vote_Statement_of_Intent.pdf
 [star-vote-final-press-release]: http://www.traviscountyclerk.org/eclerk/Content.do?code=star-vote-a-change-of-plans
@@ -970,9 +1166,11 @@ contest as the input and the round-by-round vote totals as the output.
 [star-vote-usenix]: https://www.usenix.org/conference/evtwote13/workshop-program/presentation/bell
 [techfar-handbook]: https://playbook.cio.gov/techfar/
 [trust-the-vote]: https://trustthevote.org
+[trust-the-vote-votestream]:http://votestream.trustthevote.org/
 [verified-voting-foundation]: https://www.verifiedvoting.org/
 [vip-project]: https://votinginfoproject.org/
 [vip-repo]: https://github.com/votinginfoproject
+[votebox]: http://votebox.cs.rice.edu/
 [vstf-report]: files/VSTF_Report.pdf
 [vstf]: http://sfgov.org/ccsfgsa/voting-systems-task-force
 

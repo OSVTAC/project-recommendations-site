@@ -1,8 +1,8 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on December 14, 2017.)
+(Approved by OSVTAC on January 18, 2018.)
 
-Last posted: January 2, 2018
+Last posted: February 19, 2018
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -272,6 +272,12 @@ sip-and-puff, etc. If the computer is COTS, it may also need a custom casing
 or shell to increase durability and assist with polling-place transport and
 setup.
 
+For a Remote Accessible Vote By Mail system (required by 2020), the
+hardware used would likely be the voter's personal electronic
+device and printer.
+
+_[Item edited: Jan. 18, 2018 meeting.]_
+
 **2\. Central Ballot Scanner**
 
 A device responsible for high-speed, high-volume ballot scanning (e.g. for
@@ -329,6 +335,14 @@ semi-automated fashion, including support for multiple languages.
 
 This is the software corresponding to the Accessible Ballot-Marking Device
 hardware component.
+
+A Remote Accessible Vote By Mail system would likely rely on a reasonably
+updated web browser rather than requiring installation of OS-specific
+software installation. Text to speech capabilities could be either the
+voter's own accessibility software or a web browser component provided
+with the ballot.
+
+_[Item edited: Jan. 18, 2018 meeting.]_
 
 **5\. Ballot Picture Interpreter**
 
@@ -572,7 +586,23 @@ useful for the project.
      [Demo/prototype implementation by Free & Fair][prime-iii-faf-repo].
 
 
-#### 3.4.4. Open Source Voting Organizations
+#### 3.4.4. Other Open Source Voting Projects and Research
+
+   * [Pvote][pvote], a model for an open source voting application where
+     sensitive software is minimized-- 460 lines of python code, audited
+     in a security review.
+
+   * [VoteBox][votebox], a prototype electronic voting machine based on
+     COTS hardware. Several technical publications are available with
+     detailed descriptions of the system components.
+
+   * [Low Error Voting Interface][levi] (LEVI), research paper of a voting
+     machine GUI designed to reduce user errors. Used by Prime-III.
+
+_[Subsection added: Jan. 18, 2018 meeting.]_
+
+
+#### 3.4.5. Open Source Voting Organization
 
    * [OSET Foundation][oset-foundation] 501c umbrella nonprofit to support [Trust the Vote][trust-the-vote],
      site with actual software. \[Currently, mostly Ruby-On-Rails in ruby
@@ -581,8 +611,15 @@ useful for the project.
      Useful diagrams of voting software architecture: ([PDF][oset-arch-pdf], [broken interactive HTML][oset-arch-html]),
      Simpler [diagram of modules][oset-modules].
 
+     Prototype of [VoteStream][trust-the-vote-votestream] election results display.
+
    * [Open Voting Consortium][open-voting-consortium] Inactive (since 2011)
      prior effort to develop open source software. Efforts moved to CAVO.
+     A demo implementation was created and
+     [technical paper][open-voting-consortium-usenix-paper] with a
+     detailed description of the system using COTS hardware.
+
+     _[Item edited: Jan. 18, 2018 meeting.]_
 
    * [California Association of Voting Officials][cavo] (CAVO)
      Nonprofit organization to promote open source voting. Election officials
@@ -593,7 +630,7 @@ useful for the project.
      Has links and information on voting equipment and usage across the US.
 
 
-#### 3.4.5. Election Data Standards & Organizations
+#### 3.4.6. Election Data Standards & Organizations
 
    * [Voluntary Voting System Guidelines][eac-vvsg] (VVSG). In January 2016,
      the [U.S. Election Assistance Commission][eac] (EAC) adopted a plan
@@ -633,7 +670,23 @@ useful for the project.
      only used for poll lookup. [git][vip-repo]
 
 
-#### 3.4.6. Additional Links
+#### 3.4.7. California Election Laws and Regulations
+
+   * [Advisories to County Election Officials][sos-advisories], announcements
+     from the California Secretary of State on new regulations, required
+     procedures, and notices on statewide propositions and elected offices.
+     Includes certifications of new equipment including remote accessible
+     vote by mail.
+
+   * [Elections Officers Digest][sos-digest], an annotated summary of election
+     laws prepared for local election officials, with procedures,
+     responsibilites and definitions of terms.
+     Includes references to code sections.
+
+_[Subsection added: Jan. 18, 2018 meeting.]_
+
+
+#### 3.4.8. Additional Links
 
    * [GitHub][github]
    * [Open Source Initiative][osi] (OSI)
@@ -649,6 +702,7 @@ useful for the project.
 [bos-ordinance-vstf]: files/BOS_Ordinance_268-08_VSTF.pdf
 [cavo]: http://www.cavo-us.org/index.html
 [cc-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/
+[cec-19271]:https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=ELEC&sectionNum=19271.
 [cla]: https://en.wikipedia.org/wiki/Contributor_License_Agreement
 [coit]: http://sfcoit.org/
 [colorado-rla-home]: http://bcn.boulder.co.us/~neal/elections/corla/
@@ -676,12 +730,14 @@ useful for the project.
 [github]: https://github.com/
 [ict-plan-2008]: files/SF_ICT_Plan_2018-22.pdf
 [ieee-1622]: http://grouper.ieee.org/groups/1622/
+[jets-0202]: https://pdfs.semanticscholar.org/30c0/9a87a67516ce91a339d7059ff6a211872e41.pdf
 [la-vsap-application-tally]: files/la-vsap/LA_Application_VSAP_Tally_1.0_2017-09-19.pdf
 [la-vsap-rfi]: files/la-vsap/LA_RFI_20170524.pdf
 [la-vsap-rfp-phase-1]: files/la-vsap/LA_RFP_20170918.pdf
 [la-vsap]: http://vsap.lavote.net/
 [lafco-report]: files/LAFCo_Report_Open_Source_Voting.pdf
 [lafco]: http://sfgov.org/lafco/
+[levi]: https://dspace.mit.edu/handle/1721.1/96560
 [mayor-budget-press-release]: http://sfmayor.org/article/mayor-lee-signs-citys-balanced-budget-fiscal-years-2016-17-2017-18
 [nist-itl]: https://www.nist.gov/itl/voting
 [nist-voting]: http://collaborate.nist.gov/voting/bin/view/Voting/WebHome
@@ -690,6 +746,7 @@ useful for the project.
 [open-count]: https://github.com/FreeAndFair/OpenCount
 [open-rla-repo]: https://github.com/FreeAndFair/OpenRLA
 [open-voting-consortium]: http://www.openvotingconsortium.org
+[open-voting-consortium-usenix-paper]: http://gnosis.cx/publish/voting/electronic-voting-machine.pdf
 [oset-arch-html]: https://trustthevote.org/our-work/framework/
 [oset-arch-pdf]: http://www.dubberly.com/wp-content/uploads/2014/09/TTV_Framework_Book.pdf
 [oset-foundation]: http://www.osetfoundation.org/
@@ -702,6 +759,7 @@ useful for the project.
 [prime-iii-repo]: https://github.com/HXRL/Prime-III
 [prime-iii]: http://www.primevotingsystem.com/
 [proposed-budget-2016]: files/SF_Mayor_Proposed_Budget_2016-18.pdf
+[pvote]: http://pvote.org/
 [rfp-business-case-pdf]: files/SF_Business_Case_RFP_FINAL.pdf
 [sf-digital-services]: https://digitalservices.sfgov.org/
 [sf-digital-services-strategy]: files/SF_DigitalServiceStrategy.pdf
@@ -710,6 +768,8 @@ useful for the project.
 [slalom-contract-appendix-a]: files/slalom/contract/Business_Case_Appendix_A.pdf
 [slalom-contract-appendix-b]: files/slalom/contract/Business_Case_Appendix_B.pdf
 [slalom-contract]: files/slalom/contract/Business_Case_Contract.pdf
+[sos-advisories]: http://www.sos.ca.gov/elections/advisories-county-elections-officials/
+[sos-digest]: http://www.sos.ca.gov/elections/publications-and-resources/elections-officers-digest-2018/
 [slalom-rfp-response]: files/slalom/REG_RFP_2017-01_Slalom_Response.pdf
 [star-vote-entity]: files/star-vote/STAR-Vote_Statement_of_Intent.pdf
 [star-vote-final-press-release]: http://www.traviscountyclerk.org/eclerk/Content.do?code=star-vote-a-change-of-plans
@@ -718,9 +778,11 @@ useful for the project.
 [star-vote-usenix]: https://www.usenix.org/conference/evtwote13/workshop-program/presentation/bell
 [techfar-handbook]: https://playbook.cio.gov/techfar/
 [trust-the-vote]: https://trustthevote.org
+[trust-the-vote-votestream]:http://votestream.trustthevote.org/
 [verified-voting-foundation]: https://www.verifiedvoting.org/
 [vip-project]: https://votinginfoproject.org/
 [vip-repo]: https://github.com/votinginfoproject
+[votebox]: http://votebox.cs.rice.edu/
 [vstf-report]: files/VSTF_Report.pdf
 [vstf]: http://sfgov.org/ccsfgsa/voting-systems-task-force
 
