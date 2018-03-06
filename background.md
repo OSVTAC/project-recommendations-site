@@ -1,8 +1,8 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on January 18, 2018.)
+(Approved by OSVTAC on February 8, 2018.)
 
-Last posted: February 19, 2018
+Last posted: March 5, 2018
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -574,8 +574,21 @@ useful for the project.
 
    * [Prime III][prime-iii], Dr. Juan E. Gilbert (now hosted at University of Florida)
      Tablet with docking station with keyboard and laser printer, open software.
-     Used by NH in 2016 for accessible voting (ballot marking device). Allows
-     home computer or phone to prepare QR code. \[[git][prime-iii-repo]\]
+     Allows home computer or phone to prepare QR code.
+     \[[Video Demo][prime-iii-video]\] \[[Online Demo][prime-iii-demo]\]
+     \[[git][prime-iii-repo]\]
+
+     Used by NH in 2016 for accessible voting (ballot marking device) statewide.
+     NH revised version is known as [one4all][one4all-vvf]
+     (no known source code location). Can print OCR ballot or mark
+     ovals on preprinted ballot. A [slide presentation ][one4all-ppt]
+     describes the hardware (windows tablet, keyboard, and printer).
+     Videos: \[[Demo][one4all-demo]\], \[[How to Use][one4all-howto]\],
+     \[[Setup Instructions][one4all-setup]\].
+     The Secretary of State, William Gardner, sent a [letter][one4all-ltr]
+     to [CAVO][cavo] describing the program.
+
+     _[Item edited: Feb. 8, 2018 meeting.]_
 
    * [STAR-Vote][star-vote-usenix], Travis County, TX
      PDF paper and slides for presentation on Travis County TX proposed system.
@@ -583,7 +596,7 @@ useful for the project.
      made. Scanner only reads IDs of ballots placed in box to record which
      ballots printed are cast. Electronic records separate. (No mail ballots.)
      Voters can check receipt with QR code.
-     [Demo/prototype implementation by Free & Fair][prime-iii-faf-repo].
+     [Demo/prototype implementation by Free & Fair][star-vote-faf-repo].
 
 
 #### 3.4.4. Other Open Source Voting Projects and Research
@@ -735,6 +748,7 @@ _[Subsection added: Jan. 18, 2018 meeting.]_
 [la-vsap-rfi]: files/la-vsap/LA_RFI_20170524.pdf
 [la-vsap-rfp-phase-1]: files/la-vsap/LA_RFP_20170918.pdf
 [la-vsap]: http://vsap.lavote.net/
+[la-vsap-vbm-study]: http://vsap.lavote.net/wp-content/uploads/2016/06/Vox-VBM-Report-V1.3.pdf
 [lafco-report]: files/LAFCo_Report_Open_Source_Voting.pdf
 [lafco]: http://sfgov.org/lafco/
 [levi]: https://dspace.mit.edu/handle/1721.1/96560
@@ -742,6 +756,12 @@ _[Subsection added: Jan. 18, 2018 meeting.]_
 [nist-itl]: https://www.nist.gov/itl/voting
 [nist-voting]: http://collaborate.nist.gov/voting/bin/view/Voting/WebHome
 [nist-vvsg-principles]: http://collaborate.nist.gov/voting/bin/view/Voting/VVSGPrinciplesAndGuidelines
+[one4all-demo]: https://www.youtube.com/watch?v=g6jgmIdG56M
+[one4all-howto]: https://www.youtube.com/watch?v=3FSjzHVPAkQ
+[one4all-ppt]: http://bowencenterforpublicaffairs.org/wp-content/uploads/2016/06/NH-One4all-Technical-Overview-2016-06-15.pdf
+[one4all-vvf]: https://www.verifiedvoting.org/one4all/
+[one4all-setup]: https://www.youtube.com/watch?v=c2WXpQjihJI
+[one4all-ltr]: http://www.cavo-us.org/PDFS/Open_source_letter_from_Bill_Gardner.pdf
 [open-count-pres]: https://www.usenix.org/conference/evtwote12/workshop-program/presentation/wang_kai
 [open-count]: https://github.com/FreeAndFair/OpenCount
 [open-rla-repo]: https://github.com/FreeAndFair/OpenRLA
@@ -755,9 +775,10 @@ _[Subsection added: Jan. 18, 2018 meeting.]_
 [osi]: https://opensource.org/
 [osvtac-about-recs]: https://osvtac.github.io/about#project-recommendations
 [osvtac]: https://osvtac.github.io
-[prime-iii-faf-repo]: https://github.com/FreeAndFair/STAR-Vote
 [prime-iii-repo]: https://github.com/HXRL/Prime-III
 [prime-iii]: http://www.primevotingsystem.com/
+[prime-iii-demo]: https://hxr.cise.ufl.edu/PrimeIII/index.html
+[prime-iii-video]: https://www.youtube.com/watch?v=bM5DKP4c4aw
 [proposed-budget-2016]: files/SF_Mayor_Proposed_Budget_2016-18.pdf
 [pvote]: http://pvote.org/
 [rfp-business-case-pdf]: files/SF_Business_Case_RFP_FINAL.pdf
@@ -773,6 +794,7 @@ _[Subsection added: Jan. 18, 2018 meeting.]_
 [slalom-rfp-response]: files/slalom/REG_RFP_2017-01_Slalom_Response.pdf
 [star-vote-entity]: files/star-vote/STAR-Vote_Statement_of_Intent.pdf
 [star-vote-final-press-release]: http://www.traviscountyclerk.org/eclerk/Content.do?code=star-vote-a-change-of-plans
+[star-vote-faf-repo]: https://github.com/FreeAndFair/STAR-Vote
 [star-vote-final-report]: files/star-vote/STAR_Vote_Final_Report.pdf
 [star-vote-rfp]: files/star-vote/RFP_STAR-Vote_Unofficial_Copy.pdf
 [star-vote-usenix]: https://www.usenix.org/conference/evtwote13/workshop-program/presentation/bell
