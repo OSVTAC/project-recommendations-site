@@ -2,7 +2,7 @@
 
 (Approved by OSVTAC on February 8, 2018.)
 
-Last posted: March 5, 2018
+Last posted: March 10, 2018
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -34,8 +34,9 @@ drafting this document.
    * For the system to be "Developed under version 3 of the GNU General
      Public License where possible, otherwise preferring similar licenses
      with copyleft characteristics." This is consistent with the
-     recommendation in the Commission’s Open Source Voting Systems Resolution
-     in its third "resolved" paragraph:
+     recommendation in the Commission’s [Open Source Voting Systems
+     Resolution (PDF)][commission-res-pdf-local] in its third "resolved"
+     paragraph:
      > (d) Express a preference for open source licenses
      with copyleft characteristics so that San Francisco and other
      jurisdictions can benefit from future improvements that others make to
@@ -74,7 +75,8 @@ drafting this document.
 [colorado-rla-home]: http://bcn.boulder.co.us/~neal/elections/corla/
 [colorado-rla-repo]: https://github.com/FreeAndFair/ColoradoRLA
 [commission-osvtac]: http://sfgov.org/electionscommission/osvtac
-[commission-resolution-local]: files/SF_Elections_Comm_Open_Source_Voting_Res.pdf
+[commission-res-pdf-local]: files/commission-resolution/SF_Elections_Comm_Open_Source_Voting_Res.pdf
+[commission-res-txt-local]: files/commission-resolution/SF_Elections_Comm_Open_Source_Voting_Res.txt
 [commission-resolutions]: http://sfgov.org/electionscommission/motions-and-resolutions
 [coverity-report-2014]: http://go.coverity.com/rs/157-LQW-289/images/2014-Coverity-Scan-Report.pdf
 [dfm-contract-appendix-a]: files/dfm-contract/DFM_Contract_Appendix_A_Perf_Reqs.pdf

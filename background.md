@@ -2,7 +2,7 @@
 
 (Approved by OSVTAC on February 8, 2018.)
 
-Last posted: March 5, 2018
+Last posted: March 10, 2018
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -81,7 +81,9 @@ Formation Commission][lafco] (LAFCo) conduct a feasibility study. In October
 Voting Systems” (37 pages).
 
 In November 2015, the Elections Commission unanimously passed an [Open Source
-Voting Systems Resolution][commission-resolutions] requesting that the Mayor
+Voting Systems Resolution (PDF)][commission-res-pdf-local] (also in
+[plain-text][commission-res-txt-local]; both from the [Commission's "Motions
+and Resolutions" page][commission-resolutions]) requesting that the Mayor
 and Board of Supervisors initiate and fund a project to develop and certify
 an open source voting system.
 
@@ -721,7 +723,8 @@ _[Subsection added: Jan. 18, 2018 meeting.]_
 [colorado-rla-home]: http://bcn.boulder.co.us/~neal/elections/corla/
 [colorado-rla-repo]: https://github.com/FreeAndFair/ColoradoRLA
 [commission-osvtac]: http://sfgov.org/electionscommission/osvtac
-[commission-resolution-local]: files/SF_Elections_Comm_Open_Source_Voting_Res.pdf
+[commission-res-pdf-local]: files/commission-resolution/SF_Elections_Comm_Open_Source_Voting_Res.pdf
+[commission-res-txt-local]: files/commission-resolution/SF_Elections_Comm_Open_Source_Voting_Res.txt
 [commission-resolutions]: http://sfgov.org/electionscommission/motions-and-resolutions
 [coverity-report-2014]: http://go.coverity.com/rs/157-LQW-289/images/2014-Coverity-Scan-Report.pdf
 [dfm-contract-appendix-a]: files/dfm-contract/DFM_Contract_Appendix_A_Perf_Reqs.pdf
