@@ -98,9 +98,11 @@ FILES_DIRECTORY = 'files'
 # TODO: add more characters as needed.
 ANCHOR_TRANS = {
     ' ': '-',
-    '.': None,
-    '&': None,
 }
+
+# The characters to remove (not replace).
+# TODO: add more characters as needed.
+ANCHOR_REMOVE = '.,&/?()"'
 
 TOC_LINK = """\
 * [Introduction & Table of Contents](index) (for multi-page version)"""
@@ -179,11 +181,12 @@ def lines_to_text(lines):
     return text
 
 
-def make_anchor(header_text):
+def make_anchor(anchor_trans, header_text):
     """
     Create and return the anchor label for a section header.
 
     Args:
+      anchor_trans: a translation table usable for str.translate().
       header_text: the text portion of a header line, which includes the
         dotted section number and title, but not the header line prefix
         which has the form "###".
@@ -193,8 +196,7 @@ def make_anchor(header_text):
     "5.2. Incremental Approach" should return "52-incremental-approach".
     """
     anchor = header_text.lower()
-    trans = str.maketrans(ANCHOR_TRANS)
-    anchor = anchor.translate(trans)
+    anchor = anchor.translate(anchor_trans)
 
     return anchor
 
@@ -252,11 +254,12 @@ class HeaderInfo:
 
         return line
 
-    def make_contents_line(self, page_name=None):
+    def make_contents_line(self, anchor_trans, page_name=None):
         """
         Makes a table of contents line for the current header.
 
         Args:
+          anchor_trans: a translation table usable for str.translate().
           page_name: the name of the page to which the contents entry
             should link.  Defaults to the name of the page that originally
             contained the header.
@@ -277,12 +280,26 @@ class HeaderInfo:
         indent = 2 * (level - 1) * ' '
 
         header_text = self.make_header_text()
-        anchor = make_anchor(header_text)
+        anchor = make_anchor(anchor_trans, header_text)
 
         line = ('{indent}* [{header}]({page}#{anchor})'
                 .format(indent=indent, header=header_text, page=page_name, anchor=anchor))
 
         return line
+
+
+def make_anchor_trans_table():
+    """
+    Create and return a translation table suitable for passing to
+    str.translate().
+    """
+    mapping = ANCHOR_TRANS.copy()
+    for char in ANCHOR_REMOVE:
+        mapping[char] = None
+
+    anchor_trans = str.maketrans(mapping)
+
+    return anchor_trans
 
 
 def make_contents(header_infos, page_name=None):
@@ -291,6 +308,7 @@ def make_contents(header_infos, page_name=None):
       header_infos: an iterable of HeaderInfo objects.
     """
     lines = ['## Contents', '']
+    anchor_trans = make_anchor_trans_table()
     for header_info in header_infos:
         level = header_info.get_level()
 
@@ -298,7 +316,7 @@ def make_contents(header_infos, page_name=None):
         if level > 2:
             continue
 
-        line = header_info.make_contents_line(page_name=page_name)
+        line = header_info.make_contents_line(anchor_trans, page_name=page_name)
         lines.append(line)
 
     contents = lines_to_text(lines)
