@@ -1,8 +1,8 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on February 8, 2018.)
+(Approved by OSVTAC on March 8, 2018.)
 
-Last posted: March 10, 2018
+Last posted: March 19, 2018
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -34,27 +34,55 @@ GitHub [here](https://github.com/OSVTAC/project-recommendations).
 * [4. Facts & Assumptions](#4-facts--assumptions)
   * [4.1. Facts](#41-facts)
   * [4.2. Assumptions](#42-assumptions)
-* [5. Recommendations](#5-recommendations)
-  * [5.1. Interim Voting System](#51-interim-voting-system)
-  * [5.2. Incremental Approach](#52-incremental-approach)
-  * [5.3. Requirements-gathering](#53-requirements-gathering)
-  * [5.4. Requirements](#54-requirements)
-  * [5.5. Project Management](#55-project-management)
-  * [5.6. Open Source](#56-open-source)
-  * [5.7. Procurement](#57-procurement)
-  * [5.8. Software architecture and design](#58-software-architecture-and-design)
-  * [5.9. Software development](#59-software-development)
-  * [5.10. Hardware design](#510-hardware-design)
-  * [5.11. Documentation](#511-documentation)
-  * [5.12. Security](#512-security)
-  * [5.13. Testing](#513-testing)
-  * [5.14. Certification](#514-certification)
-  * [5.15. Hardware manufacturing or assembly](#515-hardware-manufacturing-or-assembly)
-  * [5.16. Deployment](#516-deployment)
-  * [5.17. Software maintenance](#517-software-maintenance)
-  * [5.18. Hardware maintenance](#518-hardware-maintenance)
-* [6. FAQ](#6-faq)
-* [7. Glossary](#7-glossary)
+* [5. Components](#5-components)
+  * [5.1. Component Listing](#51-component-listing)
+  * [5.2. Component Details](#52-component-details)
+* [6. Recommendations](#6-recommendations)
+  * [6.1. Interim Voting System](#61-interim-voting-system)
+  * [6.2. Requirements-gathering](#62-requirements-gathering)
+  * [6.3. Requirements](#63-requirements)
+  * [6.4. Project Management](#64-project-management)
+  * [6.5. Open Source](#65-open-source)
+  * [6.6. Procurement](#66-procurement)
+  * [6.7. Software architecture and design](#67-software-architecture-and-design)
+  * [6.8. Software development](#68-software-development)
+  * [6.9. Hardware design](#69-hardware-design)
+  * [6.10. Documentation](#610-documentation)
+  * [6.11. Security](#611-security)
+  * [6.12. Testing](#612-testing)
+  * [6.13. Certification](#613-certification)
+  * [6.14. Hardware manufacturing or assembly](#614-hardware-manufacturing-or-assembly)
+  * [6.15. Deployment](#615-deployment)
+  * [6.16. Software maintenance](#616-software-maintenance)
+  * [6.17. Hardware maintenance](#617-hardware-maintenance)
+* [7. Recommended Implementation Order](#7-recommended-implementation-order)
+  * [7.1. Recommended First Components](#71-recommended-first-components)
+  * [7.2. Rationale](#72-rationale)
+  * [7.3. Results Reporter Rationale](#73-results-reporter-rationale)
+  * [7.4. Vote Totaler Rationale](#74-vote-totaler-rationale)
+  * [7.5. Central Ballot Scanner Rationale](#75-central-ballot-scanner-rationale)
+  * [7.6. Deployment Strategies](#76-deployment-strategies)
+  * [7.7. Central Ballot Scanner Phases](#77-central-ballot-scanner-phases)
+* [8. Equipment (“Product”) Decisions](#8-equipment-(“product”)-decisions)
+  * [8.1. Will vote centers be used for early and/or election day voting?](#81-will-vote-centers-be-used-for-early-and/or-election-day-voting?)
+  * [8.2. Should precinct polling and vote centers use the same paper ballots as those used in vote-by-mail?](#82-should-precinct-polling-and-vote-centers-use-the-same-paper-ballots-as-those-used-in-vote-by-mail?)
+  * [8.3. Should ballots to be hand-marked be preprinted or printed on demand?](#83-should-ballots-to-be-hand-marked-be-preprinted-or-printed-on-demand?)
+  * [8.4. Should voting at a precinct or vote center be primarily based on paper ballots hand-marked with a pen, or voting machine with a printer?](#84-should-voting-at-a-precinct-or-vote-center-be-primarily-based-on-paper-ballots-hand-marked-with-a-pen,-or-voting-machine-with-a-printer?)
+  * [8.5. If voting machines are used at a precinct, should there be one printer per voting station?](#85-if-voting-machines-are-used-at-a-precinct,-should-there-be-one-printer-per-voting-station?)
+  * [8.6. If voters at precincts use hand-marked ballots, should ballots be scanned centrally or at the precinct/vote center?](#86-if-voters-at-precincts-use-hand-marked-ballots,-should-ballots-be-scanned-centrally-or-at-the-precinct/vote-center?)
+  * [8.7. If a precinct scanner is used, does the scanner need to be integrated with a ballot collection bin?](#87-if-a-precinct-scanner-is-used,-does-the-scanner-need-to-be-integrated-with-a-ballot-collection-bin?)
+  * [8.8. If a precinct scanner (or central scanner) is used, does it need to include an imprinter to record a ballot/scan ID?](#88-if-a-precinct-scanner-(or-central-scanner)-is-used,-does-it-need-to-include-an-imprinter-to-record-a-ballot/scan-id?)
+  * [8.9. If a voting machine is used to print ballots, does the ballot collection box need to have an integrated scanner?](#89-if-a-voting-machine-is-used-to-print-ballots,-does-the-ballot-collection-box-need-to-have-an-integrated-scanner?)
+  * [8.10. Is voting equipment required to run off a battery (without outside AC power) for a set outage duration or all day?](#810-is-voting-equipment-required-to-run-off-a-battery-(without-outside-ac-power)-for-a-set-outage-duration-or-all-day?)
+  * [8.11. What kind of printing technology should be used at a poll site or vote center?](#811-what-kind-of-printing-technology-should-be-used-at-a-poll-site-or-vote-center?)
+  * [8.12. What size paper should be used for precinct voting and vote by mail?](#812-what-size-paper-should-be-used-for-precinct-voting-and-vote-by-mail?)
+  * [8.13. What options should be provided to people with disabilities?](#813-what-options-should-be-provided-to-people-with-disabilities?)
+  * [8.14. Should "remote accessible vote-by-mail" (RAVBM) printing used by voters with disabilities to vote by mail using home computers also be used for accessible precinct voting?](#814-should-"remote-accessible-vote-by-mail"-(ravbm)-printing-used-by-voters-with-disabilities-to-vote-by-mail-using-home-computers-also-be-used-for-accessible-precinct-voting?)
+  * [8.15. Does ballot collection order or CVR recordings need to be randomized to protect voter privacy (be disassociated by order of appearance at a precinct)?](#815-does-ballot-collection-order-or-cvr-recordings-need-to-be-randomized-to-protect-voter-privacy-(be-disassociated-by-order-of-appearance-at-a-precinct)?)
+  * [8.16. Should scanned ballot images or compiled CVRs be an open public record, possibly electronically accessible?](#816-should-scanned-ballot-images-or-compiled-cvrs-be-an-open-public-record,-possibly-electronically-accessible?)
+  * [8.17. End-to-end verifiability](#817-end-to-end-verifiability)
+* [9. FAQ](#9-faq)
+* [10. Glossary](#10-glossary)
 
 
 ## 1. Copyright and Attribution
@@ -66,15 +94,15 @@ the Open Source Voting System Technical Advisory Committee's (OSVTAC)
 
 ### 1.1. Copyright
 
-Copyright (C) 2017 Larry Bafundo
+Copyright (C) 2017, 2018 Larry Bafundo
 
-Copyright (C) 2017 Carl Hage
+Copyright (C) 2017, 2018 Carl Hage
 
-Copyright (C) 2017 Christopher Jerdonek
+Copyright (C) 2017, 2018 Christopher Jerdonek
 
-Copyright (C) 2017 Roan Kattouw
+Copyright (C) 2017, 2018 Roan Kattouw
 
-Copyright (C) 2017 Tony Wasserman
+Copyright (C) 2017, 2018 Tony Wasserman
 
 
 ### 1.2. Contributors
@@ -370,172 +398,6 @@ follows (from 52 USC §21081: Voting systems standards):
        notices, instructions, forms, or paper ballots).
 
 [hava]: https://www.eac.gov/about/help-america-vote-act/
-
-
-#### 3.2.2. Components
-
-This section provides one possible way of listing the components of a
-“generic” optical-scan paper-ballot voting system. This list is not rigorous
-or exhaustive. Rather, it is meant for discussion purposes and to provide a
-sense of what functionalities are needed and how they are divided up, etc.
-
-For simplicity, we assume that the voting system uses pre-printed ballots, as
-opposed to being a ballot on-demand system. We also assume that in-precinct
-voters are allowed to mark their ballot with a pen, as opposed to being
-required to interact with an electronic device. Finally, we assume the voting
-system includes a precinct tally, which means the system tallies the
-in-precinct ballots at the precinct.
-
-The assumptions above are only for the purposes of the example illustration
-in this section. They were made partly because they reflect how San
-Francisco's voting system works today. However, they should not be construed
-in any way as recommendations of the Committee or to constrain the type of
-voting system that San Francisco should develop. See the "Key Decisions"
-section below for how this list of components could change depending on
-certain choices.
-
-The components in this particular list are not necessarily independent. They
-may overlap or contain one another. For example, the precinct ballot scanner
-hardware component contains a scanner device driver, the ballot picture
-interpreter, and the high-level scanner software components.
-
-Finally, note that there are many possible ways to divide a given voting
-system into components. For example, the granularity at which one views the
-system affects the number of components. We chose a mid-level granularity for
-this list. This lets us show how some software components are used in more
-than one hardware component. Differences can also result from where the
-“boundaries” are drawn between components (e.g. what functionalities one
-assigns to different components).
-
-
-##### 3.2.2.1. Hardware Components
-
-Each of the hardware components below also needs software to function. In
-most cases, we list this software in the “Software Components” section.
-
-**1\. Accessible Ballot-Marking Device**
-
-A device used in polling places that lets people with disabilities vote
-independently. It supports different accessible interfaces like audio,
-sip-and-puff, etc. If the computer is COTS, it may also need a custom casing
-or shell to increase durability and assist with polling-place transport and
-setup.
-
-For a Remote Accessible Vote By Mail system (required by 2020), the
-hardware used would likely be the voter's personal electronic
-device and printer.
-
-_[Item edited: Jan. 18, 2018 meeting.]_
-
-**2\. Central Ballot Scanner**
-
-A device responsible for high-speed, high-volume ballot scanning (e.g. for
-vote-by-mail ballots). The scanning with these machines is done in a
-controlled environment under staff supervision.
-
-**3\. Precinct Ballot Scanner**
-
-A device used in polling places to scan and tabulate ballots cast in person.
-It has features like returning the ballot to the voter for possible
-correction if the ballot contains an overvote. Similar to the accessible
-device, this device may also need a custom casing or shell for durability and
-to facilitate polling-place use.
-
-**4\. Standard laptop or desktop computers**
-
-Standard computers will also be needed for administrative tasks like ballot
-layout, adjudicating digital pictures of ballots, aggregating and totaling
-votes, and generating results reports.
-
-
-##### 3.2.2.2. Software Components
-
-**1\. Voting System Database / Management**
-
-Central store (e.g. file system and/or database) and software application
-providing access to the voting-system information needed to conduct an
-election. This can include things like contest and ballot definitions,
-digital ballot pictures, cast vote records, and election results.
-
-A management interface can let staff perform
-tasks like importing and exporting data in open data formats, adjudicating
-ballots that require manual inspection (e.g. ballots with write-in candidates
-or borderline marks)—but from the digital ballot picture rather than from
-the physical paper—and performing other
-functions needed during the canvass. This software could perhaps also
-provide an interface to running other software components and functions
-like the EIMS integration, tabulation, and results reporting.
-
-**2\. EIMS® Integration.**
-
-This component is responsible for interfacing with the Department's EIMS®
-software. It pulls or takes election definition information exported from
-EIMS and imports it into the voting system database. This information can
-include things like what offices and candidates are on the ballot, and
-in what precincts, districts, and ballot styles, etc.
-
-**3\. Ballot Layout**
-
-This is a software application that lets staff generate paper-ballot layouts
-from the election definition for each ballot type in automated or
-semi-automated fashion, including support for multiple languages.
-
-**4\. Accessible Ballot-Marking Device Software**
-
-This is the software corresponding to the Accessible Ballot-Marking Device
-hardware component.
-
-A Remote Accessible Vote By Mail system would likely rely on a reasonably
-updated web browser rather than requiring installation of OS-specific
-software installation. Text to speech capabilities could be either the
-voter's own accessibility software or a web browser component provided
-with the ballot.
-
-_[Item edited: Jan. 18, 2018 meeting.]_
-
-**5\. Ballot Picture Interpreter**
-
-This is a software library responsible for interpreting digital ballot pictures. It
-generates a cast vote record (CVR) from a digital picture of a ballot. This
-software component could potentially be used in all of the precinct scanners,
-the central scanners, and a software-only ballot adjudication application.
-
-**6\. Scanner Device Drivers (one for precinct and one for central)**
-
-This is low-level software needed on both precinct and central ballot
-scanners that provides a software API to the basic hardware functionality of
-a ballot scanner (e.g. out-stacking a ballot, returning a ballot, advancing a
-ballot, etc.). This might come with COTS hardware. Separate versions are
-likely needed for the precinct and central scanners.
-
-**7\. Central Ballot Scanner Software**
-
-This is high-level software controlling the central ballot
-scanner. It interacts with the scanner device driver and ballot picture
-interpreter components and is responsible for things like scanning and
-storing digital ballot pictures, detecting the ballot layout, interpreting and
-tabulating ballot markings, controlling the scanner in response to the
-markings on a ballot, and exporting ballot data after scanning is complete.
-
-**8\. Precinct Ballot Scanner Software**
-
-This component is similar to the central ballot scanner software component
-above and can likely share much software with it. However, it's different
-because it is for the case of an individual voter rather than for high-volume
-scanning. For example, unlike the central ballot scanner, this software will
-need to support returning a ballot back to the voter in the case of errors
-like an overvote. For the central scanner, such ballots might simply be
-outstacked.
-
-**8\. Vote Totaler**
-
-Aggregates and counts all vote totals and generates the results in an open
-data format. Includes the RCV tabulation algorithm.
-
-**9\. Results Reporter**
-
-Generates human-readable results reports from the results data from the vote
-totaler (e.g. printable results and results posted on the Department website).
 
 
 ### 3.3. Other Voting System Projects
@@ -896,237 +758,77 @@ drafting this document.
    hand (not including hand-counting for audit or recount purposes).
 
 
-## 5. Recommendations
+## 5. Components
+
+This section provides one possible way of dividing a “generic” optical-scan
+paper-ballot voting system into components or modules. This can be used as
+the starting point for an agile development plan (e.g. incremental
+implementation, modular contracting, etc).
 
 
-### 5.1. Interim Voting System
+### 5.1. Component Listing
 
-* The contract for the interim system (i.e. the system to be used after 2018)
-  should permit all possible combinations of phasing in an open source system
-  alongside it. Examples of possible combinations include:
+This subsection contains the listing of components without detail. Caveats
+are discussed after. More detailed descriptions of each component are in the
+subsections that follow.
 
-  * using open source components to scan vote-by-mail ballots and the interim
-    system to scan precinct ballots, or vice versa;
+**Hardware**
 
-  * using an open source accessible voting device in conjunction with the
-    interim system’s precinct-based scanner, or vice versa;
+1. Accessible Ballot-Marking Device
+2. Central Ballot Scanner
+3. Precinct Ballot Scanner
+4. Standard laptop or desktop computers
 
-  * scanning the ballots of the interim system using an open source scanner;
+**Software**
 
-  * tabulating ballots scanned by an open source scanner using the interim
-    system’s tabulation software;
+1. Voting System Database / Management
+2. Ballot Batch Management
+3. EIMS® Integration
+4. Ballot Layout Creator
+5. Ballot Layout Encoder
+6. Accessible Ballot-Marking Device Software
+7. Ballot Picture Interpreter
+8. Scanner Device Drivers (one for precinct and one for central)
+9. Central Ballot Scanner Software
+10. Precinct Ballot Scanner Software
+11. Vote Totaler
+12. Results Reporter
+13. Ballot Tabulation Audit Support
 
-  * using an open source reporting and/or tabulation system with the output
-    from the interim system’s scanners;
+The lists above are not rigorous or exhaustive. Rather, they are meant for
+discussion purposes and to provide a sense of what functionalities are needed
+and how they are divided up, etc.
 
-  * using open source components alongside the interim system in some subset
-    of precincts (e.g. for a pilot rollout); or
+For simplicity, we assume that the voting system uses pre-printed ballots, as
+opposed to being a ballot on-demand system. We also assume that in-precinct
+voters are allowed to mark their ballot with a pen, as opposed to being
+required to interact with an electronic device. Finally, we assume the voting
+system includes a precinct tally, which means the system tallies the
+in-precinct ballots at the precinct.
 
-  * using open source components alongside the interim system in all
-    precincts (e.g. for an incremental roll-out of the open source system).
+The assumptions above are only for the purposes of the example illustration
+in this section. They were made partly because they reflect how San
+Francisco's voting system works today. However, they should not be construed
+in any way as recommendations of the Committee or to constrain the type of
+voting system that San Francisco should develop. See the "Key Decisions"
+section below for how this list of components could change depending on
+certain choices.
 
-* The requirements for the interim system should include interoperability
-  with other systems, and the interoperability formats should be documented
-  so they don’t need to be reverse-engineered.
+The components in this particular list are not necessarily independent. They
+may overlap or contain one another. For example, the precinct ballot scanner
+hardware component contains a scanner device driver, the ballot picture
+interpreter, and the high-level scanner software components.
 
-
-### 5.2. Incremental Approach
-
-To reduce project risk, complexity, and initial costs, it is important to
-have a strategy to break the open source voting system project up into
-smaller, independent deliverables that can be developed and used in real
-elections before the full system is completed.
-
-This is part of an agile approach and has several advantages. It would let
-the City start getting real value from the project earlier. It would let the
-City get confirmation earlier that the project is “on the right track”
-without necessarily having to commit funds for the entire project. It also
-builds in a way for the City to take corrective action (e.g. if a vendor
-developing a particular component isn’t performing to expectation). Finally,
-it eliminates the need to come up with accurate cost and time estimates for
-the entire project before starting work.
-
-For example, instead of committing $8 million up front for a single project
-to develop a full voting system, the City could instead start out by spending
-$2 million on three deliverables, say: one for $1.5 million and two for $250,000.
-Based on the success or progress of the initial projects, the City could
-decide to move forward with additional sub-projects, or change its approach
-(even before the three deliverables are completed). In this way, the City
-limits its financial exposure to risk.
-
-This section recommends some approaches to achieve this. The purpose of this
-section is not to serve as an actual plan, but rather to provide concrete
-suggestions for how the Department can proceed incrementally in developing
-and deploying an open source voting system.
-
-
-#### 5.2.1. Possible First Components
-
-The Committee suggests the following as components to start work on and
-deliver first (see the “Voting System” section for brief descriptions of
-most of these components):
-
-1. Results Reporter (Software)
-2. Vote Totaler (Software)
-3. Ballot Picture Interpreter (Software)
-4. Central Ballot Scanner (Hardware & Software)
-5. Ballot Layout Analyzer (Software)
-6. Ballot Batch Management (Software)
-7. Ballot Tabulation Audit Support (Software)
-
-Choosing the above as first components seems to mirror the approach that Los
-Angeles County is taking in its VSAP project. In particular, Los Angeles
-County developed and submitted its "Tally System" for certification even
-before its in-precinct Ballot Marking Device was engineered and manufactured.
-Los Angeles County's "RFP Phase 1: #17-008" defines its Tally System on page
-48 as--
-
-> A system of hardware and software that reads and captures the vote
-selections on ballots, applies required business rules and adjudications,
-tabulates the totals of votes, ballots cast, and other metrics, and publishes
-the results the election. The tally system also supports transparent auditing
-processes to ensure the accuracy and integrity of the election tally results.
-
-This seems to encompass the functionality of the four components listed above.
-
-Los Angeles County submitted its VSAP Tally Version 1.0 to the California
-Secretary of State for certification on September 19, 2017. Section 3.3
-(pages 25-28) of its Phase 1 RFP provides more detail on the completion of
-Los Angeles County's Tally System in relation to other components like their
-Ballot Marking Device.
+Finally, note that there are many possible ways to divide a given voting
+system into components. For example, the granularity at which one views the
+system affects the number of components. We chose a mid-level granularity for
+this list. This lets us show how some software components are used in more
+than one hardware component. Differences can also result from where the
+“boundaries” are drawn between components (e.g. what functionalities one
+assigns to different components).
 
 
-#### 5.2.2. Rationale
-
-Below are some reasons for selecting the components above:
-
-* Each component has relatively few dependencies.
-
-* The components are on the easier side to implement.
-
-* The components are independently useful and so can help prove the value of
-open source.
-
-* The components can be worked on in parallel. Their development can also be
-staggered in conjunction with other deliverables. For example, development on
-other components can be started before these are finished.
-
-* In each case, there is open source code that already exists that
-development of the components might be able to start from, or at least learn
-from.
-
-* Working on the components will help to work through and resolve core issues
-that need to be worked out anyways
-
-* Each of these components supports incremental deployment. Each component
-  can be deployed and used by replacing the corresponding component of a
-  non-open source interim system, and then interoperating with the other
-  components of the voting system (interim or not). This is true even without
-  requiring anything extra of the interim system. See the "Deployment
-  Strategies" sub-section below for further details.
-
-  In contrast, an example of a component that probably _wouldn't_ support
-  incremental deployment as easily is the ballot layout software application.
-  This is because an interim system's scanners probably can't be guaranteed
-  to scan ballots created by a third-party.
-
-  Similarly, it is probably more difficult to design an accessible
-  ballot-marking device that can mark another vendor's ballot than it is to
-  design a scanner that can interpret another vendor's ballot. This is
-  because marking a ballot is a harder problem to solve than interpreting a
-  ballot. While the latter is primarily a software problem (which would be
-  addressed by the ballot image interpreter component), the former leans more
-  towards being a hardware problem.
-
-For the Results Reporter:
-
-* The results reporter is probably the “easiest” component to implement and
-has the least amount of risk, since it is responsible merely for formatting
-and presenting information. In this way, it would be a good warm-up project.
-
-* Since many members of the public view the Department’s election results
-pages online, it would nevertheless be a highly visible use of open source
-software.
-
-* It could also be a good public outreach / educational tool around open
-source and the open source voting project. The Department could solicit
-feedback from the public on how the results pages could look or be improved,
-and the Department could implement the best suggestions (since the reporter
-would be open source).
-
-* Making the reporter open source would also be inherently useful because it
-would give the Department the ability to customize and improve the current
-format, and accept contributions from the public.
-
-For the Vote Totaler:
-
-* This component is also one of the easiest components and so would be good
-to start with.
-
-* This is also a component that other jurisdictions would be able to use and
-benefit from relatively easily (e.g. jurisdictions using RCV would be able to
-use the RCV algorithm functionality). In this way, other jurisdictions could
-start to understand the benefits of open source.
-
-For the Ballot Picture Interpreter:
-
-* This is a core software component that would be used in a number of
-different components, so it is natural to start working on it first.
-
-* Even in the absence of deployed open source hardware components, it could
-be used by members of the public to “check” the scanning done by the interim
-system, provided the digital ballot pictures are made public. The visually impaired
-could use a ballot picture interpreter on their device with a speech synthesis
-application to validate/check a home printed or marked ballot.
-
-  _[Paragraph edited: Jan. 18, 2018 meeting.]_
-
-* The open source software OpenCount might go a long way towards implementing
-this component.
-
-For the Central Ballot Scanner:
-
-* This is probably the “easiest” hardware component to work on and implement
-first, for reasons that will be described below.
-
-* Deploying this component alone would result in a majority of votes being
-counted by open source software. For example, in the November 8, 2016
-election 63% of ballots were vote-by-mail (263,091 out of 414,528 ballots in
-all). In this sense, this component provides the biggest “bang for the buck.”
-
-* This component doesn’t require answering the question of whether to use
-vote centers, since vote-by-mail ballots need to be tabulated centrally
-whether or not San Francisco moves to a vote-center model.
-
-* Unlike precinct-based hardware components like the accessible voting device
-and precinct-based scanners, this hardware component would be operated in a
-more controlled environment with more highly trained staff. As a result, it
-also doesn't need to meet the same portability, durability, usability, and
-transportation requirements as precinct-based equipment (which also might
-require a custom casing or shell in the case of precinct equipment).
-
-* Also unlike precinct-based hardware components, fewer units would need to
-be purchased or manufactured, so it is probably less costly and expensive to
-do this step first. For example, for comparison, San Francisco currently has
-four high-speed central scanners, but around 600 precincts.
-
-* Central scanners provide multiple possibilities for incremental rollout,
-including using the component alongside and in parallel with the interim
-system, which all help to mitigate risk. These approaches are described in
-the “Deployment Strategy” section.
-
-* Implementing the central scanner before the precinct scanner also makes
-sense from a software dependency perspective. The central scanner includes
-most of the software that an in-precinct scanner would need anyway, like
-ballot interpretation, understanding election definition and ballot layouts,
-etc. However, the central scanner provides a safer and more controlled
-environment in which to exercise these code paths for the first time. In
-other words, with the exception of the high-speed and high-volume nature of
-the hardware, it is a strictly simpler component than the precinct-based
-scanner.
-
-
-#### 5.2.3. Component Details
+### 5.2. Component Details
 
 This section lists more details about each of the four components we
 suggested above. For each of these deliverables, we provide—
@@ -1148,77 +850,238 @@ needed in advance), and
 * Other outcomes / deliverables associated with delivering the component.
 
 
-##### 5.2.3.1. Results Reporter (Software)
+#### 5.2.1. Hardware Component Details
 
-**Complexity:** Low
-
-**Description.** This is a software-only component responsible for generating
-human-readable reports in various formats from structured results data.
-
-**Interfaces / data formats.** Needs to accept as input:
-
-* the “election definition” data (e.g. contests, candidates, districts, etc.).
-
-* the vote total data for the contests as a whole as well as at the desired
-aggregation levels (e.g. neighborhood, precinct, district, election day vs.
-vote-by-mail, etc.), including the round-by-round vote totals for RCV
-elections.
-
-**Sub-components.** The reporter should be able to generate:
-
-* the Statement of Vote (e.g. in PDF format),
-
-* tables for the Election Certification letter (e.g. in PDF format),
-
-* computer-readable equivalent to the Statement of Vote (e.g. in spreadsheet (xls),
-delimited text (tsv), and NIST-SP1500-100 (xml) formats),
-
-  _[Paragraph added: Jan. 18, 2018 meeting.]_
-
-* HTML pages for the Department website, and
-
-* Possibly also reports to facilitate the public observation and carrying out
-of post-Election Day audit processes (e.g. vote totals divided by batch or
-precinct).
-
-**Other outcomes / deliverables.** The required input data and formats should be
-spelled out.
-
-**Possible dependencies / pre-requisites.** Real data from past elections for
-prototyping and testing.
+Each of the hardware components below also needs software to function. In
+most cases, we list this software in the “Software Components” section.
 
 
-##### 5.2.3.2. Vote Totaler (Software)
+##### 5.2.1.1. Accessible Ballot-Marking Device
 
-**Complexity:** Low
+A device used in polling places that lets people with disabilities vote
+independently. It supports different accessible interfaces like audio,
+sip-and-puff, etc. If the computer is COTS, it may also need a custom casing
+or shell to increase durability and assist with polling-place transport and
+setup.
 
-**Description.** This is a software-only component responsible for aggregating
-vote data and generating election results in a machine-readable format. This
-includes running the RCV algorithm to generate round-by-round results. Normally
-votes have subtotals reported by consolidated precinct, and may separate
-election-day precinct voting and vote-by-mail ballot subtotals.
+For a Remote Accessible Vote By Mail system (required by 2020), the
+hardware used would likely be the voter's personal electronic
+device and printer.
 
-_[Paragraph edited: Jan. 18, 2018 meeting.]_
+_[Item edited: Jan. 18, 2018 meeting.]_
 
-**Interfaces / data formats.** Needs to accept as input:
 
-* the “election definition” data (e.g. contests, candidates, districts, etc.).
+##### 5.2.1.2. Central Ballot Scanner
 
-* cast vote records (aka CVR’s) for all ballots.
+A device responsible for high-speed, high-volume ballot scanning (e.g. for
+vote-by-mail ballots). The scanning with these machines is done in a
+controlled environment under staff supervision.
+
+**Complexity:** High
+
+**Description.** This is a hardware component responsible for high-speed,
+high-volume ballot scanning in a controlled environment under staff
+supervision (e.g. vote-by-mail ballots). It should be capable of (1)
+exporting CVR’s and digital pictures of the ballots it scans, (2)
+“out-stacking” ballots that require manual inspection or handling, and (3)
+possibly printing unique identifiers on each ballot when scanning to support
+the auditing of individual ballots.
+
+**Interfaces / data formats.**
+
+* Same as for the Ballot Picture Interpreter.
+
+* Also needs to store digital pictures of ballots in a defined image format.
 
 **Sub-components.**
 
-* the code responsible for running the RCV algorithm could be its own
-component.
+* Device drivers (software API’s to control low-level scanner functionality
+and, if present, the printer).
+
+* Ballot picture interpreter (see component description above).
+
+* High-level software to orchestrate calls between the device drivers and the
+ballot picture interpreter.
+
+* Printer component to print unique identifiers (possibly required).
 
 **Other outcomes / deliverables.** The required input data and formats should be
 spelled out.
 
 **Possible dependencies / pre-requisites.** Real data from past elections for
-prototyping and testing.
+prototyping and testing. Samples of ballots from past elections and/or the
+interim voting system.
 
 
-##### 5.2.3.3. Ballot Picture Interpreter (Software)
+##### 5.2.1.3. Precinct Ballot Scanner
+
+A device used in polling places to scan and tabulate ballots cast in person.
+It has features like returning the ballot to the voter for possible
+correction if the ballot contains an overvote. Similar to the accessible
+device, this device may also need a custom casing or shell for durability and
+to facilitate polling-place use.
+
+
+##### 5.2.1.4. Standard laptop or desktop computers
+
+Standard computers will also be needed for administrative tasks like ballot
+layout, adjudicating digital pictures of ballots, aggregating and totaling
+votes, and generating results reports.
+
+
+#### 5.2.2. Software Component Details
+
+
+##### 5.2.2.1. Voting System Database / Management
+
+Central store (e.g. file system and/or database) and software application
+providing access to the voting-system information needed to conduct an
+election. This can include things like contest and ballot definitions,
+digital ballot pictures, cast vote records, and election results.
+
+A management interface can let staff perform
+tasks like importing and exporting data in open data formats, adjudicating
+ballots that require manual inspection (e.g. ballots with write-in candidates
+or borderline marks)—but from the digital ballot picture rather than from
+the physical paper—and performing other
+functions needed during the canvass. This software could perhaps also
+provide an interface to running other software components and functions
+like the EIMS integration, tabulation, and results reporting.
+
+
+##### 5.2.2.2. Ballot Batch Management
+
+**Complexity:** Low
+
+**Description.** This is a software component that allows boxes of ballots
+to be organized into batches for scanning and auditing. Labels may be
+printed to be attached to ballot boxes collected, transported, and stored.
+Batches of ballots might include a scannable header page, marking the
+beginning of a batch of ballots, and a scannable footer page, marking the
+end of the batch. The header/footer pages mark the consolidated precinct
+and other information identifying the ballot batch, and might also include
+signatures from poll workers, and digital audit information, e.g.
+IDs, temporary digital signatures and keys, starting and ending hash chain
+codes from a precinct scanner. An additional header/footer page might be
+created to wrap and identify outstacked ballots.
+
+The batch management system would be used to:
+
+* create box labels and header/footer pages,
+
+* provide a database of batch IDs with associated precinct and grouping
+  IDs,
+
+* provide a means to scan box labels and log departure/arrival of ballot boxes
+  transported or stored/retrieved,
+
+* provide the input to the ballot picture interpreter identifying the
+  batch being processed, and associated information (e.g. precinct ID),
+
+* organize scan batches to associate CVR (Cast Vote Record) data
+  with ballot box storage ID and location, and
+
+* track progress of scanning, adjudication, and auditing of ballot batches.
+
+**Interfaces / data formats.** Needs to accept as input:
+
+* a definition of precincts, precinct consolidation, and ballot type
+  by precinct, used to organize batch collections.
+
+* bar code scans of box labels used for tracking
+
+* scans of batch header/footer pages
+
+Needs to output:
+
+* data files with batch IDs and associated precinct/group information
+
+* printable labels and header/footer pages
+
+* data with batch scan/audit status and transport logs
+
+**Other outcomes / deliverables.** The required input and output data and
+formats should be spelled out.
+
+**Possible dependencies / pre-requisites.** Batch management procedures
+need to be defined so batch IDs can be included with the Ballot Picture
+Interpreter output CVRs and used with the Vote Totaler.
+
+_[Subsection added: Jan. 18, 2018 meeting.]_
+
+
+##### 5.2.2.3. EIMS® Integration
+
+This component is responsible for interfacing with the Department's EIMS®
+software. It pulls or takes election definition information exported from
+EIMS and imports it into the voting system database. This information can
+include things like what offices and candidates are on the ballot, and
+in what precincts, districts, and ballot styles, etc.
+
+
+##### 5.2.2.4. Ballot Layout Creator
+
+This is a software application that lets staff generate paper-ballot layouts
+from the election definition for each ballot type in automated or
+semi-automated fashion, including support for multiple languages.
+
+
+##### 5.2.2.5. Ballot Layout Encoder
+
+**Complexity:** Medium
+
+**Description.** This is a software component to let one "reverse engineer"
+structured ballot layout data from existing paper ballots from another vendor.
+This component may be needed during a possible interim phase in which
+open source components are used for scanning and interpreting ballots that are
+generated by a different vendor (i.e. the City's vendor during the time
+when the open source system is being developed).  This component will be
+needed if that vendor is not able to provide structured ballot layout data
+along with the paper ballots.  It is likely that this component will
+not be completely automated, but rather will be semi-automated.
+
+**Interfaces / data formats.** Needs to accept as input:
+
+* the “election definition” data (e.g. contests, candidates, districts, etc.).
+
+* the digital ballot pictures (scanned images or PDF)
+
+Needs to output for each ballot type:
+
+* the “ballot layout” data (e.g. where contests are located on each ballot
+card for each ballot type, etc.) that will be used as input to the Ballot
+Picture Interpreter component.
+
+**Other outcomes / deliverables.** The required input and output data and
+formats should be spelled out.
+
+**Possible dependencies / pre-requisites.** Real data from past elections for
+prototyping and testing. Samples of ballots from past elections and/or the
+interim voting system.
+
+_[Section added: Dec. 14, 2017 meeting.]_
+
+
+##### 5.2.2.6. Accessible Ballot-Marking Device Software
+
+This is the software corresponding to the Accessible Ballot-Marking Device
+hardware component.
+
+A Remote Accessible Vote By Mail system would likely rely on a reasonably
+updated web browser rather than requiring installation of OS-specific
+software installation. Text to speech capabilities could be either the
+voter's own accessibility software or a web browser component provided
+with the ballot.
+
+_[Item edited: Jan. 18, 2018 meeting.]_
+
+
+##### 5.2.2.7. Ballot Picture Interpreter
+
+This is a software library responsible for interpreting digital ballot pictures. It
+generates a cast vote record (CVR) from a digital picture of a ballot. This
+software component could potentially be used in all of the precinct scanners,
+the central scanners, and a software-only ballot adjudication application.
 
 **Complexity:** Medium
 
@@ -1284,142 +1147,113 @@ spelled out.
 prototyping and testing.
 
 
-##### 5.2.3.4. Central Ballot Scanner (Hardware & Software)
+##### 5.2.2.8. Scanner Device Drivers (one for precinct and one for central)
 
-**Complexity:** High
-
-**Description.** This is a hardware component responsible for high-speed,
-high-volume ballot scanning in a controlled environment under staff
-supervision (e.g. vote-by-mail ballots). It should be capable of (1)
-exporting CVR’s and digital pictures of the ballots it scans, (2)
-“out-stacking” ballots that require manual inspection or handling, and (3)
-possibly printing unique identifiers on each ballot when scanning to support
-the auditing of individual ballots.
-
-**Interfaces / data formats.**
-
-* Same as for the Ballot Picture Interpreter.
-
-* Also needs to store digital pictures of ballots in a defined image format.
-
-**Sub-components.**
-
-* Device drivers (software API’s to control low-level scanner functionality
-and, if present, the printer).
-
-* Ballot picture interpreter (see component description above).
-
-* High-level software to orchestrate calls between the device drivers and the
-ballot picture interpreter.
-
-* Printer component to print unique identifiers (possibly required).
-
-**Other outcomes / deliverables.** The required input data and formats should be
-spelled out.
-
-**Possible dependencies / pre-requisites.** Real data from past elections for
-prototyping and testing. Samples of ballots from past elections and/or the
-interim voting system.
+This is low-level software needed on both precinct and central ballot
+scanners that provides a software API to the basic hardware functionality of
+a ballot scanner (e.g. out-stacking a ballot, returning a ballot, advancing a
+ballot, etc.). This might come with COTS hardware. Separate versions are
+likely needed for the precinct and central scanners.
 
 
-##### 5.2.3.5. Ballot Layout Analyzer (Hardware & Software)
+##### 5.2.2.9. Central Ballot Scanner Software
 
-**Complexity:** Medium
+This is high-level software controlling the central ballot
+scanner. It interacts with the scanner device driver and ballot picture
+interpreter components and is responsible for things like scanning and
+storing digital ballot pictures, detecting the ballot layout, interpreting and
+tabulating ballot markings, controlling the scanner in response to the
+markings on a ballot, and exporting ballot data after scanning is complete.
 
-**Description.** This is a software component to let one "reverse engineer"
-structured ballot layout data from existing paper ballots from another vendor.
-This component may be needed during a possible interim phase in which
-open source components are used for scanning and interpreting ballots that are
-generated by a different vendor (i.e. the City's vendor during the time
-when the open source system is being developed).  This component will be
-needed if that vendor is not able to provide structured ballot layout data
-along with the paper ballots.  It is likely that this component will
-not be completely automated, but rather will be semi-automated.
+
+##### 5.2.2.10. Precinct Ballot Scanner Software
+
+This component is similar to the central ballot scanner software component
+above and can likely share much software with it. However, it's different
+because it is for the case of an individual voter rather than for high-volume
+scanning. For example, unlike the central ballot scanner, this software will
+need to support returning a ballot back to the voter in the case of errors
+like an overvote. For the central scanner, such ballots might simply be
+outstacked.
+
+
+##### 5.2.2.11. Vote Totaler
+
+Aggregates and counts all vote totals and generates the results in an open
+data format. Includes the RCV tabulation algorithm.
+
+**Complexity:** Low
+
+**Description.** This is a software-only component responsible for
+aggregating vote data and generating election results in a machine-readable
+format. This includes running the RCV algorithm to generate round-by-round
+results. Normally votes have subtotals reported by consolidated precinct, and
+may separate election-day precinct voting and vote-by-mail ballot subtotals.
+
+_[Paragraph edited: Jan. 18, 2018 meeting.]_
 
 **Interfaces / data formats.** Needs to accept as input:
 
 * the “election definition” data (e.g. contests, candidates, districts, etc.).
 
-* the digital ballot pictures (scanned images or PDF)
+* cast vote records (aka CVR’s) for all ballots.
 
-Needs to output for each ballot type:
+**Sub-components.**
 
-* the “ballot layout” data (e.g. where contests are located on each ballot
-card for each ballot type, etc.) that will be used as input to the Ballot
-Picture Interpreter component.
+* the code responsible for running the RCV algorithm could be its own
+component.
 
-**Other outcomes / deliverables.** The required input and output data and
-formats should be spelled out.
+**Other outcomes / deliverables.** The required input data and formats should be
+spelled out.
 
 **Possible dependencies / pre-requisites.** Real data from past elections for
-prototyping and testing. Samples of ballots from past elections and/or the
-interim voting system.
-
-_[Section added: Dec. 14, 2017 meeting.]_
+prototyping and testing.
 
 
-##### 5.2.3.6. Ballot Batch Management (Software)
+##### 5.2.2.12. Results Reporter
+
+Generates human-readable results reports from the results data from the vote
+totaler (e.g. printable results and results posted on the Department website).
 
 **Complexity:** Low
 
-**Description.** This is a software component that allows boxes of ballots
-to be organized into batches for scanning and auditing. Labels may be
-printed to be attached to ballot boxes collected, transported, and stored.
-Batches of ballots might include a scannable header page, marking the
-beginning of a batch of ballots, and a scannable footer page, marking the
-end of the batch. The header/footer pages mark the consolidated precinct
-and other information identifying the ballot batch, and might also include
-signatures from poll workers, and digital audit information, e.g.
-IDs, temporary digital signatures and keys, starting and ending hash chain
-codes from a precinct scanner. An additional header/footer page might be
-created to wrap and identify outstacked ballots.
-
-The batch management system would be used to:
-
-* create box labels and header/footer pages,
-
-* provide a database of batch IDs with associated precinct and grouping
-  IDs,
-
-* provide a means to scan box labels and log departure/arrival of ballot boxes
-  transported or stored/retrieved,
-
-* provide the input to the ballot picture interpreter identifying the
-  batch being processed, and associated information (e.g. precinct ID),
-
-* organize scan batches to associate CVR (Cast Vote Record) data
-  with ballot box storage ID and location, and
-
-* track progress of scanning, adjudication, and auditing of ballot batches.
+**Description.** This is a software-only component responsible for generating
+human-readable reports in various formats from structured results data.
 
 **Interfaces / data formats.** Needs to accept as input:
 
-* a definition of precincts, precinct consolidation, and ballot type
-  by precinct, used to organize batch collections.
+* the “election definition” data (e.g. contests, candidates, districts, etc.).
 
-* bar code scans of box labels used for tracking
+* the vote total data for the contests as a whole as well as at the desired
+aggregation levels (e.g. neighborhood, precinct, district, election day vs.
+vote-by-mail, etc.), including the round-by-round vote totals for RCV
+elections.
 
-* scans of batch header/footer pages
+**Sub-components.** The reporter should be able to generate:
 
-Needs to output:
+* the Statement of Vote (e.g. in PDF format),
 
-* data files with batch IDs and associated precinct/group information
+* tables for the Election Certification letter (e.g. in PDF format),
 
-* printable labels and header/footer pages
+* computer-readable equivalent to the Statement of Vote (e.g. in spreadsheet (xls),
+delimited text (tsv), and NIST-SP1500-100 (xml) formats),
 
-* data with batch scan/audit status and transport logs
+  _[Paragraph added: Jan. 18, 2018 meeting.]_
 
-**Other outcomes / deliverables.** The required input and output data and
-formats should be spelled out.
+* HTML pages for the Department website, and
 
-**Possible dependencies / pre-requisites.** Batch management procedures
-need to be defined so batch IDs can be included with the Ballot Picture
-Interpreter output CVRs and used with the Vote Totaler.
+* Possibly also reports to facilitate the public observation and carrying out
+of post-Election Day audit processes (e.g. vote totals divided by batch or
+precinct).
 
-_[Subsection added: Jan. 18, 2018 meeting.]_
+**Other outcomes / deliverables.** The required input data and formats should be
+spelled out.
+
+**Possible dependencies / pre-requisites.** Real data from past elections for
+prototyping and testing.
 
 
-##### 5.2.3.7. Ballot Tabulation Audit Support (Software)
+##### 5.2.2.13. Ballot Tabulation Audit Support
 
 **Complexity:** Medium
 
@@ -1492,491 +1326,55 @@ recount) adds no extra cost.
 _[Subsection added: Jan. 18, 2018 meeting.]_
 
 
-#### 5.2.4. Deployment Strategies
-
-The components listed above can be deployed and used in conjunction with a
-non-open source interim system even before a full open source voting system
-is ready. This section provides more details about how this could be done.
-
-For example, an open source results reporter could be used to report the
-election results of the non-open source interim system. It would simply need
-to take in the aggregate, numeric results from the interim system. The output
-would not need to interact with the interim system.
-
-Similarly, an open source vote totaler could be used to compute the numeric
-results of an election run with the interim system. It would only require
-taking in the non-aggregated numeric results from the interim system, and
-then feeding the aggregate results into the results reporter.
+## 6. Recommendations
 
 
-##### 5.2.4.1. Central Ballot Scanner Phases
+### 6.1. Interim Voting System
 
-For the central ballot scanner, there are a number of options for
-incrementally phasing in an open source version.
+* The contract for the interim system (i.e. the system to be used after 2018)
+  should permit all possible combinations of phasing in an open source system
+  alongside it. Examples of possible combinations include:
 
-In chronological order, some of these possible phases are--
+  * using open source components to scan vote-by-mail ballots and the interim
+    system to scan precinct ballots, or vice versa;
 
-1. Even before the scanner hardware is ready to be tested, the software-only
-ballot image interpreter component could be used to check the vote counts of
-the interim system from the information of the digital ballot pictures. In
-addition, if the pictures are made public during the canvass (along with the
-ballot image interpreter software), even members of the public could perform
-this "check."
+  * using an open source accessible voting device in conjunction with the
+    interim system’s precinct-based scanner, or vice versa;
 
-2. When the open source central scanners are ready enough to test, the
-scanners could be used to scan vote-by-mail ballots _in addition_ to the
-interim system scanning them. This could be used both to check or audit the
-interim system, as well as to test the open source scanners. This can likely
-be done even without certifying the scanners. This is essentially what the
-Humboldt County Elections Transparency Project did in the late 2000's.
+  * scanning the ballots of the interim system using an open source scanner;
 
-3. Once we have enough confidence in the open source scanners, they could be
-used as the primary scanner for _some_ of the vote-by-mail ballots (e.g. in a
-pilot of the open source scanners that precedes a full-scale rollout). This
-option could possibly be done prior to certifying the scanners, by taking
-advantage of California bill [SB 360 (2013-2014)][bill-sb-360-2013].
+  * tabulating ballots scanned by an open source scanner using the interim
+    system’s tabulation software;
 
-4. Finally, once the open source central scanners are certified, they could
-be used to scan _all_ of the vote-by-mail ballots (while the interim system
-could be responsible for counting in-precinct ballots). In this scenario, the
-interim system could perhaps even be used as a fail-safe backup in case of an
-unexpected issue with the open source system (or else as a check, in the
-same way that the open source scanners were used as a check in bullet point
-(2) above).
+  * using an open source reporting and/or tabulation system with the output
+    from the interim system’s scanners;
+
+  * using open source components alongside the interim system in some subset
+    of precincts (e.g. for a pilot rollout); or
+
+  * using open source components alongside the interim system in all
+    precincts (e.g. for an incremental roll-out of the open source system).
+
+* The requirements for the interim system should include interoperability
+  with other systems, and the interoperability formats should be documented
+  so they don’t need to be reverse-engineered.
 
 
-### 5.3. Requirements-gathering
+### 6.2. Requirements-gathering
 
 This section contains recommendations related to gathering requirements. For
 committee recommendations of specific requirements, see the Requirements
 section below.
 
+[TODO]
 
-#### 5.3.1. Key Decisions
 
-The following are some key decisions about requirements that need to be made
-at some point when designing and developing the voting system. Some pro and
-con tradeoffs are included.
-
-At this point, the intent here is to just present options with some
-discussion, not a particular recommendation.
-
-**Assumptions:**
-
-* Votes are cast (recorded, submitted, and stored) on paper in a human-readable form.
-
-* An electronic representation of ballots made either by voting machines or
-  scanners serves only as a copy of the official paper ballot.
-
-* Ballots marked are on paper that meets the California regulations for
-  printing (counterfeit resistance).
-
-* By 2020, CA [AB973][bill-ab-973-2017] requires support of _Remote Accessible
-Vote By Mail_ ballots ([AB2252][bill-ab-2252-2015]) for voters with disabilities
-or overseas and military voters. Home computers are used to print ballots on
-ordinary paper, but returned via special mail envelopes.
-
-* Voting types to be considered:
-  + Vote by mail (preprinted and special accessible/overseas)
-  + Vote on election day at a polling location (precinct voting)
-  + Vote prior to election day at an early vote center
-  + Vote by people with disabilities requiring special equipment (ballot
-    marking device)
-  + Vote with Provisional Ballots (enclosed in a special envelope for later
-    qualification)
-
-_[Assumptions added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.1. Will Vote Centers be used for early and/or election day voting?
-
-California [SB 450][bill-sb-450-2015] ("Elections: vote by mail voting and
-mail ballot elections") authorizes counties to conduct elections using vote
-centers. The Department of Elections should develop a sense as soon as
-possible of the likelihood of using vote centers because that could affect
-the requirements and design of the system. Making this decision earlier could
-decrease costs since the design and development wouldn’t have to cover
-multiple scenarios.
-
-While voters can be assigned to the traditional election-day precinct polling
-site, with the right equipment, each poll site could have the full features of
-a vote center, i.e. allow voters from any precinct to vote at that site.
-
-Vote Centers could be used for:
-   1. Early voting only
-   2. Election day voting at selected locations
-   3. All election day polling locations
-
-_[Answer edited: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.2. Should precinct polling and vote centers use the same paper ballots as those used in vote-by-mail?
-
-  Background: If a voting machine is used to prepare ballots for printing, the
-paper ballots marked could use the same printing and layout as a vote-by mail
-ballot, or could have a simpler and shorter format listing just the contests and
-selected choices (called _paper cast vote record_ (CVR) in California Election Code).
-The shorter format could be on smaller paper, possibly only a single sheet, vs a
-larger multipage scanned mail ballot. Voting machines (ballot marking devices)
-could be used only by voters with disabilities, while most voters at a precinct
-or vote center uses a normal mail ballot, or all voters there could use voting
-machines with printed ballots.
-
-Mail-Only Format Pros:
-
-* Only one style of ballot printing is required
-* No need for precinct voters to use voting machines-- voters without
-    disabilities can use a "low-tech" solution of only a marker or pen
-* Central storage and recounting has all the same ballot size/type
-* Better ballot secrecy because all ballots look the same.
-* Reduced requirements for printers and possible problems with printer
-  malfunction and paper jams.
-* Voting with hand-marked ballots could be done with no electric power.
-
-Mail-Only Format Cons:
-* Printing on large mail ballot paper, usually double sided,  requires
-    special, possibly nonstandard, equipment. Sheets might need to be
-    hand-inserted individually.
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.3. Should ballots to be hand-marked be preprinted or printed on demand?
-
-  Background: If precinct voting is based on the low-tech paper ballot marked
-with a pen, pads of preprinted paper ballots could be used. However, separate
-pads are required for each ballot type, party preference and language preference
-used at that precinct. A vote center might need to store ballots for all ballot
-types in the county, each in all languages. An alternative is to use blank
-ballot card stock with a printer to create any desired ballot type and language
-preference, known as "ballot on demand" (BOD).
-
-Ballot on Demand Pros:
-* Reduced printing cost and paper use: no need to stock extra preprinted
-    ballots in case all voters show up.
-* Easier to accommodate multiple languages
-* Allows any poll site to be a vote-center. Eliminates the problem of people
-    at the wrong poll site casting provisional ballots with an incorrect
-    ballot type.
-
-Ballot on Demand Cons:
-* On site printers can fail and probably require AC power, stopping voting.
-* Printing on large mail ballot paper, usually double sided requires special,
-  possibly nonstandard, equipment.
-
-_[Question & answer edited: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.4. Should voting at a precinct or vote center be primarily based on paper ballots hand-marked with a pen, or voting machine with a printer?
-
-Background: After voters check in at a precinct, they could be given a
-paper ballot (similar or the same as a mail ballot) and pen to mark it.
-Alternatively, they could be given a blank ballot sheet and sent to
-a voting machine (e.g. computer/tablet) where choices can be entered and
-reviewed. To access the correct ballot type, voters may be given a
-_token_ containing the ballot type or else the blank ballot sheet could have
-a ballot type code preprinted. When voters complete their selections, the
-paper is inserted into a printer, then they check the final printed ballot
-prior to casting into a ballot box.
-
-Machines used by all non-mail voters Pros:
-* Paper+Electronic CVR has the highest security/integrity. Digital signatures
-  can be printed on ballots to authenticate paper.
-* Time to vote can be less than marking.
-* Mistakes can be undone without needing another ballot to mark.
-* Machines could read a QR code from a vote at home app to print a ballot
-  immediately.
-* A separate non-mail ballot format from voting machines would be the same
-  for ordinary voters and those with special needs.
-* Extra machines provide redundancy vs a single disability-access machine.
-* Vote centers could handle all ballot types without the need for a ballot
-  on demand system.
-* Election-day machines could only allow authorized write-ins to be recorded,
-  simplifying write-in voting and enabling end of day totals that include
-  write-ins.
-* A full precinct scanner is not required-- just a simple bar code scanner
-    to track paper cast by entering into a ballot box. (The bar code is matched
-    against the electronic CVR.)
-* Voting machines have the same effect as precinct scanners with
-stored electronic CVRs and end of day totals available.
-
-Machines used by all non-mail voters Cons:
-* Requires more equipment, with increased cost, complexity, and the possibility
-    of something going wrong. May require backup power.
-* More possible problems with paper jams and printer malfunction.
-* Voters need to be occupying a machine while voting.
-* Mail ballot processing is still a separate sizable operation.
-
-_[Question & answer edited: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.5. If voting machines are used at a precinct, should there be one printer per voting station?
-
-Background: Each electronic voting station could be configured with a
-printer to create the ballots to be cast. Alternatively, there could be
-many voting stations (e.g. just a tablet computer), then a separate
-printing station would be used to print completed ballots. With separate
-printing stations, a _token_ is required to be scanned to identify the
-ballot completed at a voting station.
-
-Voters using a home computer or phone to record personal ballot choices
-could bring a QR code printed or saved in a smartphone and go directly
-to the printing station. A token might be required to verify the ballot
-type.
-
-Note: a _token_ could simply be a bar code with ballot type and unique
-random number printed on the outside of a privacy folder. The number has
-no association with a voter-- just a way to associate the ballot entered
-at a voting station with the ballot to be printed. Another form of token
-in use is an RFID chip.
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.6. If voters at precincts use hand-marked ballots, should ballots be scanned centrally or at the precinct/vote center?
-
-Precinct ballot scanner Pros:
-* Overvotes/Undervotes and invalid or ambiguous marks can be reported by the
-    scanner prior to submitting
-* Precinct vote counts are available immediately at the end of the day
-* Reduces the need for central scanning equipment
-
-Precinct ballot scanner Cons:
-* More equipment is required than central-only scanners
-* If the scanner and ballot collection is integrated (the scanner feeds
-    into a ballot collection bin), custom equipment may be required.
-* Not required if all ballots are printed by a voting machine
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.7. If a precinct scanner is used, does the scanner need to be integrated with a ballot collection bin?
-
-  Background: Custom-built precinct ballot scanners sold by election vendors
-usually include a ballot collection bin within same box containing the scanner.
-The scanner feeds the ballot into the collection box, or else reverses the paper
-feed in case of an error detected. Scanners may need multiple collection bins
-in case of ambiguous marks or write-in votes. An integrated device likely
-means custom hardware vs COTS equipment.
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.8. If a precinct scanner (or central scanner) is used, does it need to include an imprinter to record a ballot/scan ID?
-
-  Background: To match a specific paper ballot in a ballot box with a scanned
-CVR, either the order of insertion must be maintained, or a unique identifier
-associated with the scan needs to be added to the ballot. Alternatively,
-ordered ballots could be rescanned centrally during a recount or audit and
-matched as a batch with the original scan.
-
-Scanner Imprinter Pros:
-
-* This would permit more sophisticated auditing approaches that involve
-  selecting individual ballots at random, which could reduce time and costs
-  (e.g. risk-limiting audits). Without this feature, auditing needs to be
-  done in larger “batches,” or ballots need to be kept in careful order to
-  allow accessing individual ballots.
-
-Scanner Imprinter Cons:
-
-* It is not clear if COTS scanners support the feature of printing while
-  scanning. Available imprinters are expensive and might reduce scan speed.
-
-* The scanner hardware would become more complicated since there would be
-  another “moving part” that can break, and may require consumables, e.g.
-  printer ink or ribbon changes.
-
-_[Question & answer edited: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.9. If a voting machine is used to print ballots, does the ballot collection box need to have an integrated scanner?
-
-  Background: Using a voting machine with voter-verified ballot does not
-constitute casting a ballot-- the act of submitting the ballot after
-verification is the cast ballot. Voters might choose to discard a ballot and
-revote, so a simple bar-code scanner is useful to match the electronic CVR with
-paper ballots submitted (i.e. exclude discarded ballots). Discarded ballots
-could be scanned instead, but a voter could still walk off with a ballot, or a
-ballot might not print correctly.
-
-Additional ballot box scanner Pros: [TODO]
-
-Additional ballot box scanner Cons: [TODO]
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.10. Is voting equipment required to run off a battery (without outside AC power) for a set outage duration or all day?
-
-No outside power Pros:
-* Eliminates extension cords and possible special power requirements.
-* Voting can continue in a power outage.
-* Some equipment (tablets and laptops) has a built in battery that can work
-  during a power outage.
-
-No outside power Cons:
-* Limits the type of equipment used
-* Might require special external batteries and power conversion
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.11. What kind of printing technology should be used at a poll site or vote center?
-
-Background: [TODO]
-
-Options Include:
-
-* Laser Printer (single/double sided)
-
-    Pros:
-    + High quality, durable printing
-    + Toner lasts for a large number of pages
-    + Fast printing
-
-    Cons:
-    + Requires AC power (limited life on backup power)
-    + Tracking/replacing toner cartridges is required
-
-* Ink Jet (single/double sided)
-
-    Pros:
-    + Low power
-    + Available as portable battery powered COTS
-
-    Cons:
-    + Ink cartridges drain quickly and dry out between elections
-    + Ink can smear before drying
-    + Head cleaning might be required
-
-* Direct Thermal (on special paper)
-
-    Pros:
-    + Low power
-    + No consumables that need monitoring and reloading
-
-    Cons:
-    + Requires special paper
-    + Limited life - disappearing ink
-    + Temperature sensitive
-    + Lower resolution
-
-* Thermal Transfer (uses a ribbon)
-    Pros:
-    + Low power
-    + High quality printing
-
-    Cons:
-    + Ribbon usage needs to be tracked and replaced
-    + Not normally used for letter size printers
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.12. What size paper should be used for precinct voting and vote by mail?
-
-Background: Vote-by-mail ballots are typically printed on wide paper
-stock (sometimes 11"x17") folded to fit within a mailing envelope.
-Precinct voting with a scanner does not need to be folded, and could
-be a different size than mailed ballot.
-
-With a larger paper size, more columns could be used, larger fonts, and
-fewer sheets. With a smaller paper size (8.5"x11" or 8.5"x14"),
-standard printers and scanners could be used. LA County published
-a [usability study][la-vsap-vbm-study] of mail ballot design including
-2 paper sizes (8.5x11" and 10.5x17").
-
-If voting machines are used to print a _paper cast vote record_, then
-only the selections made are shown, so a single sheet could be used.
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.13. What options should be provided to people with disabilities?
-
-Accessible voting could be accomplished with:
-
-* Voting machines (BMD) at all precincts
-* Voting machines at selected precincts or vote centers with transportation provided
-* Vote by mail using home computer and printer
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.14. Should "remote accessible vote-by-mail" (RAVBM) printing used by voters with disabilities to vote by mail using home computers also be used for disability-access precinct voting?
-
-  Background: California Election code specifies that remote accessible vote by
-mail capability should be provided by 2020 for people with disabilities and
-military and overseas voters. Software to prepare these RAVBM ballots could in
-principle be used at a precinct poll site or early vote center. Some states have
-used a similar system (e.g. Prime-III) for disability access voting at
-precincts.
-
-RAVBM used in precincts Pros: [TODO]
-
-RAVBM used in precincts Cons: [TODO]
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.15. Does ballot collection order or CVR recordings need to be randomized to protect voter privacy (be disassociated by order of appearance at a precinct)?
-
-Background: To protect voter privacy, either the time and order of appearance
-of a voter must not be recorded, or else the order of scanned or submitted
-ballots must be randomized. Otherwise voter order and ballot order could
-be correlated and secrecy compromized. If ballot box order must be randomized,
-then poll workers might need to shuffle ballots.
-
-Scanned ballots imprinted with an ID could have sequential number assigned,
-could simplify pulling ballots with a specific ID, e.g. for a ballot
-requiring adjudication, or in an audit. Otherwise, a randomly assigned
-unique ID could be imprinted, and stored electronic cast vote records
-could have order randomized.
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.16. Should scanned ballot images or compiled CVRs be an open public record, possibly electronically accessible?
-
-In the interest of making the election process transparent, the electronic
-records of scanned ballots and/or CVRs could be made public (vs sealed
-paper ballot storage containers). Is open ballot data possible within the
-legal requirements of privacy and not being able to identify and prove a vote?
-Would open ballot data be part of end-end verifiability or mutually exclusive
-to it?
-
-Ranked Choice Voting (RCV) might require a public set of cast vote records (CVR)
-to fully disclose voter choices and validate the elimination rounds.
-
-_[Question added: Feb. 8, 2018 meeting.]_
-
-
-##### 5.3.1.17. End-to-end verifiability
-
-[TODO: Introduction - why we want it ...]
-
-It should be determined how much additional work would need to be done to
-make the voting process end-to-end verifiable, and whether and which designs
-are more compatible (e.g. among approaches listed above, hand-marked vs
-machine-printed ballots). Also, is this something that could
-be incorporated later on in the process, or does it need to be incorporated
-from the beginning?
-
-Is it possible to have end-end verifiability without also being able to
-prove how one voted?
-
-[TODO: List current research on E2E voting.]
-
-_[Question & answer edited: Feb. 8, 2018 meeting.]_
-
-
-### 5.4. Requirements
+### 6.3. Requirements
 
 This section lists some of the requirements the system should satisfy.
 
 
-#### 5.4.1. Accessibility
+#### 6.3.1. Accessibility
 
 * In addition to an audio component and touchscreen, the voting system should
   support accessible features including, but not limited to: sip and puff
@@ -1987,7 +1385,7 @@ This section lists some of the requirements the system should satisfy.
   provide more detail.
 
 
-#### 5.4.2. Other
+#### 6.3.2. Other
 
 * [TODO: should we recommend (1) supporting manually marked ballots in the
   polling place, or (2) requiring the use of a computer ballot-marking and/or
@@ -1999,7 +1397,7 @@ This section lists some of the requirements the system should satisfy.
 * [TODO: should we recommend for or against end-to-end verifiability?]
 
 
-### 5.5. Project Management
+### 6.4. Project Management
 
 * The Department should align itself with other efforts within the City to
   use agile procurement and methods, and it should seek assistance where
@@ -2067,7 +1465,7 @@ This section lists some of the requirements the system should satisfy.
 * [TODO: provide specific recommendations around agile.]
 
 
-### 5.6. Open Source
+### 6.5. Open Source
 
 This section covers topics related to open source.
 
@@ -2122,12 +1520,12 @@ This section covers topics related to open source.
   [contributor license agreements][cla] (CLA’s) should be required.]
 
 
-### 5.7. Procurement
+### 6.6. Procurement
 
 [TODO]
 
 
-### 5.8. Software architecture and design
+### 6.7. Software architecture and design
 
 * When defining software components to develop, favor designs that promote
   reusing components. For example, a software library that can read a digital ballot
@@ -2138,29 +1536,29 @@ This section covers topics related to open source.
   in turn can reduce required time and costs.
 
 
-### 5.9. Software development
+### 6.8. Software development
 
 * The project should not depend on volunteers for the successful completion
   or security of the project. However, useful volunteer contributions should
   be encouraged and not turned away.
 
 
-### 5.10. Hardware design
+### 6.9. Hardware design
 
 [TODO]
 
 
-### 5.11. Documentation
+### 6.10. Documentation
 
 [TODO]
 
 
-### 5.12. Security
+### 6.11. Security
 
 [TODO]
 
 
-### 5.13. Testing
+### 6.12. Testing
 
 1. **Gather real election data.** Datasets of real election data (e.g. a
 couple past elections in San Francisco of different types) should be compiled
@@ -2207,27 +1605,27 @@ contest as the input and the round-by-round vote totals as the output.
    _[Item added: Dec. 14, 2017 meeting.]_
 
 
-### 5.14. Certification
+### 6.13. Certification
 
 [TODO]
 
 
-### 5.15. Hardware manufacturing or assembly
+### 6.14. Hardware manufacturing or assembly
 
 [TODO]
 
 
-### 5.16. Deployment
+### 6.15. Deployment
 
 [TODO]
 
 
-### 5.17. Software maintenance
+### 6.16. Software maintenance
 
 [TODO]
 
 
-### 5.18. Hardware maintenance
+### 6.17. Hardware maintenance
 
 * The City should prefer professional, commercial support for
   maintaining the aggregate system (including the operating system, stack,
@@ -2237,7 +1635,685 @@ contest as the input and the round-by-round vote totals as the output.
   of such a provider is [Red Hat](https://www.redhat.com).
 
 
-## 6. FAQ
+## 7. Recommended Implementation Order
+
+To reduce project risk, complexity, and initial costs, it is important to
+have a strategy to break the open source voting system project up into
+smaller, independent deliverables that can be developed and used in real
+elections before the full system is completed.
+
+This is part of an agile approach and has several advantages. It would let
+the City start getting real value from the project earlier. It would let the
+City get confirmation earlier that the project is “on the right track”
+without necessarily having to commit funds for the entire project. It also
+builds in a way for the City to take corrective action (e.g. if a vendor
+developing a particular component isn’t performing to expectation). Finally,
+it eliminates the need to come up with accurate cost and time estimates for
+the entire project before starting work.
+
+For example, instead of committing $8 million up front for a single project
+to develop a full voting system, the City could instead start out by spending
+$2 million on three deliverables, say: one for $1.5 million and two for $250,000.
+Based on the success or progress of the initial projects, the City could
+decide to move forward with additional sub-projects, or change its approach
+(even before the three deliverables are completed). In this way, the City
+limits its financial exposure to risk.
+
+This section recommends some approaches to achieve this. The purpose of this
+section is not to serve as an actual plan, but rather to provide concrete
+suggestions for how the Department can proceed incrementally in developing
+and deploying an open source voting system.
+
+
+### 7.1. Recommended First Components
+
+The Committee recommends the following as components to start work on and
+deliver first (see the “Components” section for brief descriptions of
+most of these components):
+
+1. Results Reporter (Software)
+2. Vote Totaler (Software)
+3. Ballot Picture Interpreter (Software)
+4. Central Ballot Scanner (Hardware & Software)
+5. Ballot Layout Encoder (Software)
+6. Ballot Batch Management (Software)
+7. Ballot Tabulation Audit Support (Software)
+
+Choosing the above as first components seems to mirror the approach that Los
+Angeles County is taking in its VSAP project. In particular, Los Angeles
+County developed and submitted its "Tally System" for certification even
+before its in-precinct Ballot Marking Device was engineered and manufactured.
+Los Angeles County's "RFP Phase 1: #17-008" defines its Tally System on page
+48 as--
+
+> A system of hardware and software that reads and captures the vote
+selections on ballots, applies required business rules and adjudications,
+tabulates the totals of votes, ballots cast, and other metrics, and publishes
+the results the election. The tally system also supports transparent auditing
+processes to ensure the accuracy and integrity of the election tally results.
+
+This seems to encompass the functionality of the four components listed above.
+
+Los Angeles County submitted its VSAP Tally Version 1.0 to the California
+Secretary of State for certification on September 19, 2017. Section 3.3
+(pages 25-28) of its Phase 1 RFP provides more detail on the completion of
+Los Angeles County's Tally System in relation to other components like their
+Ballot Marking Device.
+
+
+### 7.2. Rationale
+
+Below are some reasons for selecting the components above:
+
+* Each component has relatively few dependencies.
+
+* The components are on the easier side to implement.
+
+* The components are independently useful and so can help prove the value of
+open source.
+
+* The components can be worked on in parallel. Their development can also be
+staggered in conjunction with other deliverables. For example, development on
+other components can be started before these are finished.
+
+* In each case, there is open source code that already exists that
+development of the components might be able to start from, or at least learn
+from.
+
+* Working on the components will help to work through and resolve core issues
+that need to be worked out anyways
+
+* Each of these components supports incremental deployment. Each component
+  can be deployed and used by replacing the corresponding component of a
+  non-open source interim system, and then interoperating with the other
+  components of the voting system (interim or not). This is true even without
+  requiring anything extra of the interim system. See the "Deployment
+  Strategies" sub-section below for further details.
+
+  In contrast, an example of a component that probably _wouldn't_ support
+  incremental deployment as easily is the ballot layout software application.
+  This is because an interim system's scanners probably can't be guaranteed
+  to scan ballots created by a third-party.
+
+  Similarly, it is probably more difficult to design an accessible
+  ballot-marking device that can mark another vendor's ballot than it is to
+  design a scanner that can interpret another vendor's ballot. This is
+  because marking a ballot is a harder problem to solve than interpreting a
+  ballot. While the latter is primarily a software problem (which would be
+  addressed by the ballot image interpreter component), the former leans more
+  towards being a hardware problem.
+
+
+### 7.3. Results Reporter Rationale
+
+* The results reporter is probably the “easiest” component to implement and
+has the least amount of risk, since it is responsible merely for formatting
+and presenting information. In this way, it would be a good warm-up project.
+
+* Since many members of the public view the Department’s election results
+pages online, it would nevertheless be a highly visible use of open source
+software.
+
+* It could also be a good public outreach / educational tool around open
+source and the open source voting project. The Department could solicit
+feedback from the public on how the results pages could look or be improved,
+and the Department could implement the best suggestions (since the reporter
+would be open source).
+
+* Making the reporter open source would also be inherently useful because it
+would give the Department the ability to customize and improve the current
+format, and accept contributions from the public.
+
+
+### 7.4. Vote Totaler Rationale
+
+* This component is also one of the easiest components and so would be good
+to start with.
+
+* This is also a component that other jurisdictions would be able to use and
+benefit from relatively easily (e.g. jurisdictions using RCV would be able to
+use the RCV algorithm functionality). In this way, other jurisdictions could
+start to understand the benefits of open source.
+
+For the Ballot Picture Interpreter:
+
+* This is a core software component that would be used in a number of
+different components, so it is natural to start working on it first.
+
+* Even in the absence of deployed open source hardware components, it could
+be used by members of the public to “check” the scanning done by the interim
+system, provided the digital ballot pictures are made public. The visually impaired
+could use a ballot picture interpreter on their device with a speech synthesis
+application to validate/check a home printed or marked ballot.
+
+  _[Paragraph edited: Jan. 18, 2018 meeting.]_
+
+* The open source software OpenCount might go a long way towards implementing
+this component.
+
+
+### 7.5. Central Ballot Scanner Rationale
+
+* This is probably the “easiest” hardware component to work on and implement
+first, for reasons that will be described below.
+
+* Deploying this component alone would result in a majority of votes being
+counted by open source software. For example, in the November 8, 2016
+election 63% of ballots were vote-by-mail (263,091 out of 414,528 ballots in
+all). In this sense, this component provides the biggest “bang for the buck.”
+
+* This component doesn’t require answering the question of whether to use
+vote centers, since vote-by-mail ballots need to be tabulated centrally
+whether or not San Francisco moves to a vote-center model.
+
+* Unlike precinct-based hardware components like the accessible voting device
+and precinct-based scanners, this hardware component would be operated in a
+more controlled environment with more highly trained staff. As a result, it
+also doesn't need to meet the same portability, durability, usability, and
+transportation requirements as precinct-based equipment (which also might
+require a custom casing or shell in the case of precinct equipment).
+
+* Also unlike precinct-based hardware components, fewer units would need to
+be purchased or manufactured, so it is probably less costly and expensive to
+do this step first. For example, for comparison, San Francisco currently has
+four high-speed central scanners, but around 600 precincts.
+
+* Central scanners provide multiple possibilities for incremental rollout,
+including using the component alongside and in parallel with the interim
+system, which all help to mitigate risk. These approaches are described in
+the “Deployment Strategy” section.
+
+* Implementing the central scanner before the precinct scanner also makes
+sense from a software dependency perspective. The central scanner includes
+most of the software that an in-precinct scanner would need anyway, like
+ballot interpretation, understanding election definition and ballot layouts,
+etc. However, the central scanner provides a safer and more controlled
+environment in which to exercise these code paths for the first time. In
+other words, with the exception of the high-speed and high-volume nature of
+the hardware, it is a strictly simpler component than the precinct-based
+scanner.
+
+
+### 7.6. Deployment Strategies
+
+The components listed above can be deployed and used in conjunction with a
+non-open source interim system even before a full open source voting system
+is ready. This section provides more details about how this could be done.
+
+For example, an open source results reporter could be used to report the
+election results of the non-open source interim system. It would simply need
+to take in the aggregate, numeric results from the interim system. The output
+would not need to interact with the interim system.
+
+Similarly, an open source vote totaler could be used to compute the numeric
+results of an election run with the interim system. It would only require
+taking in the non-aggregated numeric results from the interim system, and
+then feeding the aggregate results into the results reporter.
+
+
+### 7.7. Central Ballot Scanner Phases
+
+For the central ballot scanner, there are a number of options for
+incrementally phasing in an open source version.
+
+In chronological order, some of these possible phases are--
+
+1. Even before the scanner hardware is ready to be tested, the software-only
+ballot image interpreter component could be used to check the vote counts of
+the interim system from the information of the digital ballot pictures. In
+addition, if the pictures are made public during the canvass (along with the
+ballot image interpreter software), even members of the public could perform
+this "check."
+
+2. When the open source central scanners are ready enough to test, the
+scanners could be used to scan vote-by-mail ballots _in addition_ to the
+interim system scanning them. This could be used both to check or audit the
+interim system, as well as to test the open source scanners. This can likely
+be done even without certifying the scanners. This is essentially what the
+Humboldt County Elections Transparency Project did in the late 2000's.
+
+3. Once we have enough confidence in the open source scanners, they could be
+used as the primary scanner for _some_ of the vote-by-mail ballots (e.g. in a
+pilot of the open source scanners that precedes a full-scale rollout). This
+option could possibly be done prior to certifying the scanners, by taking
+advantage of California bill [SB 360 (2013-2014)][bill-sb-360-2013].
+
+4. Finally, once the open source central scanners are certified, they could
+be used to scan _all_ of the vote-by-mail ballots (while the interim system
+could be responsible for counting in-precinct ballots). In this scenario, the
+interim system could perhaps even be used as a fail-safe backup in case of an
+unexpected issue with the open source system (or else as a check, in the
+same way that the open source scanners were used as a check in bullet point
+(2) above).
+
+
+## 8. Equipment (“Product”) Decisions
+
+The following are some key decisions about system requirements that need to be made
+at some point when designing and developing the voting system. Some pro and
+con tradeoffs are included.
+
+At this point, the intent here is to just present options with some
+discussion, not a particular recommendation.
+
+**Assumptions:**
+
+* Votes are cast (recorded, submitted, and stored) on paper in a human-readable form.
+
+* An electronic representation of ballots made either by voting machines or
+  scanners serves only as a copy of the official paper ballot.
+
+* Ballots marked are on paper that meets the California regulations for
+  printing (counterfeit resistance).
+
+* By 2020, CA [AB973][bill-ab-973-2017] requires support of _Remote Accessible
+Vote By Mail_ ballots ([AB2252][bill-ab-2252-2015]) for voters with disabilities
+or overseas and military voters. Home computers are used to print ballots on
+ordinary paper, but returned via special mail envelopes.
+
+* Voting types to be considered:
+  + Vote by mail (preprinted and special accessible/overseas)
+  + Vote on election day at a polling location (precinct voting)
+  + Vote prior to election day at an early vote center
+  + Vote by people preferring or needing an accessible option (e.g. ballot
+    marking device), like people with disabilities
+  + Vote with Provisional Ballots (enclosed in a special envelope for later
+    qualification)
+
+_[Assumptions added: Feb. 8, 2018 meeting.]_
+
+
+### 8.1. Will vote centers be used for early and/or election day voting?
+
+California [SB 450][bill-sb-450-2015] ("Elections: vote by mail voting and
+mail ballot elections") authorizes counties to conduct elections using vote
+centers. The Department of Elections should develop a sense as soon as
+possible of the likelihood of using vote centers because that could affect
+the requirements and design of the system. Making this decision earlier could
+decrease costs since the design and development wouldn’t have to cover
+multiple scenarios.
+
+While voters can be assigned to the traditional election-day precinct polling
+site, with the right equipment, each poll site could have the full features of
+a vote center, i.e. allow voters from any precinct to vote at that site.
+
+Vote centers could be used for:
+   1. Early voting only
+   2. Election day voting at selected locations
+   3. All election day polling locations
+
+_[Answer edited: Feb. 8, 2018 meeting.]_
+
+
+### 8.2. Should precinct polling and vote centers use the same paper ballots as those used in vote-by-mail?
+
+  Background: If a voting machine is used to prepare ballots for printing, the
+paper ballots marked could use the same printing and layout as a vote-by mail
+ballot, or could have a simpler and shorter format listing just the contests and
+selected choices (called _paper cast vote record_ (CVR) in California Election Code).
+The shorter format could be on smaller paper, possibly only a single sheet, vs a
+larger multipage scanned mail ballot. Voting machines (ballot marking devices)
+at a precinct or vote center could be used only for the purposes of providing
+an accessible option, while voters not requiring an accessible option could
+use a normal mail ballot, or all voters at a precinct or vote center could
+use voting machines with printed ballots.
+
+Mail-Only Format Pros:
+
+* Only one style of ballot printing is required
+* No need for precinct voters to use voting machines-- voters not
+    requiring an accessible option can use a "low-tech" solution of only
+    a marker or pen
+* Central storage and recounting has all the same ballot size/type
+* Better ballot secrecy because all ballots look the same.
+* Reduced requirements for printers and possible problems with printer
+  malfunction and paper jams.
+* Voting with hand-marked ballots could be done with no electric power.
+
+Mail-Only Format Cons:
+* Printing on large mail ballot paper, usually double sided,  requires
+    special, possibly nonstandard, equipment. Sheets might need to be
+    hand-inserted individually.
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.3. Should ballots to be hand-marked be preprinted or printed on demand?
+
+  Background: If precinct voting is based on the low-tech paper ballot marked
+with a pen, pads of preprinted paper ballots could be used. However, separate
+pads are required for each ballot type, party preference and language preference
+used at that precinct. A vote center might need to store ballots for all ballot
+types in the county, each in all languages. An alternative is to use blank
+ballot card stock with a printer to create any desired ballot type and language
+preference, known as "ballot on demand" (BOD).
+
+Ballot on Demand Pros:
+* Reduced printing cost and paper use: no need to stock extra preprinted
+    ballots in case all voters show up.
+* Easier to accommodate multiple languages
+* Allows any poll site to be a vote-center. Eliminates the problem of people
+    at the wrong poll site casting provisional ballots with an incorrect
+    ballot type.
+
+Ballot on Demand Cons:
+* On site printers can fail and probably require AC power, stopping voting.
+* Printing on large mail ballot paper, usually double sided requires special,
+  possibly nonstandard, equipment.
+
+_[Question & answer edited: Feb. 8, 2018 meeting.]_
+
+
+### 8.4. Should voting at a precinct or vote center be primarily based on paper ballots hand-marked with a pen, or voting machine with a printer?
+
+Background: After voters check in at a precinct, they could be given a
+paper ballot (similar or the same as a mail ballot) and pen to mark it.
+Alternatively, they could be given a blank ballot sheet and sent to
+a voting machine (e.g. computer/tablet) where choices can be entered and
+reviewed. To access the correct ballot type, voters may be given a
+_token_ containing the ballot type or else the blank ballot sheet could have
+a ballot type code preprinted. When voters complete their selections, the
+paper is inserted into a printer, then they check the final printed ballot
+prior to casting into a ballot box.
+
+Machines used by all non-mail voters Pros:
+* Paper+Electronic CVR has the highest security/integrity. Digital signatures
+  can be printed on ballots to authenticate paper.
+* Time to vote can be less than marking.
+* Mistakes can be undone without needing another ballot to mark.
+* Eliminates ambiguous marks that would otherwise require adjudication.
+* Machines could read a QR code from a vote at home app to print a ballot
+  immediately.
+* A separate non-mail ballot format from voting machines would be the same
+  for ordinary voters and those with special needs.
+* It will be easier to ensure that all voters have the same level and
+  quality of experience if all voters use the same process.
+* Extra machines provide redundancy vs a single accessible machine.
+* Vote centers could handle all ballot types without the need for a ballot
+  on demand system.
+* Election-day machines could only allow authorized write-ins to be recorded,
+  simplifying write-in voting and enabling end of day totals that include
+  write-ins.
+* A full precinct scanner is not required-- just a simple bar code scanner
+    to track paper cast by entering into a ballot box. (The bar code is matched
+    against the electronic CVR.)
+* Voting machines have the same effect as precinct scanners with
+stored electronic CVRs and end of day totals available.
+
+Machines used by all non-mail voters Cons:
+* Requires more equipment, with increased cost, complexity, and the possibility
+    of something going wrong. May require backup power.
+* More possible problems with paper jams and printer malfunction.
+* Voters need to be occupying a machine while voting.
+* Mail ballot processing is still a separate sizable operation.
+
+_[Question & answer edited: Feb. 8, 2018 meeting.]_
+
+
+### 8.5. If voting machines are used at a precinct, should there be one printer per voting station?
+
+Background: Each electronic voting station could be configured with a
+printer to create the ballots to be cast. Alternatively, there could be
+many voting stations (e.g. just a tablet computer), then a separate
+printing station would be used to print completed ballots. With separate
+printing stations, a _token_ is required to be scanned to identify the
+ballot completed at a voting station.
+
+Voters using a home computer or phone to record personal ballot choices
+could bring a QR code printed or saved in a smartphone and go directly
+to the printing station. A token might be required to verify the ballot
+type.
+
+Note: a _token_ could simply be a bar code with ballot type and unique
+random number printed on the outside of a privacy folder. The number has
+no association with a voter-- just a way to associate the ballot entered
+at a voting station with the ballot to be printed. Another form of token
+in use is an RFID chip.
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.6. If voters at precincts use hand-marked ballots, should ballots be scanned centrally or at the precinct/vote center?
+
+Precinct ballot scanner Pros:
+* Overvotes/Undervotes and invalid or ambiguous marks can be reported by the
+    scanner prior to submitting
+* Precinct vote counts are available immediately at the end of the day
+* Reduces the need for central scanning equipment
+
+Precinct ballot scanner Cons:
+* More equipment is required than central-only scanners
+* If the scanner and ballot collection is integrated (the scanner feeds
+    into a ballot collection bin), custom equipment may be required.
+* Not required if all ballots are printed by a voting machine
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.7. If a precinct scanner is used, does the scanner need to be integrated with a ballot collection bin?
+
+  Background: Custom-built precinct ballot scanners sold by election vendors
+usually include a ballot collection bin within same box containing the scanner.
+The scanner feeds the ballot into the collection box, or else reverses the paper
+feed in case of an error detected. Scanners may need multiple collection bins
+in case of ambiguous marks or write-in votes. An integrated device likely
+means custom hardware vs COTS equipment.
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.8. If a precinct scanner (or central scanner) is used, does it need to include an imprinter to record a ballot/scan ID?
+
+  Background: To match a specific paper ballot in a ballot box with a scanned
+CVR, either the order of insertion must be maintained, or a unique identifier
+associated with the scan needs to be added to the ballot. Alternatively,
+ordered ballots could be rescanned centrally during a recount or audit and
+matched as a batch with the original scan.
+
+Scanner Imprinter Pros:
+
+* This would permit more sophisticated auditing approaches that involve
+  selecting individual ballots at random, which could reduce time and costs
+  (e.g. risk-limiting audits). Without this feature, auditing needs to be
+  done in larger “batches,” or ballots need to be kept in careful order to
+  allow accessing individual ballots.
+
+Scanner Imprinter Cons:
+
+* It is not clear if COTS scanners support the feature of printing while
+  scanning. Available imprinters are expensive and might reduce scan speed.
+
+* The scanner hardware would become more complicated since there would be
+  another “moving part” that can break, and may require consumables, e.g.
+  printer ink or ribbon changes.
+
+_[Question & answer edited: Feb. 8, 2018 meeting.]_
+
+
+### 8.9. If a voting machine is used to print ballots, does the ballot collection box need to have an integrated scanner?
+
+  Background: Using a voting machine with voter-verified ballot does not
+constitute casting a ballot-- the act of submitting the ballot after
+verification is the cast ballot. Voters might choose to discard a ballot and
+revote, so a simple bar-code scanner is useful to match the electronic CVR with
+paper ballots submitted (i.e. exclude discarded ballots). Discarded ballots
+could be scanned instead, but a voter could still walk off with a ballot, or a
+ballot might not print correctly.
+
+Additional ballot box scanner Pros: [TODO]
+
+Additional ballot box scanner Cons: [TODO]
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.10. Is voting equipment required to run off a battery (without outside AC power) for a set outage duration or all day?
+
+No outside power Pros:
+* Eliminates extension cords and possible special power requirements.
+* Voting can continue in a power outage.
+* Some equipment (tablets and laptops) has a built in battery that can work
+  during a power outage.
+
+No outside power Cons:
+* Limits the type of equipment used
+* Might require special external batteries and power conversion
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.11. What kind of printing technology should be used at a poll site or vote center?
+
+Background: [TODO]
+
+Options Include:
+
+* Laser Printer (single/double sided)
+
+    Pros:
+    + High quality, durable printing
+    + Toner lasts for a large number of pages
+    + Fast printing
+
+    Cons:
+    + Requires AC power (limited life on backup power)
+    + Tracking/replacing toner cartridges is required
+
+* Ink Jet (single/double sided)
+
+    Pros:
+    + Low power
+    + Available as portable battery powered COTS
+
+    Cons:
+    + Ink cartridges drain quickly and dry out between elections
+    + Ink can smear before drying
+    + Head cleaning might be required
+
+* Direct Thermal (on special paper)
+
+    Pros:
+    + Low power
+    + No consumables that need monitoring and reloading
+
+    Cons:
+    + Requires special paper
+    + Limited life - disappearing ink
+    + Temperature sensitive
+    + Lower resolution
+
+* Thermal Transfer (uses a ribbon)
+    Pros:
+    + Low power
+    + High quality printing
+
+    Cons:
+    + Ribbon usage needs to be tracked and replaced
+    + Not normally used for letter size printers
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.12. What size paper should be used for precinct voting and vote by mail?
+
+Background: Vote-by-mail ballots are typically printed on wide paper
+stock (sometimes 11"x17") folded to fit within a mailing envelope.
+Precinct voting with a scanner does not need to be folded, and could
+be a different size than mailed ballot.
+
+With a larger paper size, more columns could be used, larger fonts, and
+fewer sheets. With a smaller paper size (8.5"x11" or 8.5"x14"),
+standard printers and scanners could be used. LA County published
+a [usability study][la-vsap-vbm-study] of mail ballot design including
+2 paper sizes (8.5x11" and 10.5x17").
+
+If voting machines are used to print a _paper cast vote record_, then
+only the selections made are shown, so a single sheet could be used.
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.13. What options should be provided to people with disabilities?
+
+Accessible voting could be accomplished with:
+
+* Voting machines (BMD) at all precincts (or vote centers) and early
+  voting stations
+* Voting machines at selected precincts or vote centers with transportation
+  provided (Question: is this really permitted?)
+* Vote by mail using home computer and printer
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.14. Should "remote accessible vote-by-mail" (RAVBM) printing used by voters with disabilities to vote by mail using home computers also be used for accessible precinct voting?
+
+  Background: California Election code specifies that remote accessible vote by
+mail capability should be provided by 2020 for people with disabilities and
+military and overseas voters. Software to prepare these RAVBM ballots could in
+principle be used at a precinct poll site or early vote center. Some states have
+used a similar system (e.g. Prime-III) for disability access voting at
+precincts.
+
+RAVBM used in precincts Pros: [TODO]
+
+RAVBM used in precincts Cons: [TODO]
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.15. Does ballot collection order or CVR recordings need to be randomized to protect voter privacy (be disassociated by order of appearance at a precinct)?
+
+Background: To protect voter privacy, either the time and order of appearance
+of a voter must not be recorded, or else the order of scanned or submitted
+ballots must be randomized. Otherwise voter order and ballot order could
+be correlated and secrecy compromized. If ballot box order must be randomized,
+then poll workers might need to shuffle ballots.
+
+Scanned ballots imprinted with an ID could have sequential number assigned,
+could simplify pulling ballots with a specific ID, e.g. for a ballot
+requiring adjudication, or in an audit. Otherwise, a randomly assigned
+unique ID could be imprinted, and stored electronic cast vote records
+could have order randomized.
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.16. Should scanned ballot images or compiled CVRs be an open public record, possibly electronically accessible?
+
+In the interest of making the election process transparent, the electronic
+records of scanned ballots and/or CVRs could be made public (vs sealed
+paper ballot storage containers). Is open ballot data possible within the
+legal requirements of privacy and not being able to identify and prove a vote?
+Would open ballot data be part of end-end verifiability or mutually exclusive
+to it?
+
+Ranked Choice Voting (RCV) might require a public set of cast vote records (CVR)
+to fully disclose voter choices and validate the elimination rounds.
+
+_[Question added: Feb. 8, 2018 meeting.]_
+
+
+### 8.17. End-to-end verifiability
+
+[TODO: Introduction - why we want it ...]
+
+It should be determined how much additional work would need to be done to
+make the voting process end-to-end verifiable, and whether and which designs
+are more compatible (e.g. among approaches listed above, hand-marked vs
+machine-printed ballots). Also, is this something that could
+be incorporated later on in the process, or does it need to be incorporated
+from the beginning?
+
+Is it possible to have end-end verifiability without also being able to
+prove how one voted?
+
+[TODO: List current research on E2E voting.]
+
+_[Question & answer edited: Feb. 8, 2018 meeting.]_
+
+
+## 9. FAQ
 
 **1. Is open source software more or less secure than proprietary
 software?**
@@ -2303,7 +2379,7 @@ equivalent in later versions of the system.
 _[Answer added: Dec. 14, 2017 meeting.]_
 
 
-## 7. Glossary
+## 10. Glossary
 
 * **adjudicate**. [TODO]
 

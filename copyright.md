@@ -1,8 +1,8 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on February 8, 2018.)
+(Approved by OSVTAC on March 8, 2018.)
 
-Last posted: March 10, 2018
+Last posted: March 19, 2018
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -28,15 +28,15 @@ the Open Source Voting System Technical Advisory Committee's (OSVTAC)
 
 ### 1.1. Copyright
 
-Copyright (C) 2017 Larry Bafundo
+Copyright (C) 2017, 2018 Larry Bafundo
 
-Copyright (C) 2017 Carl Hage
+Copyright (C) 2017, 2018 Carl Hage
 
-Copyright (C) 2017 Christopher Jerdonek
+Copyright (C) 2017, 2018 Christopher Jerdonek
 
-Copyright (C) 2017 Roan Kattouw
+Copyright (C) 2017, 2018 Roan Kattouw
 
-Copyright (C) 2017 Tony Wasserman
+Copyright (C) 2017, 2018 Tony Wasserman
 
 
 ### 1.2. Contributors

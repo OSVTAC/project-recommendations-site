@@ -1,8 +1,8 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on February 8, 2018.)
+(Approved by OSVTAC on March 8, 2018.)
 
-Last posted: March 10, 2018
+Last posted: March 19, 2018
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -19,7 +19,7 @@ For copyright and attribution information for this work, see
 GitHub [here](https://github.com/OSVTAC/project-recommendations).
 
 
-## 6. FAQ
+## 9. FAQ
 
 **1. Is open source software more or less secure than proprietary
 software?**
