@@ -1,8 +1,8 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on March 8, 2018.)
+(Approved by OSVTAC on April 12, 2018.)
 
-Last posted: March 19, 2018
+Last posted: December 12, 2018
 
 
 **Note: these recommendations are a work in progress and not yet complete.**
@@ -90,7 +90,7 @@ GitHub [here](https://github.com/OSVTAC/project-recommendations).
   * [8.6. If voters at precincts use hand-marked ballots, should ballots be scanned centrally or at the precinct/vote center?](decisions#86-if-voters-at-precincts-use-hand-marked-ballots-should-ballots-be-scanned-centrally-or-at-the-precinctvote-center)
   * [8.7. If a precinct scanner is used, does the scanner need to be integrated with a ballot collection bin?](decisions#87-if-a-precinct-scanner-is-used-does-the-scanner-need-to-be-integrated-with-a-ballot-collection-bin)
   * [8.8. If a precinct scanner (or central scanner) is used, does it need to include an imprinter to record a ballot/scan ID?](decisions#88-if-a-precinct-scanner-or-central-scanner-is-used-does-it-need-to-include-an-imprinter-to-record-a-ballotscan-id)
-  * [8.9. If a voting machine is used to print ballots, does the ballot collection box need to have an integrated scanner?](decisions#89-if-a-voting-machine-is-used-to-print-ballots-does-the-ballot-collection-box-need-to-have-an-integrated-scanner)
+  * [8.9. If a voting machine is used to print all precinct ballots and possibly save CVRs, does the ballot collection box need to have an integrated scanner?](decisions#89-if-a-voting-machine-is-used-to-print-all-precinct-ballots-and-possibly-save-cvrs-does-the-ballot-collection-box-need-to-have-an-integrated-scanner)
   * [8.10. Is voting equipment required to run off a battery (without outside AC power) for a set outage duration or all day?](decisions#810-is-voting-equipment-required-to-run-off-a-battery-without-outside-ac-power-for-a-set-outage-duration-or-all-day)
   * [8.11. What kind of printing technology should be used at a poll site or vote center?](decisions#811-what-kind-of-printing-technology-should-be-used-at-a-poll-site-or-vote-center)
   * [8.12. What size paper should be used for precinct voting and vote by mail?](decisions#812-what-size-paper-should-be-used-for-precinct-voting-and-vote-by-mail)
