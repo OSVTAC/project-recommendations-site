@@ -1,6 +1,6 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on May 9, 2018.)
+(Approved by OSVTAC on June 14, 2018.)
 
 Last posted: December 12, 2018
 
@@ -79,6 +79,7 @@ drafting this document.
 [commission-res-txt-local]: files/commission-resolution/SF_Elections_Comm_Open_Source_Voting_Res.txt
 [commission-resolutions]: http://sfgov.org/electionscommission/motions-and-resolutions
 [coverity-report-2014]: http://go.coverity.com/rs/157-LQW-289/images/2014-Coverity-Scan-Report.pdf
+[cran-rcv]: https://github.com/ds-elections/rcv
 [dfm-contract-appendix-a]: files/dfm-contract/DFM_Contract_Appendix_A_Perf_Reqs.pdf
 [dfm-contract-appendix-b]: files/dfm-contract/DFM_Contract_Appendix_B_Scope.pdf
 [dfm-contract-appendix-c]: files/dfm-contract/DFM_Contract_Appendix_C_Maintenance.pdf
@@ -95,6 +96,7 @@ drafting this document.
 [eml-specs]: http://docs.oasis-open.org/election/eml/v7.0/eml-v7.0.html
 [eml-wikipedia]: https://en.wikipedia.org/wiki/Election_Markup_Language
 [free-and-fair]: http://freeandfair.us/blog/open-free-election-technology/
+[fromira-twitter-rcv]: https://twitter.com/fromira/status/1004484579334340608
 [github]: https://github.com/
 [ict-plan-2008]: files/SF_ICT_Plan_2018-22.pdf
 [ieee-1622]: http://grouper.ieee.org/groups/1622/

@@ -1,6 +1,6 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on May 9, 2018.)
+(Approved by OSVTAC on June 14, 2018.)
 
 Last posted: December 12, 2018
 
@@ -625,10 +625,16 @@ useful for the project.
    * [Low Error Voting Interface][levi] (LEVI), research paper of a voting
      machine GUI designed to reduce user errors. Used by Prime-III.
 
-_[Subsection added: Jan. 18, 2018 meeting.]_
+   * [RCV package in CRAN][cran-rcv], a package for R that tabulates
+     ranked-choice elections. The README uses San Francisco's 2016 races as
+     examples, and it has been used by members of the public to
+     [visualize the RCV eliminations][fromira-twitter-rcv] in the June 2018
+     election.
+
+_[Subsection added: Jan. 18, 2018 meeting; edited: June 14, 2018 meeting.]_
 
 
-#### 3.4.5. Open Source Voting Organization
+#### 3.4.5. Open Source Voting Organizations
 
    * [OSET Foundation][oset-foundation] 501c umbrella nonprofit to support [Trust the Vote][trust-the-vote],
      site with actual software. \[Currently, mostly Ruby-On-Rails in ruby
@@ -2046,13 +2052,18 @@ on paper ballots, eliminating exhausted ballots (except from undervotes), while 
 stored electronic CVRs and end of day totals available.
 
 Machines used by all non-mail voters Cons:
-* Requires more equipment, with increased cost, complexity, and the possibility
-    of something going wrong. May require backup power.
+* Requires more equipment and more software, with increased cost, complexity,
+    attack surface, and the possibility of something going wrong. May require
+    backup power.
 * More possible problems with paper jams and printer malfunction.
-* Voters need to be occupying a machine while voting.
+* It is difficult for voters to accurately verify their machine-printed ballot,
+    especially when there are many contests on the ballot. For example, in the
+    November 2016 election, there were 52 contests.
+* Voters need to be occupying a machine while voting, unless a vote-at-home app
+    is used.
 * Mail ballot processing is still a separate sizable operation.
 
-_[Question & answer edited: April 12, 2018 meeting.]_
+_[Question & answer edited: June 14, 2018 meeting.]_
 
 
 ### 8.5. If voters use machines to mark ballots, should the machine store CVRs of the marked selections?
@@ -2618,6 +2629,7 @@ _[Answer added: Dec. 14, 2017 meeting.]_
 [commission-res-txt-local]: files/commission-resolution/SF_Elections_Comm_Open_Source_Voting_Res.txt
 [commission-resolutions]: http://sfgov.org/electionscommission/motions-and-resolutions
 [coverity-report-2014]: http://go.coverity.com/rs/157-LQW-289/images/2014-Coverity-Scan-Report.pdf
+[cran-rcv]: https://github.com/ds-elections/rcv
 [dfm-contract-appendix-a]: files/dfm-contract/DFM_Contract_Appendix_A_Perf_Reqs.pdf
 [dfm-contract-appendix-b]: files/dfm-contract/DFM_Contract_Appendix_B_Scope.pdf
 [dfm-contract-appendix-c]: files/dfm-contract/DFM_Contract_Appendix_C_Maintenance.pdf
@@ -2634,6 +2646,7 @@ _[Answer added: Dec. 14, 2017 meeting.]_
 [eml-specs]: http://docs.oasis-open.org/election/eml/v7.0/eml-v7.0.html
 [eml-wikipedia]: https://en.wikipedia.org/wiki/Election_Markup_Language
 [free-and-fair]: http://freeandfair.us/blog/open-free-election-technology/
+[fromira-twitter-rcv]: https://twitter.com/fromira/status/1004484579334340608
 [github]: https://github.com/
 [ict-plan-2008]: files/SF_ICT_Plan_2018-22.pdf
 [ieee-1622]: http://grouper.ieee.org/groups/1622/
