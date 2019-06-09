@@ -1,8 +1,8 @@
 # Open Source Voting System Project Recommendations
 
-(Approved by OSVTAC on June 14, 2018.)
+(Approved by OSVTAC on March 14, 2019.)
 
-Last posted: December 12, 2018
+Last posted: June 9, 2019
 
 
 * [Introduction & Table of Contents](index) (for multi-page version)
@@ -2059,11 +2059,13 @@ Machines used by all non-mail voters Cons:
 * It is difficult for voters to accurately verify their machine-printed ballot,
     especially when there are many contests on the ballot. For example, in the
     November 2016 election, there were 52 contests.
+    A [2018 paper][ballot-verification-2018-paper] suggests voters struggle
+    with much smaller ballots than that.
 * Voters need to be occupying a machine while voting, unless a vote-at-home app
     is used.
 * Mail ballot processing is still a separate sizable operation.
 
-_[Question & answer edited: June 14, 2018 meeting.]_
+_[Question & answer edited: March 14, 2019 meeting.]_
 
 
 ### 8.5. If voters use machines to mark ballots, should the machine store CVRs of the marked selections?
@@ -2416,7 +2418,12 @@ to it?
 Ranked Choice Voting (RCV) might require a public set of cast vote records (CVR)
 to fully disclose voter choices and validate the elimination rounds.
 
-_[Question added: Feb. 8, 2018 meeting.]_
+South Carolina publishes CVRs as part of its [election audit process][south-carolina-audits].
+This data has been [republished in alternate formats][south-carolina-json] by
+interested members of the public, and been used by political scientists to
+[research voting patterns][south-carolina-poster].
+
+_[Question added: Feb. 8, 2018 meeting; edited: March 14, 2019 meeting.]_
 
 
 ### 8.19. End-to-end verifiability
@@ -2611,6 +2618,7 @@ _[Answer added: Dec. 14, 2017 meeting.]_
 
 
 [18f-modular-contracting]: https://modularcontracting.18f.gov/
+[ballot-verification-2018-paper]: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3292208
 [bill-ab-2252-2015]: https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201520160AB2252
 [bill-sb-360-2013]: https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201320140SB360
 [bill-sb-450-2015]: https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201520160SB450
@@ -2698,6 +2706,9 @@ _[Answer added: Dec. 14, 2017 meeting.]_
 [slalom-contract]: files/slalom/contract/Business_Case_Contract.pdf
 [sos-advisories]: http://www.sos.ca.gov/elections/advisories-county-elections-officials/
 [sos-digest]: http://www.sos.ca.gov/elections/publications-and-resources/elections-officers-digest-2018/
+[south-carolina-audits]: https://www.scvotes.org/election-audits-south-carolina
+[south-carolina-json]: https://github.com/hodgesmr/south_carolina_2018_ballot_image_json
+[south-carolina-poster]: http://www.shirokuriwaki.com/papers/kuriwaki_scvotes.pdf
 [slalom-rfp-response]: files/slalom/REG_RFP_2017-01_Slalom_Response.pdf
 [star-vote-entity]: files/star-vote/STAR-Vote_Statement_of_Intent.pdf
 [star-vote-final-press-release]: http://www.traviscountyclerk.org/eclerk/Content.do?code=star-vote-a-change-of-plans
